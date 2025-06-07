@@ -36,7 +36,7 @@ const Footer = () => {
           <div>
             <nav className=" ">
               <ul className="flex flex-col gap-5 poppins-semibold  ">
-                <li className="text-primary">Quick Links</li>
+                <li className="text-primary border-b-2 w-fit ">Quick Links</li>
                 <li>
                   <NavLink
                     to="/"
@@ -110,7 +110,7 @@ const Footer = () => {
             {" "}
             <nav className="">
               <ul className="flex flex-col gap-5 poppins-semibold  ">
-                <li className="text-primary">Resources</li>
+                <li className="text-primary border-b-2 w-fit ">Resources</li>
                 <li>
                   <NavLink className="hover:border-b-2 hover:bg-gray-700 hover:text-primary px-4 pb-2 pt-1 rounded">
                     About Us

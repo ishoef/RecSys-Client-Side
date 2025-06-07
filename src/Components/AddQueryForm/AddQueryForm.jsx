@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { SiJquery } from "react-icons/si";
 import { Link } from "react-router";
 
 const AddQueryForm = () => {
-  const handleAddRecomm = (e) => {
+  const [myQuery, setMyQuery] = useState([]);
+
+  const handleAddQuery = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const queryData = {
+      productName: form.productName.value,
+      productBrand: form.productBrand.value,
+      productImageUrl: form.productImageUrl.value,
+      boycottingReson: form.boycottingReson.value,
+    };
+    setMyQuery(queryData);
   };
+
+  console.log(myQuery.productName);
 
   return (
     <div className="w-6/12 mx-auto my-10 ">
@@ -16,7 +28,7 @@ const AddQueryForm = () => {
         <p className="poppins text-gray-700">Back to My Queries</p>
       </Link>
       <div className=" border border-gray-400 shadow-xl rounded-2xl p-10 mt-6">
-        <form onSubmit={handleAddRecomm} className="flex flex-col gap-4">
+        <form onSubmit={handleAddQuery} className="flex flex-col gap-4">
           <div className="flex items-center justify-between border p-4 rounded-2xl shadow border-gray-400 mb-5">
             <h1 className="poppins-semibold text-2xl text-primary">
               Add New Query
@@ -29,9 +41,9 @@ const AddQueryForm = () => {
             </span>
             <input
               type="text"
-              name="title"
+              name="productName"
               id=""
-              className="input w-full focus-within:outline-none "
+              className="input w-full focus-within:outline-none focus-within:border-primary"
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
             />
           </label>
@@ -42,22 +54,25 @@ const AddQueryForm = () => {
             </span>
             <input
               type="text"
-              name="title"
+              name="productBrand"
               id=""
-              className="input w-full focus-within:outline-none "
+              className="input w-full focus-within:outline-none focus-within:border-primary"
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
             />
           </label>
 
-          <label htmlFor="title" className="flex flex-col gap-2">
+          <label
+            htmlFor="title"
+            className="flex flex-col gap-2 focus-within:border-primary"
+          >
             <span className="poppins-regular">
               Product Image URL <span className="text-red-500">*</span>
             </span>
             <input
               type="url"
-              name="title"
+              name="productImageUrl"
               id=""
-              className="input w-full focus-within:outline-none "
+              className="input w-full focus-within:outline-none focus-within:border-primary "
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
             />
           </label>
@@ -68,9 +83,9 @@ const AddQueryForm = () => {
             </span>
             <input
               type="text"
-              name="title"
+              name="queryTitle"
               id=""
-              className="input w-full focus-within:outline-none "
+              className="input w-full focus-within:outline-none focus-within:border-primary"
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
             />
           </label>
@@ -80,7 +95,8 @@ const AddQueryForm = () => {
               Boycotting Reason Detils <span className="text-red-500">*</span>
             </span>
             <textarea
-              className="w-full h-32 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring mt-2"
+              name="boycottingReson"
+              className="w-full h-32 p-3 border border-gray-300 rounded-md focus-within:border-primary focus:outline-none mt-2"
               placeholder="Explain why you're looking for alternativew to this product..."
             ></textarea>
           </label>
