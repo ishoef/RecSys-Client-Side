@@ -1,6 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { SiJquery } from "react-icons/si";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const AddQueryForm = () => {
   const handleAddQuery = (e) => {
@@ -11,9 +12,9 @@ const AddQueryForm = () => {
 
     const currentDate = now.toLocaleDateString("en-GB");
     const currentTime = now.toLocaleTimeString("en-US", {
-      hour: "2-digit", 
-      minute: "2-digit", 
-      second: "2-digit", 
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
       hour12: true,
     });
 
@@ -33,6 +34,7 @@ const AddQueryForm = () => {
       createTime: currentTime,
       userName: user.name,
       userEmail: user.email,
+      userPhotoURL: user.photURL,
     };
 
     console.log(queryData);
@@ -48,6 +50,15 @@ const AddQueryForm = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("after creating query", data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Query created successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+          form.reset();
+        }
       });
   };
 
