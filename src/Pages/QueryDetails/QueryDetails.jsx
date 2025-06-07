@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import DetailCard from "../../Components/DetailCard/DetailCard";
-import AddQueryForm from "../../Components/AddQueryForm/AddQueryForm";
+import AddRecomForm from "../../Components/AddRecomForm/AddRecomForm";
 
 const QueryDetails = () => {
   const [queries, setQueries] = useState([]);
@@ -33,8 +33,8 @@ const QueryDetails = () => {
   return (
     <section className="mt-10">
       <div className=" w-11/12 md:w-10/12 lg:w-9/12 mx-auto">
-              <DetailCard details={details} />
-        <AddQueryForm details={ details} />
+        <DetailCard details={details} />
+        <AddRecomForm details={details} />
       </div>
     </section>
   );

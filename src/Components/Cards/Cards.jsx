@@ -30,6 +30,8 @@ const Cards = ({ queiry }) => {
       </div>
 
       {/* Card Content */}
+
+      {/* Frofile Info */}
       <div className="flex flex-col justify-between flex-1 p-6 gap-4">
         <div className="profle-details flex items-center gap-4">
           <ProfilePhoto tooltip={false}></ProfilePhoto>
@@ -43,6 +45,7 @@ const Cards = ({ queiry }) => {
           </div>
         </div>
 
+        {/* Product Info */}
         <div className="flex flex-col gap-2">
           <p className="text-2xl poppins-semibold text-primary">
             {productName || "Product Name"}

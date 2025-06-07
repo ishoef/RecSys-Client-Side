@@ -1,32 +1,35 @@
 import React from "react";
-import { IoArrowBack } from "react-icons/io5";
-import { SiJquery } from "react-icons/si";
-import { Link } from "react-router";
+import { FaRegCommentAlt } from "react-icons/fa";
+import AllRecomms from "../AllRecomms/AllRecomms";
 
-const AddQueryForm = () => {
+const AddRecomForm = ({ details }) => {
   const handleAddRecomm = (e) => {
     e.preventDefault();
   };
 
   return (
-    <div className="w-6/12 mx-auto my-10 ">
-      <Link to={"/myqueries"} className="flex items-center gap-2">
-        <IoArrowBack />
-
-        <p className="poppins text-gray-700">Back to My Queries</p>
-      </Link>
-      <div className=" border border-gray-400 shadow-xl rounded-2xl p-10 mt-6">
+    <>
+      <div className="w-8/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-10 my-10 ">
         <form onSubmit={handleAddRecomm} className="flex flex-col gap-4">
           <div className="flex items-center justify-between border p-4 rounded-2xl shadow border-gray-400 mb-5">
             <h1 className="poppins-semibold text-2xl text-primary">
-              Add New Query
+              Add Your Recommendation
             </h1>
-            <SiJquery size={32} color="#14b8a6" />
+            <FaRegCommentAlt size={32} color="#14b8a6" />
           </div>
           <label htmlFor="title" className="flex flex-col gap-2">
-            <span className="poppins-regular">
-              Product Name <span className="text-red-500">*</span>
-            </span>
+            <span className="poppins-regular">Recommendation Title</span>
+            <input
+              type="text"
+              name="title"
+              id=""
+              className="input w-full focus-within:outline-none "
+              placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+            />
+          </label>
+
+          <label htmlFor="title" className="flex flex-col gap-2">
+            <span className="poppins-regular">Recommended Product Name</span>
             <input
               type="text"
               name="title"
@@ -38,33 +41,7 @@ const AddQueryForm = () => {
 
           <label htmlFor="title" className="flex flex-col gap-2">
             <span className="poppins-regular">
-              Product Brand <span className="text-red-500">*</span>
-            </span>
-            <input
-              type="text"
-              name="title"
-              id=""
-              className="input w-full focus-within:outline-none "
-              placeholder="E.g., Google Pixel 7 Pro is a great alternative."
-            />
-          </label>
-
-          <label htmlFor="title" className="flex flex-col gap-2">
-            <span className="poppins-regular">
-              Product Image URL <span className="text-red-500">*</span>
-            </span>
-            <input
-              type="url"
-              name="title"
-              id=""
-              className="input w-full focus-within:outline-none "
-              placeholder="E.g., Google Pixel 7 Pro is a great alternative."
-            />
-          </label>
-
-          <label htmlFor="title" className="flex flex-col gap-2">
-            <span className="poppins-regular">
-              Query Title <span className="text-red-500">*</span>
+              Recommended Product Image URL
             </span>
             <input
               type="text"
@@ -76,21 +53,21 @@ const AddQueryForm = () => {
           </label>
 
           <label htmlFor="">
-            <span className="poppins-regular">
-              Boycotting Reason Detils <span className="text-red-500">*</span>
-            </span>
+            <span className="poppins-regular">Recommendation Reason</span>
             <textarea
               className="w-full h-32 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring mt-2"
-              placeholder="Explain why you're looking for alternativew to this product..."
+              placeholder="Explain why this is a good alternative"
             ></textarea>
           </label>
           <button className="btn btn-primary" type="submit">
-            Add Query
+            Add Recommendation
           </button>
         </form>
       </div>
-    </div>
+
+      <AllRecomms details={details} />
+    </>
   );
 };
 
-export default AddQueryForm;
+export default AddRecomForm;

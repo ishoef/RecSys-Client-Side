@@ -10,6 +10,7 @@ import MyQueries from "../Pages/MyQueries/MyQueries";
 import MyRecos from "../Pages/MyRecos/MyRecos";
 import MyProfile from "../Pages/MyProfile/MyProfile";
 import QueryDetails from "../Pages/QueryDetails/QueryDetails";
+import AddQueryForm from "../Components/AddQueryForm/AddQueryForm";
 
 export const router = createBrowserRouter([
   {
@@ -42,10 +43,14 @@ export const router = createBrowserRouter([
         Component: MyProfile,
       },
       {
-        path: "details/:id",
+        path: "/details/:id",
         loader: () => fetch("/queries.json"),
         Component: QueryDetails,
       },
+      {
+        path: "/addquery",
+        Component: AddQueryForm,
+      }
     ],
   },
   {
