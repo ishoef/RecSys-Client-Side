@@ -1,24 +1,55 @@
-import React, { useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { SiJquery } from "react-icons/si";
 import { Link } from "react-router";
 
 const AddQueryForm = () => {
-  const [myQuery, setMyQuery] = useState([]);
-
   const handleAddQuery = (e) => {
     e.preventDefault();
     const form = e.target;
+
+    const now = new Date();
+
+    const currentDate = now.toLocaleDateString("en-GB");
+    const currentTime = now.toLocaleTimeString("en-US", {
+      hour: "2-digit", 
+      minute: "2-digit", 
+      second: "2-digit", 
+      hour12: true,
+    });
+
+    const user = {
+      name: "Abdullah Al Mamun",
+      email: "abdullahalmamun@gmail.com",
+      photURL:
+        "https://w7.pngwing.com/pngs/946/556/png-transparent-computer-icons-login-user-profile-client-smiley-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B8-windows-10-thumbnail.png",
+    };
+
     const queryData = {
       productName: form.productName.value,
       productBrand: form.productBrand.value,
-      productImageUrl: form.productImageUrl.value,
+      productImageURL: form.productImageUrl.value,
       boycottingReson: form.boycottingReson.value,
+      createDate: currentDate,
+      createTime: currentTime,
+      userName: user.name,
+      userEmail: user.email,
     };
-    setMyQuery(queryData);
-  };
 
-  console.log(myQuery.productName);
+    console.log(queryData);
+
+    // create a query
+    fetch("http://localhost:3000/queries", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(queryData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("after creating query", data);
+      });
+  };
 
   return (
     <div className="w-6/12 mx-auto my-10 ">
