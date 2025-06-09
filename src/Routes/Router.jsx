@@ -11,11 +11,13 @@ import MyRecos from "../Pages/MyRecos/MyRecos";
 import MyProfile from "../Pages/MyProfile/MyProfile";
 import QueryDetails from "../Pages/QueryDetails/QueryDetails";
 import AddQueryForm from "../Components/AddQueryForm/AddQueryForm";
+import Error from "../Pages/Err/Error";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    errorElement: <Error/>,
     children: [
       {
         path: "/",

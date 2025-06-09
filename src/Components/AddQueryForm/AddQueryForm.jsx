@@ -1,9 +1,12 @@
 import { IoArrowBack } from "react-icons/io5";
 import { SiJquery } from "react-icons/si";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const AddQueryForm = () => {
+
+  const navigate = useNavigate();
+  // Add Query Handleling
   const handleAddQuery = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -56,8 +59,17 @@ const AddQueryForm = () => {
             title: "Success!",
             text: "Query created successfully",
             icon: "success",
-            confirmButtonText: "Cool",
-          });
+            confirmButtonText: "Add Another Query",
+            showCancelButton: true,
+            cancelButtonColor: "#d33",
+            cancelButtonText: "Go to My Queries!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate("/addquery");
+            } else {
+              navigate("/myqueries");
+            }
+          })
           // form.reset();
         }
       });

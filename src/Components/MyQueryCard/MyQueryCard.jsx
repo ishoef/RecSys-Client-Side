@@ -19,9 +19,10 @@ const MyQueryCard = ({ query }) => {
     recommendationCount,
     boycottingReson,
   } = query;
+
   return (
     <div className="p-5 bg-white shadow-md hover:scale-102 transition-transform border border-gray-300 duration-300 rounded-lg">
-      <div className="flex flex-col justify-between h-full gap-4">
+      <div className="flex flex-col h-full justify-between gap-4">
         {/* Profile Info */}
         <div className="profile-details w-full flex flex-1 gap-4">
           <div className="basis-12">
@@ -29,7 +30,7 @@ const MyQueryCard = ({ query }) => {
           </div>
           <div className="flex justify-between basis w-full">
             <div>
-              <h1 className="poppins-semibold">{userName}</h1>
+              <h1 className="poppins-semibold">{userName || "Abdullah"}</h1>
               <div>
                 <p className="poppins-regular flex items-center gap-2">
                   <MdOutlineDateRange size={18} />
@@ -43,8 +44,7 @@ const MyQueryCard = ({ query }) => {
             </div>
             <div>
               <p className="bg-gray-200 px-2 rounded-full">
-                {" "}
-                {productBrand || "Unknown Brand"}{" "}
+                {productBrand || "Unknown Brand"}
               </p>
             </div>
           </div>
@@ -53,50 +53,62 @@ const MyQueryCard = ({ query }) => {
         {/* Product Photo */}
         <div>
           <img
-            className="rounded-xl w-full h-65"
+            className="rounded-xl w-full h-60 object-cover"
             src={
               productImageURL ||
-              "https://images.unsplash.com/photo-1609692814858-f7cd2f0afa4f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D"
+              "https://images.unsplash.com/photo-1609692814858-f7cd2f0afa4f?w=500&auto=format&fit=crop&q=60"
             }
             alt="product"
           />
         </div>
 
         {/* Details */}
-        <div className="flex flex-col gap-2">
-          <h1 className="poppins-semibold text-xl">
-            {queryTitle || "Query Title Not Provided"}
-          </h1>
-          <p className="poppins text-gray-500">
-            Product: {productName || "Unknown Product"}
-          </p>
-          <p className="poppins text-gray-500">
-            {boycottingReson || "No specific reason provided"}
-          </p>
-        </div>
+        <div className="h-full flex flex-col justify-between gap-4">
+          <div className="flex flex-col gap-2">
+            <h1 className="poppins-semibold text-xl">
+              {queryTitle || "Query Title Not Provided"}
+            </h1>
+            <p className="poppins text-gray-500">
+              <span className="text-gray-900 font-semibold">Product:</span>{" "}
+              {productName || "Unknown Product"}
+            </p>
+            <p className="poppins text-gray-500 line-clamp-2">
+              {boycottingReson || "No specific reason provided"}
+            </p>
 
-        <hr className="border border-gray-300 mt-5" />
-        {/* Crud Actions */}
-        <div className="flex justify-between items-cener">
-          <div className="text-primary flex items-center gap-2">
-            <FaRegCommentAlt />{" "}
-            <span className="text-[18px]">{recommendationCount || 0}</span>
+            {/* See more link */}
+            {boycottingReson && boycottingReson.length > 120 && (
+              <Link
+                to={`/details/${_id}`}
+                className="text-blue-500 hover:underline text-sm"
+              >
+                See more
+              </Link>
+            )}
           </div>
-          <div className="space-x-3 ">
-            <Link
-              to={`/details/${_id} `}
-              className="btn rounded-md hover:bg-gray-50 bg-transparent border border-gray-300 poppins"
-            >
-              View Details
-            </Link>
-            <Link className="btn rounded-md hover:bg-gray-50 bg-transparent border border-gray-300 poppins">
-              <CiEdit size={18} />
-              <span className="hidden"> Edit</span>
-            </Link>
-            <button className="btn rounded-md hover:bg-red-50 bg-transparent border border-red-500 poppins text-red-500">
-              <RiDeleteBin5Line />
-              <span className="hidden"> Delete</span>
-            </button>
+
+          {/* Crud Actions */}
+          <div className="flex justify-between items-center pt-5 border-t-2 border-t-gray-300">
+            <div className="text-primary flex items-center gap-2">
+              <FaRegCommentAlt />
+              <span className="text-[18px]">{recommendationCount || 0}</span>
+            </div>
+            <div className="space-x-3">
+              <Link
+                to={`/details/${_id}`}
+                className="btn rounded-md hover:bg-gray-50 bg-transparent border border-gray-300 poppins"
+              >
+                View Details
+              </Link>
+              <Link className="btn rounded-md hover:bg-gray-50 bg-transparent border border-gray-300 poppins">
+                <CiEdit size={18} />
+                <span className="hidden"> Edit</span>
+              </Link>
+              <button className="btn rounded-md hover:bg-red-50 bg-transparent border border-red-500 poppins text-red-500">
+                <RiDeleteBin5Line />
+                <span className="hidden"> Delete</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

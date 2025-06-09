@@ -1,14 +1,12 @@
 import React from "react";
 import Logo from "../Logo/Logo";
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { TiThMenu } from "react-icons/ti";
 
 const Header = () => {
-  const user = {
-    name: "John Doe",
-    email: "john@example.com",
-  };
+  
+  const user = '';
   return (
     <>
       <header className="py-5 bg-white/20 backdrop-blur-md shadow">
@@ -83,6 +81,7 @@ const Header = () => {
             </ul>
           </nav>
           <div className="flex gap-4 items-center">
+
             {/* login & Logout Button */}
             {user ? (
               <button className="hidden lg:block btn btn-primary">
@@ -93,7 +92,11 @@ const Header = () => {
                 <button className="btn btn-primary text-[16px] ">Login</button>
               </Link>
             )}
-            <ProfilePhoto tooltip={true} user={user} To="/myprofile" />
+
+            {/* User Profile Photo Showing */}
+            {user && (
+              <ProfilePhoto tooltip={true} user={user} To="/myprofile" />
+            )}
 
             {/* Small Device Dropdown Menu */}
             <div className="dropdown dropdown-end lg:hidden">
