@@ -2,7 +2,7 @@ import React, { use } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { IoLockClosedOutline } from "react-icons/io5";
 import { MdOutlineMail } from "react-icons/md";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
@@ -12,6 +12,7 @@ const Login = () => {
   const { login, setUser, auth } = use(AuthContext);
 
   const navigate = useNavigate();
+    const location = useLocation();
 
   // form Submit
   const handleLogin = (e) => {
@@ -25,7 +26,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        navigate("/");
+        navigate(`${location.state ? location.state : "/"}`);
         Swal.fire({
           title: "Login Successful",
           text: "You have successfully logged in!",

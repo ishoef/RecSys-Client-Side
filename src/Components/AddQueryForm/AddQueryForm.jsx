@@ -1,10 +1,14 @@
+import { use } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { SiJquery } from "react-icons/si";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const AddQueryForm = () => {
 
+  const { user } = use(AuthContext);
+  console.log(user);
   const navigate = useNavigate();
   // Add Query Handleling
   const handleAddQuery = (e) => {
@@ -21,13 +25,6 @@ const AddQueryForm = () => {
       hour12: true,
     });
 
-    const user = {
-      name: "Abdullah Al Mamun",
-      email: "abdullahalmamun@gmail.com",
-      photURL:
-        "https://w7.pngwing.com/pngs/946/556/png-transparent-computer-icons-login-user-profile-client-smiley-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B8-windows-10-thumbnail.png",
-    };
-
     const queryData = {
       productName: form.productName.value,
       productBrand: form.productBrand.value,
@@ -36,7 +33,7 @@ const AddQueryForm = () => {
       boycottingReson: form.boycottingReson.value,
       createDate: currentDate,
       createTime: currentTime,
-      userName: user.name,
+      userName: user.displayName,
       userEmail: user.email,
       userPhotoURL: user.photURL,
     };
@@ -62,14 +59,15 @@ const AddQueryForm = () => {
             confirmButtonText: "Add Another Query",
             showCancelButton: true,
             cancelButtonColor: "#d33",
-            cancelButtonText: "Go to My Queries!"
+            cancelButtonText: "Go to My Queries!",
           }).then((result) => {
             if (result.isConfirmed) {
               navigate("/addquery");
+              form.reset();
             } else {
               navigate("/myqueries");
             }
-          })
+          });
           // form.reset();
         }
       });
@@ -90,6 +88,8 @@ const AddQueryForm = () => {
             </h1>
             <SiJquery size={32} color="#14b8a6" />
           </div>
+
+          {/* Product Name */}
           <label htmlFor="title" className="flex flex-col gap-2">
             <span className="poppins-regular">
               Product Name <span className="text-red-500">*</span>
@@ -100,9 +100,11 @@ const AddQueryForm = () => {
               id=""
               className="input w-full focus-within:outline-none focus-within:border-primary"
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              required
             />
           </label>
 
+          {/* Product Brand */}
           <label htmlFor="title" className="flex flex-col gap-2">
             <span className="poppins-regular">
               Product Brand <span className="text-red-500">*</span>
@@ -113,9 +115,11 @@ const AddQueryForm = () => {
               id=""
               className="input w-full focus-within:outline-none focus-within:border-primary"
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              required
             />
           </label>
 
+          {/* Product Image */}
           <label
             htmlFor="title"
             className="flex flex-col gap-2 focus-within:border-primary"
@@ -129,9 +133,11 @@ const AddQueryForm = () => {
               id=""
               className="input w-full focus-within:outline-none focus-within:border-primary "
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              required
             />
           </label>
 
+          {/* Query Title */}
           <label htmlFor="title" className="flex flex-col gap-2">
             <span className="poppins-regular">
               Query Title <span className="text-red-500">*</span>
@@ -142,9 +148,11 @@ const AddQueryForm = () => {
               id=""
               className="input w-full focus-within:outline-none focus-within:border-primary"
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              required
             />
           </label>
 
+          {/* Boycotting Reason */}
           <label htmlFor="">
             <span className="poppins-regular">
               Boycotting Reason Detils <span className="text-red-500">*</span>
@@ -153,8 +161,11 @@ const AddQueryForm = () => {
               name="boycottingReson"
               className="w-full h-32 p-3 border border-gray-300 rounded-md focus-within:border-primary focus:outline-none mt-2"
               placeholder="Explain why you're looking for alternativew to this product..."
+              required
             ></textarea>
           </label>
+
+          {/* Add Query Button */}
           <button className="btn btn-primary" type="submit">
             Add Query
           </button>

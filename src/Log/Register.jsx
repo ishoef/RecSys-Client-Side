@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { IoIosLink } from "react-icons/io";
 import { IoLockClosedOutline } from "react-icons/io5";
 import { MdOutlineMail } from "react-icons/md";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
@@ -14,7 +14,8 @@ const Register = () => {
   // Auth Context Data
   const { createUser, auth, setUser } = useContext(AuthContext);
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const location = useLocation();
 
   // Form Submit
   const handleSubmit = (e) => {

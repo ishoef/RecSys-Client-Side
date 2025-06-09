@@ -1,6 +1,6 @@
 import React from "react";
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto";
-import { MdOutlineDateRange } from "react-icons/md";
+import { MdAccessTime, MdOutlineDateRange } from "react-icons/md";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import { RiDeleteBin5Line } from "react-icons/ri";
@@ -32,12 +32,12 @@ const MyQueryCard = ({ query }) => {
             <div>
               <h1 className="poppins-semibold">{userName || "Abdullah"}</h1>
               <div>
-                <p className="poppins-regular flex items-center gap-2">
+                <p className="poppins-regular flex items-center gap-2 text-gray-400">
                   <MdOutlineDateRange size={18} />
                   {createDate}
                 </p>
-                <p className="poppins-regular flex items-center gap-2">
-                  <MdOutlineDateRange size={18} />
+                <p className="poppins-regular flex items-center gap-2 text-gray-400">
+                  <MdAccessTime size={18} />
                   {createTime}
                 </p>
               </div>

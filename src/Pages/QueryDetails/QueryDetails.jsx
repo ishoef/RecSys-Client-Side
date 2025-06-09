@@ -11,7 +11,7 @@ const QueryDetails = () => {
   console.log(params.id);
 
   useEffect(() => {
-    fetch("/queries.json")
+    fetch("http://localhost:3000/queries")
       .then((res) => res.json())
       .then((data) => {
         setQueries(data);

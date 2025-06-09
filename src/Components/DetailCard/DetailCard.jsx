@@ -1,17 +1,22 @@
-import React from "react";
+import React, { use } from "react";
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto";
 import { MdOutlineDateRange } from "react-icons/md";
 import { AiOutlineLike } from "react-icons/ai";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const DetailCard = ({ details }) => {
+
+  const { user } = use(AuthContext);
+  console.log(user);
   const {
-    createdAt,
+    createDate,
     queryTitle,
     productName,
-    productImageUrl,
+    productImageURL,
     productBrand,
     recommendationCount,
-    boycottingReason,
+    boycottingReson,
+    userName,
   } = details;
   return (
     <div className="w-6/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-10">
@@ -26,17 +31,17 @@ const DetailCard = ({ details }) => {
               <p className="flex items-center gap-2 poppins-regular">
                 {" "}
                 <MdOutlineDateRange size={18} />
-                {createdAt}
+                {createDate}
               </p>
             </div>
           </div>
         </div>
         <h1 className="poppins-semibold text-primary text-2xl">{queryTitle}</h1>
-        <div className="flex gap-5 h-full  flex-1">
-          <div>
+        <div className="flex gap-5 h-full flex-1">
+          <div className="basis-2/2 ">
             <img
               className="rounded-xl w-full h-50"
-              src={productImageUrl}
+              src={productImageURL}
               alt=""
             />
           </div>
@@ -49,7 +54,7 @@ const DetailCard = ({ details }) => {
             </div>
             <div className="space-y-2">
               <p className="poppins-regular">Boycotting Reason:</p>
-              <p>{boycottingReason}</p>
+              <p>{boycottingReson}</p>
             </div>
             <div className="flex items-center gap-2 text-primary text-[18px] poppins-regular">
               {" "}

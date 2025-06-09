@@ -6,7 +6,7 @@ import { MdOutlineDateRange } from "react-icons/md";
 
 const Cards = ({ queiry }) => {
   const {
-    productImageUrl,
+    productImageURL,
     userName,
     createdAt,
     productName,
@@ -16,7 +16,7 @@ const Cards = ({ queiry }) => {
     _id,
   } = queiry;
 
-  
+  console.log(queiry);
 
   return (
     <div className="transformation hover:scale-102 duration-300 border border-gray-400 rounded-xl flex flex-col h-full cursor-pointer shadow-sm">
@@ -24,7 +24,7 @@ const Cards = ({ queiry }) => {
       <div className="image">
         <img
           className="w-full h-70 rounded-t-xl"
-          src={productImageUrl}
+          src={productImageURL}
           alt=""
         />
       </div>

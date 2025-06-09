@@ -12,6 +12,7 @@ import MyProfile from "../Pages/MyProfile/MyProfile";
 import QueryDetails from "../Pages/QueryDetails/QueryDetails";
 import AddQueryForm from "../Components/AddQueryForm/AddQueryForm";
 import Error from "../Pages/Err/Error";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -34,7 +35,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myqueries",
-        Component: MyQueries,
+        element: <PrivateRoute>
+          <MyQueries></MyQueries>
+        </PrivateRoute>,
       },
       {
         path: "/myrecos",
@@ -46,7 +49,6 @@ export const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        loader: () => fetch("/queries.json"),
         Component: QueryDetails,
       },
       {

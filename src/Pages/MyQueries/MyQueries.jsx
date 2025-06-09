@@ -5,6 +5,7 @@ import { IoIosSearch } from "react-icons/io";
 import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router";
 import MyQueryCard from "../../Components/MyQueryCard/MyQueryCard";
+import NoQueryText from "../../Components/NoQueryText/NoQueryText";
 
 const MyQueries = () => {
   const [myQueries, setMyQueries] = useState([]);
@@ -47,13 +48,15 @@ const MyQueries = () => {
         </div>
 
         {/* MyQuery Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-10">
-          {myQueries.length === 0 ? (
-            <p>no data</p>
-          ) : (
-            myQueries.map((query) => <MyQueryCard key={query._id} query={query} />)
-          )}
-        </div>
+        {myQueries.length === 0 ? (
+          <NoQueryText />
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-10">
+            {myQueries.map((query) => (
+              <MyQueryCard key={query._id} query={query} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
