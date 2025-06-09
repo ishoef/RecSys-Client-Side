@@ -1,21 +1,93 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CiUser } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
 import { IoIosLink } from "react-icons/io";
 import { IoLockClosedOutline } from "react-icons/io5";
 import { MdOutlineMail } from "react-icons/md";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../Context/AuthProvider";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Register = () => {
+  // Auth Context Data
+  const { createUser, auth, setUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
   // Form Submit
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("i am clickng for submit form");
+    const form = e.target;
+    const formData = {
+      name: form.name.value,
+      photoURL: form.photoUrl.value,
+      email: form.email.value,
+      password: form.password.value,
+    };
+
+    console.log(formData);
+    const email = formData.email;
+    const password = formData.password;
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate("/");
+        Swal.fire({
+          title: "Registration Successful",
+          text: "You have successfully registered!",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+      })
+      .catch((error) => {
+        console.error("Error during registration:", error);
+        Swal.fire({
+          title: "Registration Failed",
+          text: error.message,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      });
   };
 
-  // Google Login
+  // Googl Login
+  const provider = new GoogleAuthProvider();
+
   const handleloginWithGoogle = () => {
-    console.log("i am clicking for login with google");
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        console.log(result.user.displayName);
+        navigate(`${location.state ? location.state : "/"}`);
+        Swal.fire({
+          title: "Congratulations! Welcome to Our World",
+          icon: "success",
+          draggable: true,
+        });
+      })
+      .catch((error) => {
+        const errorMessages = {
+          "auth/popup-blocked":
+            "The popup was blocked by the browser. Please allow popups and try again.",
+          "auth/popup-closed-by-user":
+            "The popup was closed before completing sign in.",
+          "auth/cancelled-popup-request":
+            "Only one popup request is allowed at a time. Please try again.",
+          "auth/operation-not-allowed":
+            "Google sign-in is not enabled. Please contact support.",
+          "auth/account-exists-with-different-credential":
+            "An account already exists with the same email but different sign-in credentials.",
+          default: "Google sign-in failed. Please try again.",
+        };
+
+        const message = errorMessages[error.code] || errorMessages.default;
+        toast.error(message);
+      });
   };
 
   return (
@@ -38,7 +110,7 @@ const Register = () => {
                 </label>
                 <label
                   className="input w-full border focus-within:border-primary focus-within:outline-none"
-                  htmlFor=""
+                  htmlFor="name"
                 >
                   <span className="text-xl text-gray-400">
                     <CiUser />
@@ -47,7 +119,7 @@ const Register = () => {
                     placeholder="Enter You Name"
                     type="text"
                     name="name"
-                    required
+                    // required
                   />
                 </label>
               </div>
@@ -68,7 +140,7 @@ const Register = () => {
                     placeholder="Photo URL"
                     type="url"
                     name="photoUrl"
-                    required
+                    // required
                   />
                 </label>
               </div>
@@ -92,7 +164,7 @@ const Register = () => {
                     placeholder="Enter Your Email"
                     type="email"
                     name="email"
-                    required
+                    // required
                   />
                 </label>
               </div>
@@ -114,7 +186,7 @@ const Register = () => {
                     placeholder="••••••••"
                     type="password"
                     name="password"
-                    required
+                    // required
                   />
                 </label>
               </div>
@@ -127,7 +199,7 @@ const Register = () => {
                     name=" check"
                     type="checkbox"
                     className="checkbox"
-                    required
+                    // required
                   />
                   <span>Remember me</span>
                 </label>

@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "../Logo/Logo";
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto";
 import { Link, NavLink } from "react-router";
 import { TiThMenu } from "react-icons/ti";
+import { AuthContext } from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const Header = () => {
-  
-  const user = '';
+  const { user, LogOut, setUser } = useContext(AuthContext);
+
+  // User Logging Out
+  const handleLogOut = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to log out?",
+      icon: "warning",
+      confirmButtonText: "Yes, log out!",
+      confirmButtonColor: "#14b8a6",
+      showCancelButton: true,
+      cancelButtonText: "No, cancel!",
+      cancelButtonColor: "red", 
+    }).then((result) => {
+      if (result.isConfirmed) {
+        LogOut()
+          .then(() => {
+            Swal.fire("Logged out!", "You have been logged out.", "success");
+            setUser(null); // Clear user state
+          })
+          .catch((error) => {
+            Swal.fire("Error!", error.message, "error");
+          });
+      }
+    });
+  };
   return (
     <>
       <header className="py-5 bg-white/20 backdrop-blur-md shadow">
@@ -81,10 +107,12 @@ const Header = () => {
             </ul>
           </nav>
           <div className="flex gap-4 items-center">
-
             {/* login & Logout Button */}
             {user ? (
-              <button className="hidden lg:block btn btn-primary">
+              <button
+                onClick={handleLogOut}
+                className="hidden lg:block btn btn-primary"
+              >
                 Log Out
               </button>
             ) : (
