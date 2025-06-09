@@ -19,7 +19,7 @@ const MyQueries = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [myQueries]);
+  }, []);
 
   return (
     <section className={`${responsive} mt-10`}>
@@ -48,10 +48,10 @@ const MyQueries = () => {
 
         {/* MyQuery Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-10">
-          {myQueries ? (
+          {myQueries.length === 0 ? (
             <p>no data</p>
           ) : (
-            myQueries.map((query) => <MyQueryCard query={query} />)
+            myQueries.map((query) => <MyQueryCard key={query._id} query={query} />)
           )}
         </div>
       </div>

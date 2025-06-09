@@ -29,6 +29,7 @@ const AddQueryForm = () => {
       productName: form.productName.value,
       productBrand: form.productBrand.value,
       productImageURL: form.productImageUrl.value,
+      queryTitle: form.queryTitle.value,
       boycottingReson: form.boycottingReson.value,
       createDate: currentDate,
       createTime: currentTime,
@@ -57,7 +58,7 @@ const AddQueryForm = () => {
             icon: "success",
             confirmButtonText: "Cool",
           });
-          form.reset();
+          // form.reset();
         }
       });
   };

@@ -6,7 +6,7 @@ import { FaList } from "react-icons/fa";
 import { LuLayoutGrid } from "react-icons/lu";
 import { CiGrid2H } from "react-icons/ci";
 import { IoIosSearch } from "react-icons/io";
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
 
 
 const Queries = () => {

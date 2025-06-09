@@ -10,28 +10,36 @@ const MyQueryCard = ({ query }) => {
   const {
     _id,
     userName,
-    createdAt,
+    createDate,
+    createTime,
     queryTitle,
     productName,
     productBrand,
+    productImageURL,
     recommendationCount,
-    boycottingReason,
+    boycottingReson,
   } = query;
   return (
     <div className="p-5 bg-white shadow-md hover:scale-102 transition-transform border border-gray-300 duration-300 rounded-lg">
       <div className="flex flex-col justify-between h-full gap-4">
         {/* Profile Info */}
-        <div className="profile-details w-full flex items-center flex-1 gap-4">
+        <div className="profile-details w-full flex flex-1 gap-4">
           <div className="basis-12">
             <ProfilePhoto tooltip={false} />
           </div>
           <div className="flex justify-between basis w-full">
             <div>
               <h1 className="poppins-semibold">{userName}</h1>
-              <p className="poppins-regular flex items-center gap-2">
-                <MdOutlineDateRange size={18} />
-                {createdAt}
-              </p>
+              <div>
+                <p className="poppins-regular flex items-center gap-2">
+                  <MdOutlineDateRange size={18} />
+                  {createDate}
+                </p>
+                <p className="poppins-regular flex items-center gap-2">
+                  <MdOutlineDateRange size={18} />
+                  {createTime}
+                </p>
+              </div>
             </div>
             <div>
               <p className="bg-gray-200 px-2 rounded-full">
@@ -46,8 +54,11 @@ const MyQueryCard = ({ query }) => {
         <div>
           <img
             className="rounded-xl w-full h-65"
-            src="https://images.unsplash.com/photo-1609692814858-f7cd2f0afa4f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D"
-            alt=""
+            src={
+              productImageURL ||
+              "https://images.unsplash.com/photo-1609692814858-f7cd2f0afa4f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D"
+            }
+            alt="product"
           />
         </div>
 
@@ -60,7 +71,7 @@ const MyQueryCard = ({ query }) => {
             Product: {productName || "Unknown Product"}
           </p>
           <p className="poppins text-gray-500">
-            {boycottingReason || "No specific reason provided"}
+            {boycottingReson || "No specific reason provided"}
           </p>
         </div>
 
@@ -69,7 +80,7 @@ const MyQueryCard = ({ query }) => {
         <div className="flex justify-between items-cener">
           <div className="text-primary flex items-center gap-2">
             <FaRegCommentAlt />{" "}
-            <span className="text-[18px]">{recommendationCount}</span>
+            <span className="text-[18px]">{recommendationCount || 0}</span>
           </div>
           <div className="space-x-3 ">
             <Link

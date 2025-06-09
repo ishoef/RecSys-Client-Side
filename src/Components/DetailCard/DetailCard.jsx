@@ -5,7 +5,6 @@ import { AiOutlineLike } from "react-icons/ai";
 
 const DetailCard = ({ details }) => {
   const {
-    userName,
     createdAt,
     queryTitle,
     productName,
