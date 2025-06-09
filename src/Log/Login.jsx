@@ -1,5 +1,7 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { IoLockClosedOutline } from 'react-icons/io5';
+import { MdOutlineMail } from 'react-icons/md';
 import { Link } from 'react-router';
 
 const Login = () => {
@@ -25,19 +27,29 @@ const Login = () => {
               Your Account
             </h1>
             <div className="w-full bg-white dark:bg-gray-800 border border-gray-300 rounded-2xl p-6 lg:p-10">
-              <form onSubmit={handleLogin} className="flex flex-col gap-4">
+              <form onSubmit={handleLogin} className="flex flex-col gap-5">
                 {/* Email */}
                 <div className="flex flex-col gap-2 lg:gap-4">
                   <label className="text-xl font-semibold" htmlFor="email">
                     Email
                   </label>
-                  <input
-                    className="focus:outline-primary dark:focus:outline-0 border border-gray-400 rounded py-2 px-3"
-                    placeholder="Enter Your Email"
-                    type="email"
-                    name="email"
-                    required
-                  />
+                  <label
+                    className="input border w-full focus-within:outline-none"
+                    htmlFor=""
+                  >
+                    <span className="text-xl text-gray-400">
+                      {" "}
+                      <MdOutlineMail />
+                    </span>
+
+                    <input
+                      className="dark:focus:outline-0 "
+                      placeholder="Enter Your Email"
+                      type="email"
+                      name="email"
+                      required
+                    />
+                  </label>
                 </div>
 
                 {/* Password */}
@@ -45,13 +57,21 @@ const Login = () => {
                   <label className="text-xl font-semibold" htmlFor="password">
                     Password
                   </label>
-                  <input
-                    className="focus:outline-primary dark:focus:outline-0 border border-gray-400 rounded py-2 px-3"
-                    placeholder="Enter Your password"
-                    type="password"
-                    name="password"
-                    required
-                  />
+                  <label
+                    className="input border w-full focus-within:outline-none"
+                    htmlFor=""
+                  >
+                    <span className="text-xl text-gray-400">
+                      {" "}
+                      <IoLockClosedOutline />
+                    </span>
+                    <input
+                      placeholder="••••••••"
+                      type="password"
+                      name="password"
+                      required
+                    />
+                  </label>
                 </div>
 
                 {/* Error Massege */}
@@ -72,7 +92,7 @@ const Login = () => {
                   {/* Forgot Password */}
                   <p className="text-blue-600">
                     <Link
-                    //   onClick={handleForgotPassword}
+                      //   onClick={handleForgotPassword}
                       className="hover:underline"
                     >
                       {" "}
