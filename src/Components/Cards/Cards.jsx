@@ -3,6 +3,7 @@ import ProfilePhoto from "../ProfilePhoto/ProfilePhoto";
 import Button from "../Button/Button";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
+import { Link } from "react-router";
 
 const Cards = ({ queiry }) => {
   const {
@@ -12,7 +13,7 @@ const Cards = ({ queiry }) => {
     productName,
     queryTitle,
     recommendationCount,
-    boycottingReason,
+    boycottingReson,
     _id,
   } = queiry;
 
@@ -53,7 +54,17 @@ const Cards = ({ queiry }) => {
           <p className="poppins-regular text-[18px] md:text-[22px]">
             {queryTitle || "Recommendation Title"}
           </p>
-          <p className="poppins-regular">{boycottingReason || "Description"}</p>
+          <p className="poppins text-gray-500 line-clamp-2">
+            {boycottingReson || "No specific reason provided"}
+          </p>
+          {boycottingReson && boycottingReson.length > 120 && (
+            <Link
+              to={`/details/${_id}`}
+              className="text-primary hover:underline text-sm"
+            >
+              See more
+            </Link>
+          )}
         </div>
 
         {/* Always at Bottom */}

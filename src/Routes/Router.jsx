@@ -13,6 +13,7 @@ import QueryDetails from "../Pages/QueryDetails/QueryDetails";
 import AddQueryForm from "../Components/AddQueryForm/AddQueryForm";
 import Error from "../Pages/Err/Error";
 import PrivateRoute from "./PrivateRoute";
+import UpdateQuery from "../Components/UpdateQuery/UpdateQuery";
 
 export const router = createBrowserRouter([
   {
@@ -49,11 +50,20 @@ export const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        Component: QueryDetails,
+        element: <PrivateRoute>
+          <QueryDetails></QueryDetails>
+        </PrivateRoute>,
       },
       {
         path: "/addquery",
         Component: AddQueryForm,
+      },
+      {
+        path: "/myqueries/update/:id",
+        Component: UpdateQuery,
+        loader: ({ params }) => {
+          return fetch(`http://localhost:3000/queries/${params.id}`);
+        }
       }
     ],
   },

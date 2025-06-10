@@ -80,7 +80,7 @@ const MyQueryCard = ({ query }) => {
             {boycottingReson && boycottingReson.length > 120 && (
               <Link
                 to={`/details/${_id}`}
-                className="text-blue-500 hover:underline text-sm"
+                className="text-primary hover:underline text-sm"
               >
                 See more
               </Link>
@@ -100,7 +100,10 @@ const MyQueryCard = ({ query }) => {
               >
                 View Details
               </Link>
-              <Link className="btn rounded-md hover:bg-gray-50 bg-transparent border border-gray-300 poppins">
+              <Link
+                to={`/myqueries/update/${_id}`}
+                className="btn rounded-md hover:bg-gray-50 bg-transparent border border-gray-300 poppins"
+              >
                 <CiEdit size={18} />
                 <span className="hidden"> Edit</span>
               </Link>

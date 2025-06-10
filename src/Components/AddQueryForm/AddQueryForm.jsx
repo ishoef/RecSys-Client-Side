@@ -67,8 +67,17 @@ const AddQueryForm = () => {
             } else {
               navigate("/myqueries");
             }
+          }).catch((error) => {
+            console.error("Error creating query:", error);
+            Swal.fire({
+              title: "Error!",
+              text: "There was an error creating your query. Please try again.",
+              icon: "error",
+              confirmButtonText: "OK",
+            });
           });
-          // form.reset();
+          // Reset the form after successful submission
+          form.reset();
         }
       });
   };
