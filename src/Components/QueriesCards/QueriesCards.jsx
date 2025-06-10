@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../Cards/Cards";
 import NoQueryText from "../NoQueryText/NoQueryText";
+import ItemsLoader from "../Loader/ItemsLoader";
 // import { useLocation } from "react-router";
 
-const QueriesCards = ({sixCard}) => {
+const QueriesCards = ({ sixCard, view }) => {
   const [queries, setQueries] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -23,15 +24,25 @@ const QueriesCards = ({sixCard}) => {
   const sixCards = queries.slice(0, 6);
 
   if (loading) {
-    return <p>loading...</p>;
+    return (
+      <div className="">
+        <ItemsLoader />
+      </div>
+    );
   }
 
   if (queries.length === 0) {
-    return <NoQueryText/>
+    return <NoQueryText />;
   }
 
   return (
-    <div className="grid lg:grid-cols-3 w-full gap-5 md:gap-10 my-10">
+    <div
+      className={
+        view === "grid2Col"
+          ? "grid lg:grid-cols-2 w-full gap-5 md:gap-10 my-10"
+          : "grid lg:grid-cols-3 w-full gap-5 md:gap-10 my-10"
+      }
+    >
       {sixCard
         ? sixCards.map((queiry) => (
             <Cards key={queiry._id} queiry={queiry}></Cards>

@@ -26,7 +26,7 @@ const MyQueries = () => {
     <section className={`${responsive} mt-10`}>
       <div>
         <div className="flex justify-between items-center py-8 px-5 bg-primary backdrop-blur-3xl rounded-2xl">
-          <Title className={"text-white"} title={"All Product Queries"} />
+          <Title className={"text-white"} title={`All Product Queries (${myQueries.length}) `} />
           <div className="flex items-center gap-3 ">
             <label className="input w-70 ring-0 focus-within:ring-0 focus-within:ring-primary focus-within:outline-none">
               <div className="opacity-50">

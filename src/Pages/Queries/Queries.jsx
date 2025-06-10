@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import QueriesCards from "../../Components/QueriesCards/QueriesCards";
 import { responsive } from "../../Layouts/RootLayout";
 import Title from "../../Components/Title/Title";
@@ -10,6 +10,9 @@ import { NavLink } from "react-router";
 
 
 const Queries = () => {
+    const [view, setView] = useState("grid3Col");
+
+
   return (
     <section className={`${responsive} mt-10`}>
       <div className="flex flex-col">
@@ -28,10 +31,16 @@ const Queries = () => {
               />
             </label>
 
-            <NavLink className="border hover:text-primary border-gray-400 p-[10px] rounded">
+            <NavLink
+              onClick={() => setView("grid3Col")}
+              className="border hover:text-primary border-gray-400 p-[10px] rounded"
+            >
               <LuLayoutGrid />
             </NavLink>
-            <NavLink className="border hover:text-primary border-gray-400 p-[10px] rounded">
+            <NavLink
+              onClick={() => setView("grid2Col")}
+              className="border hover:text-primary border-gray-400 p-[10px] rounded"
+            >
               <FaList />
             </NavLink>
             <NavLink className="border hover:text-primary border-gray-400 p-[10px] rounded">
@@ -40,7 +49,7 @@ const Queries = () => {
           </div>
         </div>
         <hr className="mt-5 border border-gray-300" />
-        <QueriesCards />
+        <QueriesCards view={view} />
       </div>
     </section>
   );

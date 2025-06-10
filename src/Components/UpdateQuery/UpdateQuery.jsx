@@ -53,12 +53,16 @@ const UpdateQuery = () => {
       .then((data) => {
         console.log("after update", data);
         if (data.modifiedCount > 0) {
+          
+          // Show success message
           Swal.fire({
             title: "Success!",
             text: "Query updated successfully",
             icon: "success",
             confirmButtonText: "Go to My Queries",
             showCancelButton: true,
+            cancelButtonColor: "#b92ce3",
+            cancelButtonText: "Update More", 
           }).then((result) => {
             if (result.isConfirmed) {
               // Navigate to My Queries page
@@ -66,8 +70,7 @@ const UpdateQuery = () => {
             }
           });
           form.reset();
-        }
-        else {
+        } else {
           Swal.fire({
             title: "No Changes Made",
             text: "Your query was not updated because no changes were detected.",

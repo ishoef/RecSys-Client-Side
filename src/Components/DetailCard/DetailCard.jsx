@@ -37,15 +37,15 @@ const DetailCard = ({ details }) => {
           </div>
         </div>
         <h1 className="poppins-semibold text-primary text-2xl">{queryTitle}</h1>
-        <div className="flex gap-5 h-full flex-1">
-          <div className="basis-2/2 ">
+        <div className="flex justify-between gap-5 h-full flex-1">
+          <div className="basis-1/3 ">
             <img
               className="rounded-xl w-full h-50"
               src={productImageURL}
               alt=""
             />
           </div>
-          <div className="flex flex-col justify-between ">
+          <div className="flex flex-col justify-between gap-5 basis-2/3 ">
             <div className="flex items-center gap-4">
               <h1 className="text-xl poppins-semibold">{productName}</h1>
               <p className="bg-gray-200 px-2 rounded-2xl font-semibold">

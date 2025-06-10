@@ -47,6 +47,8 @@ const MyQueryCard = ({ query, setMyQueries, myQueries }) => {
                 icon: "success",
                 confirmButtonText: "OK",
               });
+              
+              
 
               // get the updated list by filtering deleting data
               const updatedQueries = myQueries.filter(
