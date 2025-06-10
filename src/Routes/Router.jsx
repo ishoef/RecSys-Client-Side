@@ -61,8 +61,8 @@ export const router = createBrowserRouter([
       {
         path: "/myqueries/update/:id",
         Component: UpdateQuery,
-        loader: ({ params }) => {
-          return fetch(`http://localhost:3000/queries/${params.id}`);
+        loader: () => {
+          return fetch(`http://localhost:3000/queries`);
         }
       }
     ],

@@ -28,7 +28,7 @@ const AddQueryForm = () => {
     const queryData = {
       productName: form.productName.value,
       productBrand: form.productBrand.value,
-      productImageURL: form.productImageUrl.value,
+      productImageURL: form.productImageURL.value,
       queryTitle: form.queryTitle.value,
       boycottingReson: form.boycottingReson.value,
       createDate: currentDate,
@@ -138,7 +138,7 @@ const AddQueryForm = () => {
             </span>
             <input
               type="url"
-              name="productImageUrl"
+              name="productImageURL"
               id=""
               className="input w-full focus-within:outline-none focus-within:border-primary "
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."

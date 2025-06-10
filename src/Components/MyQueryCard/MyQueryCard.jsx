@@ -5,8 +5,9 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
-const MyQueryCard = ({ query }) => {
+const MyQueryCard = ({ query, setMyQueries, myQueries }) => {
   const {
     _id,
     userName,
@@ -19,6 +20,52 @@ const MyQueryCard = ({ query }) => {
     recommendationCount,
     boycottingReson,
   } = query;
+
+  const handleDelete = () => {
+    Swal.fire({
+      timer: 5000,
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // send delete request to the server
+        fetch(`http://localhost:3000/queries/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("delete Resposne", data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your query has been deleted.",
+                icon: "success",
+                confirmButtonText: "OK",
+              });
+
+              // get the updated list by filtering deleting data
+              const updatedQueries = myQueries.filter(
+                (query) => query._id !== _id);
+              
+              // Update the queries list after deletion
+              setMyQueries(updatedQueries);
+            } else {
+              Swal.fire({
+                title: "Error!",
+                text: "Failed to delete the query. Please try again.",
+                icon: "error",
+                confirmButtonText: "OK",
+              });
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div className="p-5 bg-white shadow-md hover:scale-102 transition-transform border border-gray-300 duration-300 rounded-lg">
@@ -107,7 +154,10 @@ const MyQueryCard = ({ query }) => {
                 <CiEdit size={18} />
                 <span className="hidden"> Edit</span>
               </Link>
-              <button className="btn rounded-md hover:bg-red-50 bg-transparent border border-red-500 poppins text-red-500">
+              <button
+                onClick={handleDelete}
+                className="btn rounded-md hover:bg-red-50 bg-transparent border border-red-500 poppins text-red-500"
+              >
                 <RiDeleteBin5Line />
                 <span className="hidden"> Delete</span>
               </button>
