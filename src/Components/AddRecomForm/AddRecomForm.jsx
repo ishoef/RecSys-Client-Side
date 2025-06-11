@@ -3,7 +3,7 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import AllRecomms from "../AllRecomms/AllRecomms";
 import { AuthContext } from "../../Context/AuthProvider";
 
-const AddRecomForm = ({ details }) => {
+const AddRecomForm = ({ details, setDetails }) => {
   const { user } = use(AuthContext);
 
   const handleAddRecomm = (e) => {
@@ -43,11 +43,15 @@ const AddRecomForm = ({ details }) => {
         "content-type": "application/json",
       },
       body: JSON.stringify(recommData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("after Creating recommendations", data);
-      });
+    }).then(() => {
+      // ✅ Re-fetch updated query
+      fetch(`http://localhost:3000/queries/${details._id}`)
+        .then((res) => res.json())
+        .then((updatedData) => {
+          setDetails(updatedData); // ✅ set updated query including new recommendations
+          form.reset(); // Optional: Clear the form
+        });
+    });
   };
 
   return (

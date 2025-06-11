@@ -12,10 +12,11 @@ const Cards = ({ queiry }) => {
     createdAt,
     productName,
     queryTitle,
-    recommendationCount,
     boycottingReson,
     _id,
   } = queiry;
+
+  console.log(queiry);
 
   console.log(queiry);
 
@@ -72,7 +73,7 @@ const Cards = ({ queiry }) => {
           <p className="flex items-center gap-2 text-[18px]">
             {" "}
             <FaRegCommentAlt />
-            {recommendationCount || 0}{" "}
+            {queiry?.recommendations?.length || 0}{" "}
             <span className="hidden md:block">Recommendations</span>
           </p>
           <Button to={`/details/${_id}`} text={"View Recommendations"} />

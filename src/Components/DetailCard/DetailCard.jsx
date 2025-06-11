@@ -16,7 +16,6 @@ const DetailCard = ({ details }) => {
     productName,
     productImageURL,
     productBrand,
-    recommendationCount,
     boycottingReson,
     userName,
   } = details;
@@ -61,7 +60,7 @@ const DetailCard = ({ details }) => {
             <div className="flex items-center gap-2 text-primary text-[18px] poppins-regular">
               {" "}
               <AiOutlineLike size={24} color="#14b8a6" />
-              {recommendationCount} Recommendations
+              {details?.recommendations?.length } Recommendations
             </div>
           </div>
         </div>

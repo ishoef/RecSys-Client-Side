@@ -1,15 +1,18 @@
 import React from 'react';
 import ProfilePhoto from '../ProfilePhoto/ProfilePhoto';
-import { MdOutlineDateRange } from 'react-icons/md';
+import { MdAccessTime, MdOutlineDateRange } from 'react-icons/md';
 
 const RecommCard = ({ details }) => {
+  console.log(details);
+
   const {
     userName,
-    createdAt,
-    queryTitle,
-    productName,
-    productImageUrl,
-    boycottingReason,
+    creationDate,
+    creationTime,
+    recommendProductName,
+    title,
+    productImageURL,
+    recommendationReason,
   } = details;
   return (
     <div className=" border border-gray-400 shadow-xl rounded-2xl px-8 py-8 flex flex-col gap-3 mt-10">
@@ -20,28 +23,34 @@ const RecommCard = ({ details }) => {
         <div>
           <h1 className="poppins-semibold">{userName}</h1>
           <div>
-            <p className="flex items-center gap-2 poppins-regular">
-              {" "}
-              <MdOutlineDateRange size={18} />
-              {createdAt}
-            </p>
+            <div className="flex items-center gap-4 poppins">
+              <div className="flex gap-2 justify-center">
+                <MdOutlineDateRange size={20} />
+                <p>{creationDate}</p>
+              </div>
+              <div className="flex gap-2 justify-center">
+                <MdAccessTime size={20} />
+                <p>{creationTime}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <h1 className='poppins-regular text-xl'>{queryTitle}</h1>
+      <h1 className="poppins-regular text-xl">{title}</h1>
       <div className="flex gap-5 ">
         <div>
           <img
             className="w-full h-30 rounded-2xl"
-            src={productImageUrl}
+            src={productImageURL}
             alt=""
           />
         </div>
-        <div className='flex flex-col gap-2'>
+        <div className="flex flex-col gap-2">
           <p className="poppins-semibold">
-            Recommended: <span className="text-primary">{productName}</span>
+            Recommended:{" "}
+            <span className="text-primary">{recommendProductName}</span>
           </p>
-          <p>{boycottingReason}</p>
+          <p>{recommendationReason}</p>
         </div>
       </div>
     </div>
