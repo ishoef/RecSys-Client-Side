@@ -1,10 +1,53 @@
-import React from "react";
+import React, { use } from "react";
 import { FaRegCommentAlt } from "react-icons/fa";
 import AllRecomms from "../AllRecomms/AllRecomms";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const AddRecomForm = ({ details }) => {
+  const { user } = use(AuthContext);
+
   const handleAddRecomm = (e) => {
     e.preventDefault();
+
+    const form = e.target;
+
+    // get the time and Date
+    const now = new Date();
+    const currentDate = now.toLocaleDateString("en-US");
+    const currentTime = now.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+
+    const recommData = {
+      title: form.title.value,
+      recommendProductName: form.recommendProductName.value,
+      productImageURL: form.productImageURL.value,
+      recommendationReason: form.recommendationReason.value,
+      queryId: details._id, // Assuming details contains the query ID
+      queryTitle: details.queryTitle,
+      userName: user?.displayName,
+      userEmail: user?.email,
+      userPhoto: user?.photoURL,
+      creationDate: currentDate,
+      creationTime: currentTime,
+    };
+
+    console.log(recommData);
+
+    fetch(`http://localhost:3000/queries/${details._id}/recommendations`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(recommData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("after Creating recommendations", data);
+      });
   };
 
   return (
@@ -28,33 +71,34 @@ const AddRecomForm = ({ details }) => {
             />
           </label>
 
-          <label htmlFor="title" className="flex flex-col gap-2">
+          <label htmlFor="recommendProductName" className="flex flex-col gap-2">
             <span className="poppins-regular">Recommended Product Name</span>
             <input
               type="text"
-              name="title"
+              name="recommendProductName"
               id=""
               className="input w-full focus-within:outline-none "
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
             />
           </label>
 
-          <label htmlFor="title" className="flex flex-col gap-2">
+          <label htmlFor="productImageURL" className="flex flex-col gap-2">
             <span className="poppins-regular">
               Recommended Product Image URL
             </span>
             <input
               type="text"
-              name="title"
+              name="productImageURL"
               id=""
               className="input w-full focus-within:outline-none "
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
             />
           </label>
 
-          <label htmlFor="">
+          <label htmlFor="recommendationReason">
             <span className="poppins-regular">Recommendation Reason</span>
             <textarea
+              name="recommendationReason"
               className="w-full h-32 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring mt-2"
               placeholder="Explain why this is a good alternative"
             ></textarea>
