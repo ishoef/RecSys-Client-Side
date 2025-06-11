@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
 
-const ProfilePhoto = ({ tooltip, proPic, To, user }) => {
+const ProfilePhoto = ({ tooltip, proPic, To, user, className }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
@@ -13,7 +13,10 @@ const ProfilePhoto = ({ tooltip, proPic, To, user }) => {
           onMouseLeave={() => tooltip && setShowTooltip(false)}
         >
           <img
-            className="w-[40px] h-[40px] rounded-full border-2 border-green-600"
+            className={
+              className ||
+              "w-[40px] h-[40px] rounded-full border-2 border-green-600"
+            }
             src={`${
               proPic
                 ? proPic

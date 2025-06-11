@@ -1,29 +1,54 @@
 import React from "react";
 import { responsive } from "../../Layouts/RootLayout";
 import { NavLink, Outlet } from "react-router";
+import { CiUser } from "react-icons/ci";
+import { LuUserRound } from "react-icons/lu";
+import { VscLayersActive } from "react-icons/vsc";
+import { IoSettingsOutline } from "react-icons/io5";
+import { MdOutlinePrivacyTip } from "react-icons/md";
 
 const MyProfile = () => {
-    const navItems = [
-      { name: "Profile", link: "/myprofile/profile" },
-      { name: "Activity", link: "/myprofile/activity" },
-      { name: "Settings", link: "/myprofile/settings" },
-      { name: "Privacy", link: "/myprofile/privacy" },
-    ];
-      
+  const navItems = [
+    { name: "Profile", link: "/myprofile/profile", icon: <LuUserRound /> },
+    {
+      name: "Activity",
+      link: "/myprofile/activity",
+      icon: <VscLayersActive />,
+    },
+    {
+      name: "Settings",
+      link: "/myprofile/settings",
+      icon: <IoSettingsOutline />,
+    },
+    {
+      name: "Privacy",
+      link: "/myprofile/privacy",
+      icon: <MdOutlinePrivacyTip />,
+    },
+  ];
+
   return (
     <section className={`${responsive} my-10`}>
-      <div className="w-9/12 mx-auto border border-gray-300 rounded-xl shadow p-5 flex flex-col gap-5">
-        <div className="rounded p-1 bg-gray-200 ">
+      <div className="lg:w-9/12 mx-auto border border-gray-300 rounded-xl shadow p-5 flex flex-col gap-5">
+        <div className="rounded p-1 bg-gray-100 ">
           <nav>
             <ul className="grid grid-cols-4 gap-1">
-              {navItems.map((item) => (
-                  <NavLink
-                      to={item.link}
-                  className={`flex justify-center items-center bg-white py-1 text-gray-400 poppins ${(
+              {navItems.map((item, index) => (
+                <NavLink
+                  key={index}
+                  to={item.link}
+                  className={({ isActive }) =>
                     isActive
-                  ) => isActive && "bg-white text-black font-semibold"}`}
+                      ? "flex justify-center items-center bg-white text-primary font-semibold px-4 pb-2 pt-1 rounded"
+                      : "flex justify-center items-center px-4 pb-2 pt-1 rounded hover:text-primary text-gray-400 poppins"
+                  }
                 >
-                  <li>{item.name}</li>
+                  <li>
+                    <div className="flex items-center gap-1">
+                      <span>{item.icon}</span>
+                      <span>{item.name}</span>
+                    </div>
+                  </li>
                 </NavLink>
               ))}
             </ul>

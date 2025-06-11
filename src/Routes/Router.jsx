@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import RootLayout from "../Layouts/RootLayout";
 import Home from "../Pages/Home/Home";
 import AuthLayout from "../Layouts/AuthLayout";
@@ -60,8 +60,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myprofile",
-        Component: MyProfile,
+        element: (
+          <PrivateRoute>
+            <MyProfile />
+          </PrivateRoute>
+        ),
         children: [
+          {
+            index: true,
+            element: <Navigate to="/myprofile/profile" />,
+          },
           {
             path: "/myprofile/profile",
             Component: Profile,
