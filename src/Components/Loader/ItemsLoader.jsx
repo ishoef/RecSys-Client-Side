@@ -57,7 +57,7 @@ const ItemsLoader = () => {
               <button className="btn btn-primary mx-6 text-[17px] dark:text-gray-200 hover:bg-transparent hover:text-primary transition-all"></button>
             </div>
           </div> */}
-        {item} {item} {item} {item} {item} {item} {item} {item}
+        {item} {item} {item} {item} {item} {item} {item} {item} {item}
       </div>
     </>
   );
