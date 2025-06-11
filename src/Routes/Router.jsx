@@ -14,12 +14,16 @@ import AddQueryForm from "../Components/AddQueryForm/AddQueryForm";
 import Error from "../Pages/Err/Error";
 import PrivateRoute from "./PrivateRoute";
 import UpdateQuery from "../Components/UpdateQuery/UpdateQuery";
+import Profile from "../Pages/MyProfile/Profile/Profile";
+import Activity from "../Pages/MyProfile/Activity/Activity";
+import Settings from "../Pages/MyProfile/Settings/Settings";
+import Privacy from "../Pages/MyProfile/Privacy/Privacy";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
-    errorElement: <Error/>,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -32,27 +36,57 @@ export const router = createBrowserRouter([
       },
       {
         path: "/recforme",
-        Component: RecForme,
+        element: (
+          <PrivateRoute>
+            <RecForme></RecForme>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myqueries",
-        element: <PrivateRoute>
-          <MyQueries></MyQueries>
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyQueries></MyQueries>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myrecos",
-        Component: MyRecos,
+        element: (
+          <PrivateRoute>
+            <MyRecos></MyRecos>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myprofile",
         Component: MyProfile,
+        children: [
+          {
+            path: "/myprofile/profile",
+            Component: Profile,
+          },
+          {
+            path: "/myprofile/activity",
+            Component: Activity,
+          },
+          {
+            path: "/myprofile/settings",
+            Component: Settings,
+          },
+          {
+            path: "/myprofile/privacy",
+            Component: Privacy,
+          },
+        ],
       },
       {
         path: "/details/:id",
-        element: <PrivateRoute>
-          <QueryDetails></QueryDetails>
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <QueryDetails></QueryDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addquery",
@@ -63,8 +97,8 @@ export const router = createBrowserRouter([
         Component: UpdateQuery,
         loader: () => {
           return fetch(`http://localhost:3000/queries`);
-        }
-      }
+        },
+      },
     ],
   },
   {

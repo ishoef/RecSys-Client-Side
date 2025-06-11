@@ -130,7 +130,7 @@ const MyRecos = () => {
       {/* Recommendations Table */}
 
       <div className="my-10">
-        <RecommendatinTable headers={tableHeaderText} recomms={recomms} />
+        <RecommendatinTable dlt={true} headers={tableHeaderText} recomms={recomms} />
       </div>
     </section>
   );

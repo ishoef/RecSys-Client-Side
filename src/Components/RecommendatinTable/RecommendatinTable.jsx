@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import QueryTableRow from "./QueryTableRow/QueryTableRow";
 
-const RecommendatinTable = ({ recomms, headers }) => {
+const RecommendatinTable = ({ recomms, headers, dlt }) => {
   const [recommns, setRecommns] = useState(recomms);
   console.log(headers);
   return (
@@ -10,13 +10,14 @@ const RecommendatinTable = ({ recomms, headers }) => {
         <thead>
           <tr className="bg-primary dark:bg-gray-800 text-white text-[18px]">
             {headers.map((head, index) => (
-              <th key={index} >{head}</th>
+              <th key={index}>{head}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {recommns.map((recomm) => (
             <QueryTableRow
+              dlt={dlt}
               recommns={recommns}
               setRecommns={setRecommns}
               key={recomm._id}

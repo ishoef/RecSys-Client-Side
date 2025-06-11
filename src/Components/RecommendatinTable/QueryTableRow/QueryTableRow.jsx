@@ -3,8 +3,8 @@ import { IoCreateOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router";
 
-const QueryTableRow = ({ recomm }) => {
-  const { product, recommendation, query, by, date,  } = recomm;
+const QueryTableRow = ({ recomm, dlt }) => {
+  const { product, recommendation, query, by, date } = recomm;
   return (
     <tr>
       <td>
@@ -17,7 +17,9 @@ const QueryTableRow = ({ recomm }) => {
             }
             alt="Procut Image"
           />
-          <h1 className="text-xl poppins hover:text-green-500 transition-normal">{product}</h1>
+          <h1 className="text-xl poppins hover:text-green-500 transition-normal">
+            {product}
+          </h1>
         </Link>
       </td>
       <td>
@@ -36,13 +38,15 @@ const QueryTableRow = ({ recomm }) => {
         >
           <IoCreateOutline color="white" />
         </Link>
-        <button
-          //   onClick={() => handleDelete(recomm._id)}
-          type="button"
-          className="hover:scale-102 hover:shadow cursor-pointer bg-primary w-fit flex items-center justify-center p-2 rounded"
-        >
-          <MdDelete color="white" />
-        </button>
+        {dlt && (
+          <button
+            //   onClick={() => handleDelete(recomm._id)}
+            type="button"
+            className="hover:scale-102 hover:shadow cursor-pointer bg-primary w-fit flex items-center justify-center p-2 rounded"
+          >
+            <MdDelete color="white" />
+          </button>
+        )}
       </td>
     </tr>
   );
