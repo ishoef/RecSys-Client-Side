@@ -6,6 +6,8 @@ import { AuthContext } from "../../Context/AuthProvider";
 
 const DetailCard = ({ details }) => {
 
+  console.log(details);
+
   const { user } = use(AuthContext);
   console.log(user);
   const {

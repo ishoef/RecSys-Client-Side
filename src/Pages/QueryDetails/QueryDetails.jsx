@@ -2,32 +2,30 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import DetailCard from "../../Components/DetailCard/DetailCard";
 import AddRecomForm from "../../Components/AddRecomForm/AddRecomForm";
+import NormalLoader from "../../Components/Loader/NormalLoader";
 
 const QueryDetails = () => {
-  const [queries, setQueries] = useState([]);
+  const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  
   const params = useParams();
   console.log(params.id);
 
   useEffect(() => {
-    fetch("http://localhost:3000/queries")
+    fetch(`http://localhost:3000/queries/${params.id}`)
       .then((res) => res.json())
       .then((data) => {
-        setQueries(data);
+        setDetails(data);
         setLoading(false);
       })
       .catch((error) => {
         console.log("faild to fetch Data", error);
-        setQueries([]);
+        setDetails([]);
       });
-  }, []);
-
-  const details = queries.find((query) => query._id == params.id);
-  console.log(details);
+  }, [params.id]);
 
   if (loading) {
-    return <p>loading...</p>;
+    return <NormalLoader/> ;
   }
 
   return (
