@@ -107,24 +107,6 @@ const RecForme = () => {
           className={"text-white"}
           title={`Recommendations For My Queries`}
         />
-        {/* <div className="flex items-center gap-3 ">
-            <label className="input w-70 ring-0 focus-within:ring-0 focus-within:ring-primary focus-within:outline-none">
-              <div className="opacity-50">
-                <IoIosSearch size={20} />
-              </div>
-              <input
-                className="grow focus:outline-none focus:border-transparent"
-                type="search"
-                name="search"
-                placeholder="Search Product"
-              />
-            </label>
-
-            <Link to={"/addquery"} className="btn bg-white text-primary px-8">
-              <FaPlus />
-              Add New Query
-            </Link>
-          </div> */}
 
         <span className="text-5xl text-white">
           <FaRegCommentAlt />

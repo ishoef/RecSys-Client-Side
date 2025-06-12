@@ -28,9 +28,9 @@ const AddRecomForm = ({ details, setDetails }) => {
       recommendationReason: form.recommendationReason.value,
       queryId: details._id, // Assuming details contains the query ID
       queryTitle: details.queryTitle,
-      userName: user?.displayName,
-      userEmail: user?.email,
-      userPhoto: user?.photoURL,
+      recommenderName: user?.displayName,
+      recommenderEmail: user?.email,
+      recommenderPhoto: user?.photoURL,
       creationDate: currentDate,
       creationTime: currentTime,
     };

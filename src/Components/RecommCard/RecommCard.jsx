@@ -6,7 +6,7 @@ const RecommCard = ({ details }) => {
   console.log(details);
 
   const {
-    userName,
+    recommenderName,
     creationDate,
     creationTime,
     recommendProductName,
@@ -21,7 +21,7 @@ const RecommCard = ({ details }) => {
           <ProfilePhoto />
         </div>
         <div>
-          <h1 className="poppins-semibold">{userName}</h1>
+          <h1 className="poppins-semibold">{recommenderName}</h1>
           <div>
             <div className="flex items-center gap-4 poppins">
               <div className="flex gap-2 justify-center">
