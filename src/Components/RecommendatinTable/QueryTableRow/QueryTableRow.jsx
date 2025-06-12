@@ -4,7 +4,16 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router";
 
 const QueryTableRow = ({ recomm, dlt }) => {
-  const { product, recommendation, query, by, date } = recomm;
+  const {
+    queryTitle,
+    recommenderName,
+    creationDate,
+    creationTime,
+    recommendProductName,
+    productImageURL,
+    queryId,
+    title,
+  } = recomm;
   return (
     <tr>
       <td>
@@ -12,24 +21,33 @@ const QueryTableRow = ({ recomm, dlt }) => {
           <img
             className="w-20 h-18 rounded-xl"
             src={
-              recomm.imageUrl ||
-              "https://images.unsplash.com/photo-1528739964081-51ad930e29c6?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmljaCUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
+              productImageURL ||
+              "https://images.unsplash.com/photo-1620987278429-ab178d6eb547?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
             }
             alt="Procut Image"
           />
           <h1 className="text-xl poppins hover:text-green-500 transition-normal">
-            {product}
+            {recommendProductName}
           </h1>
         </Link>
       </td>
       <td>
-        <Link to={`/recommDetails/${recomm._id}`}>{recommendation}</Link>
+        <Link to={`/recommDetails/${queryId}`}>
+          {title || "No Recommendation"}
+        </Link>
       </td>
       <td>
-        <p>{query}</p>
-        <p>{by}</p>
+        <p>{queryTitle}</p>
+        <p className="text-[14px] bg-gray-100 w-fit px-2 rounded-2xl mt-1">
+          {recommenderName}
+        </p>
       </td>
-      <td>{date}</td>
+      <td>
+        <div>
+          <p>{creationDate}</p>
+          <p>{creationTime}</p>
+        </div>
+      </td>
       <td className="space-y-3">
         <Link
           to={`/myrecomms/update/${recomm._id}`}

@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { FaRegCommentAlt } from "react-icons/fa";
 import AllRecomms from "../AllRecomms/AllRecomms";
 import { AuthContext } from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddRecomForm = ({ details, setDetails }) => {
   const { user } = use(AuthContext);
@@ -44,11 +45,18 @@ const AddRecomForm = ({ details, setDetails }) => {
       },
       body: JSON.stringify(recommData),
     }).then(() => {
-      // ✅ Re-fetch updated query
+      // Re-fetch updated query
       fetch(`http://localhost:3000/queries/${details._id}`)
         .then((res) => res.json())
         .then((updatedData) => {
-          setDetails(updatedData); // ✅ set updated query including new recommendations
+          setDetails(updatedData); // set updated query including new recommendations
+
+          Swal.fire({
+            title: "Success!",
+            text: "Query created successfully",
+            icon: "success",
+            confirmButtonText: "Add Another Recommendation",
+          });
           form.reset(); // Optional: Clear the form
         });
     });
@@ -72,6 +80,7 @@ const AddRecomForm = ({ details, setDetails }) => {
               id=""
               className="input w-full focus-within:outline-none "
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              required
             />
           </label>
 
@@ -83,6 +92,7 @@ const AddRecomForm = ({ details, setDetails }) => {
               id=""
               className="input w-full focus-within:outline-none "
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              required
             />
           </label>
 
@@ -91,11 +101,12 @@ const AddRecomForm = ({ details, setDetails }) => {
               Recommended Product Image URL
             </span>
             <input
-              type="text"
+              type="url"
               name="productImageURL"
               id=""
               className="input w-full focus-within:outline-none "
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              required
             />
           </label>
 
@@ -105,6 +116,7 @@ const AddRecomForm = ({ details, setDetails }) => {
               name="recommendationReason"
               className="w-full h-32 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring mt-2"
               placeholder="Explain why this is a good alternative"
+              required
             ></textarea>
           </label>
           <button className="btn btn-primary" type="submit">

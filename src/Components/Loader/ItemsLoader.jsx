@@ -6,7 +6,7 @@ const ItemsLoader = () => {
       <div className="w-full">
         <img
           className="w-full rounded-t-xl bg-gray-300 dark:bg-gray-700 h-50 md:h-50 lg:h-60"
-          src=""
+          src="#"
         />
       </div>
       <div className="p-4">

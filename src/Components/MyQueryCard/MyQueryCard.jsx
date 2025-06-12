@@ -20,7 +20,7 @@ const MyQueryCard = ({ query, setMyQueries, myQueries }) => {
     boycottingReson,
   } = query;
 
-  console.log(query?.recommendations?.length);
+  console.log(query?.recommendations);
 
   const handleDelete = () => {
     Swal.fire({

@@ -36,21 +36,24 @@ const RecommCard = ({ details }) => {
           </div>
         </div>
       </div>
-      <h1 className="poppins-regular text-xl">{title}</h1>
+      <h1 className="poppins-regular text-xl">{title || "No Title"}</h1>
       <div className="flex gap-5 ">
         <div>
           <img
             className="w-full h-30 rounded-2xl"
-            src={productImageURL}
+            src={
+              productImageURL ||
+              "https://images.unsplash.com/photo-1620987278429-ab178d6eb547?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
+            }
             alt=""
           />
         </div>
         <div className="flex flex-col gap-2">
           <p className="poppins-semibold">
             Recommended:{" "}
-            <span className="text-primary">{recommendProductName}</span>
+            <span className="text-primary">{recommendProductName || "Nor Recommended Prodcut Name"}</span>
           </p>
-          <p>{recommendationReason}</p>
+          <p>{recommendationReason || "Not Given Any Reson"}</p>
         </div>
       </div>
     </div>

@@ -35,8 +35,6 @@ const QueriesCards = ({ sixCard, view }) => {
     return <NoQueryText />;
   }
 
-  console.log(queries);
-
   return (
     <div
       className={
