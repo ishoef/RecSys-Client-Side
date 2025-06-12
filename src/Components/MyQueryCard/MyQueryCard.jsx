@@ -17,7 +17,6 @@ const MyQueryCard = ({ query, setMyQueries, myQueries }) => {
     productName,
     productBrand,
     productImageURL,
-    recommendationCount,
     boycottingReson,
   } = query;
 
@@ -47,13 +46,12 @@ const MyQueryCard = ({ query, setMyQueries, myQueries }) => {
                 icon: "success",
                 confirmButtonText: "OK",
               });
-              
-              
 
               // get the updated list by filtering deleting data
               const updatedQueries = myQueries.filter(
-                (query) => query._id !== _id);
-              
+                (query) => query._id !== _id
+              );
+
               // Update the queries list after deletion
               setMyQueries(updatedQueries);
             } else {
@@ -136,12 +134,16 @@ const MyQueryCard = ({ query, setMyQueries, myQueries }) => {
             )}
           </div>
 
-          {/* Crud Actions */}
+          {/* Recommendation Count */}
           <div className="flex justify-between items-center pt-5 border-t-2 border-t-gray-300">
             <div className="text-primary flex items-center gap-2">
               <FaRegCommentAlt />
-              <span className="text-[18px]">{recommendationCount || 0}</span>
+              <span className="text-[18px]">
+                {query?.recommendations?.length || 0}
+              </span>
             </div>
+
+            {/* Crud Actions */}
             <div className="space-x-3">
               <Link
                 to={`/details/${_id}`}

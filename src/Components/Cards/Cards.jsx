@@ -71,9 +71,8 @@ const Cards = ({ queiry }) => {
         {/* Always at Bottom */}
         <div className="flex justify-between items-center mt-auto pt-4  border-t border-t-gray-300">
           <p className="flex items-center gap-2 text-[18px]">
-            {" "}
             <FaRegCommentAlt />
-            {queiry?.recommendations?.length || 0}{" "}
+            {queiry?.recommendations?.length || 0}
             <span className="hidden md:block">Recommendations</span>
           </p>
           <Button to={`/details/${_id}`} text={"View Recommendations"} />
