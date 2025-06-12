@@ -38,7 +38,7 @@ const UpdateQuery = () => {
       createTime: currentTime,
       userName: user?.displayName || "",
       userEmail: user?.email || "",
-      userPhotoURL: user?.photURL || "",
+      userPhotoURL: user?.photoURL || "",
     };
 
     // Send Update Data To the Server

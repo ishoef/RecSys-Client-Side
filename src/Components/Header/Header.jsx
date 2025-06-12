@@ -9,6 +9,8 @@ import Swal from "sweetalert2";
 const Header = () => {
   const { user, LogOut, setUser } = useContext(AuthContext);
 
+  const profilePic = user?.photoURL;
+
   // User Logging Out
   const handleLogOut = () => {
     Swal.fire({
@@ -123,7 +125,12 @@ const Header = () => {
 
             {/* User Profile Photo Showing */}
             {user && (
-              <ProfilePhoto tooltip={true} user={user} To="/myprofile" />
+              <ProfilePhoto
+                proPic={profilePic}
+                tooltip={true}
+                user={user}
+                To="/myprofile"
+              />
             )}
 
             {/* Small Device Dropdown Menu */}

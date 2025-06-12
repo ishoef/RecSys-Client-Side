@@ -2,7 +2,7 @@ import React, { use, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
 
-const ProfilePhoto = ({ tooltip, To, className }) => {
+const ProfilePhoto = ({ tooltip, proPic, To, className }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const { user } = use(AuthContext);
@@ -21,7 +21,7 @@ const ProfilePhoto = ({ tooltip, To, className }) => {
               "w-[40px] h-[40px] rounded-full border-2 border-green-600"
             }
             src={`${
-              user?.photoURL ||
+              proPic ||
               "https://w7.pngwing.com/pngs/946/556/png-transparent-computer-icons-login-user-profile-client-smiley-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B8-windows-10-thumbnail.png"
             }`}
             alt=""
@@ -35,8 +35,8 @@ const ProfilePhoto = ({ tooltip, To, className }) => {
             <img
               className="w-8 h-8 rounded-full border-2 border-[#14b8a6]"
               src={`${
-                user.photoURL
-                  || "https://w7.pngwing.com/pngs/946/556/png-transparent-computer-icons-login-user-profile-client-smiley-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B8-windows-10-thumbnail.png"
+                proPic ||
+                "https://w7.pngwing.com/pngs/946/556/png-transparent-computer-icons-login-user-profile-client-smiley-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B8-windows-10-thumbnail.png"
               }`}
               alt=""
             />

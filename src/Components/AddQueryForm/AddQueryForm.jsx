@@ -35,7 +35,7 @@ const AddQueryForm = () => {
       createTime: currentTime,
       userName: user.displayName,
       userEmail: user.email,
-      userPhotoURL: user.photURL,
+      userPhotoURL: user.photoURL,
     };
 
     console.log(queryData);

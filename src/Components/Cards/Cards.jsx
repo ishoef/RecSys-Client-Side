@@ -14,7 +14,10 @@ const Cards = ({ queiry }) => {
     queryTitle,
     boycottingReson,
     _id,
+    userPhotoURL,
   } = queiry;
+
+  console.log(queiry);
 
   return (
     <div className="transformation hover:scale-102 duration-300 border border-gray-400 rounded-xl flex flex-col h-full cursor-pointer shadow-sm">
@@ -32,7 +35,7 @@ const Cards = ({ queiry }) => {
       {/* Frofile Info */}
       <div className="flex flex-col justify-between flex-1 p-6 gap-4">
         <div className="profle-details flex items-center gap-4">
-          <ProfilePhoto tooltip={false}></ProfilePhoto>
+          <ProfilePhoto proPic={userPhotoURL} tooltip={false}></ProfilePhoto>
           <div>
             <h1 className="poppins-semibold">{userName || "John Doe"}</h1>
             <p className="poppins-regular flex items-center gap-2">

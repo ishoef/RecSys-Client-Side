@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React from "react";
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto";
 import { MdOutlineDateRange } from "react-icons/md";
 import { AiOutlineLike } from "react-icons/ai";
@@ -8,8 +8,6 @@ const DetailCard = ({ details }) => {
 
   console.log(details);
 
-  const { user } = use(AuthContext);
-  console.log(user);
   const {
     createDate,
     queryTitle,

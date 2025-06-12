@@ -27,8 +27,10 @@ const AddRecomForm = ({ details, setDetails }) => {
       recommendProductName: form.recommendProductName.value,
       productImageURL: form.productImageURL.value,
       recommendationReason: form.recommendationReason.value,
-      queryId: details._id, // Assuming details contains the query ID
+      queryId: details._id, 
       queryTitle: details.queryTitle,
+      queryCreatorName: details.userName,
+      queryCreatorEmail: details.userEmail,
       recommenderName: user?.displayName,
       recommenderEmail: user?.email,
       recommenderPhoto: user?.photoURL,
@@ -36,6 +38,7 @@ const AddRecomForm = ({ details, setDetails }) => {
       creationTime: currentTime,
     };
 
+    
     console.log(recommData);
 
     fetch(`http://localhost:3000/queries/${details._id}/recommendations`, {

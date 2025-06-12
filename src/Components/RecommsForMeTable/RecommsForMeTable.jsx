@@ -1,8 +1,7 @@
-import React from "react";
-import QueryTableRow from "./QueryTableRow/QueryTableRow";
+import React from 'react';
+import RecommsTableRow from './RecommsTableRow/RecommsTableRow';
 
-const RecommendatinTable = ({ recomms, headers, dlt }) => {
-
+const RecommsForMeTable = ({ headers, recomms }) => {
   return (
     <div className="overflow-x-auto min-h-[calc(100vh-438px)]">
       <table className="table table-lg border border-primary ">
@@ -14,13 +13,12 @@ const RecommendatinTable = ({ recomms, headers, dlt }) => {
           </tr>
         </thead>
         <tbody>
-          {recomms.map((recomm, index) => (
-            <QueryTableRow
-              dlt={dlt}
+          {recomms.map((recomm) => (
+            <RecommsTableRow
               recomms={recomms}
-              key={index}
+              key={recomm._id}
               recomm={recomm}
-            ></QueryTableRow>
+            ></RecommsTableRow>
           ))}
         </tbody>
       </table>
@@ -28,4 +26,4 @@ const RecommendatinTable = ({ recomms, headers, dlt }) => {
   );
 };
 
-export default RecommendatinTable;
+export default RecommsForMeTable;

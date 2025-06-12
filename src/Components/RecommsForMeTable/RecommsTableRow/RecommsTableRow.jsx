@@ -2,18 +2,19 @@ import React from "react";
 import { IoCreateOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router";
+import ProfilePhoto from "../../ProfilePhoto/ProfilePhoto";
 
-const QueryTableRow = ({ recomm, dlt }) => {
+const RecommsTableRow = ({ dlt, recomm }) => {
   const {
     queryTitle,
-    queryCreatorName,
+    recommenderName,
     creationDate,
     creationTime,
     recommendProductName,
     productImageURL,
     queryId,
-    title,
   } = recomm;
+
   return (
     <tr>
       <td>
@@ -33,14 +34,14 @@ const QueryTableRow = ({ recomm, dlt }) => {
       </td>
       <td>
         <Link to={`/recommDetails/${queryId}`}>
-          {title || "No Recommendation"}
+          {queryTitle || "No Recommendation"}
         </Link>
       </td>
       <td>
-        <p>{queryTitle}</p>
-        <p className="text-[14px] bg-gray-100 w-fit px-2 rounded-2xl mt-1">
-          {queryCreatorName}
-        </p>
+        <div className="flex items-center gap-3">
+          <ProfilePhoto />
+          <p>{recommenderName}</p>
+        </div>
       </td>
       <td>
         <div>
@@ -70,4 +71,4 @@ const QueryTableRow = ({ recomm, dlt }) => {
   );
 };
 
-export default QueryTableRow;
+export default RecommsTableRow;
