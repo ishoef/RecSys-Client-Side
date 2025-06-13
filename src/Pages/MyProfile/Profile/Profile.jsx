@@ -98,7 +98,7 @@ const Profile = () => {
 
         <div className="grid grid-cols-6 gap-10 w-full">
           <div className="col-span-2 gap-2 flex flex-col items-center">
-            <ProfilePhoto
+            <ProfilePhoto proPic={user?.photoURL}
               className={"w-48 h-48 rounded-full border-2 border-green-600"}
             />
             <h1 className="text-2xl font-semibold poppins text-center">

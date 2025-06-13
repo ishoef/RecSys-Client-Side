@@ -1,8 +1,13 @@
 import React from "react";
 import QueryTableRow from "./QueryTableRow/QueryTableRow";
 
-const RecommendatinTable = ({ recomms, headers, dlt }) => {
-
+const RecommendatinTable = ({
+  recomms,
+  headers,
+  dlt,
+  setMyRecomms,
+  myRecomms,
+}) => {
   return (
     <div className="overflow-x-auto min-h-[calc(100vh-438px)]">
       <table className="table table-lg border border-primary ">
@@ -16,10 +21,12 @@ const RecommendatinTable = ({ recomms, headers, dlt }) => {
         <tbody>
           {recomms.map((recomm, index) => (
             <QueryTableRow
+              myRecomms={myRecomms}
               dlt={dlt}
               recomms={recomms}
               key={index}
               recomm={recomm}
+              setMyRecomms={setMyRecomms}
             ></QueryTableRow>
           ))}
         </tbody>

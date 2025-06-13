@@ -27,6 +27,7 @@ const MyRecos = () => {
         console.log("Error Fetching Recommendations:", err);
       });
   }, [user?.email]);
+  
 
   const tableHeaderText = [
     "Product",
@@ -42,7 +43,10 @@ const MyRecos = () => {
     <section className={`${responsive} mt-10`}>
       {/* Title Box */}
       <div className="flex justify-between items-center py-8 px-10 bg-primary backdrop-blur-3xl rounded-2xl">
-        <Title className={"text-white"} title={`My Recommendations (${myRecomms.length})`} />
+        <Title
+          className={"text-white"}
+          title={`My Recommendations (${myRecomms.length})`}
+        />
 
         <span className="text-5xl text-white">
           <FaRegCommentAlt />
@@ -53,9 +57,11 @@ const MyRecos = () => {
 
       <div className="my-10">
         <RecommendatinTable
+          myRecomms={myRecomms}
           dlt={true}
           headers={tableHeaderText}
           recomms={myRecomms}
+          setMyRecomms={setMyRecomms}
         />
       </div>
     </section>
