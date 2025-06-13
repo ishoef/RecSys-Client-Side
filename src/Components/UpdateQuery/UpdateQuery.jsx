@@ -53,7 +53,6 @@ const UpdateQuery = () => {
       .then((data) => {
         console.log("after update", data);
         if (data.modifiedCount > 0) {
-          
           // Show success message
           Swal.fire({
             title: "Success!",
@@ -62,7 +61,7 @@ const UpdateQuery = () => {
             confirmButtonText: "Go to My Queries",
             showCancelButton: true,
             cancelButtonColor: "#b92ce3",
-            cancelButtonText: "Update More", 
+            cancelButtonText: "Update More",
           }).then((result) => {
             if (result.isConfirmed) {
               // Navigate to My Queries page

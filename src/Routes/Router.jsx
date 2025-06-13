@@ -18,6 +18,7 @@ import Profile from "../Pages/MyProfile/Profile/Profile";
 import Activity from "../Pages/MyProfile/Activity/Activity";
 import Settings from "../Pages/MyProfile/Settings/Settings";
 import Privacy from "../Pages/MyProfile/Privacy/Privacy";
+import UpdateRecommendations from "../Components/UpdateRecommendations/UpdateRecommendations";
 
 export const router = createBrowserRouter([
   {
@@ -103,6 +104,13 @@ export const router = createBrowserRouter([
       {
         path: "/myqueries/update/:id",
         Component: UpdateQuery,
+        loader: () => {
+          return fetch(`http://localhost:3000/queries`);
+        },
+      },
+      {
+        path: "/myrecomms/update/:id",
+        Component: UpdateRecommendations,
         loader: () => {
           return fetch(`http://localhost:3000/queries`);
         },

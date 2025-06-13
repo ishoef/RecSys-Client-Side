@@ -14,6 +14,9 @@ const QueryTableRow = ({ recomm, dlt }) => {
     queryId,
     title,
   } = recomm;
+
+  console.log(recomm);
+
   return (
     <tr>
       <td>
@@ -50,7 +53,7 @@ const QueryTableRow = ({ recomm, dlt }) => {
       </td>
       <td className="space-y-3">
         <Link
-          to={`/myrecomms/update/${recomm._id}`}
+          to={`/myrecomms/update/${recomm.queryId}`}
           type="button"
           className="hover:scale-102 hover:shadow cursor-pointer bg-primary w-fit flex items-center justify-center p-2 rounded"
         >

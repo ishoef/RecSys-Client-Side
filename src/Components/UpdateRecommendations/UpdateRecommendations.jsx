@@ -1,26 +1,20 @@
 import React, { use } from "react";
 import { FaRegCommentAlt } from "react-icons/fa";
-import AllRecomms from "../AllRecomms/AllRecomms";
+import { useLoaderData, useParams } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
-import Swal from "sweetalert2";
 
-const AddRecomForm = ({ details, setDetails }) => {
+const UpdateRecommendations = () => {
   const { user } = use(AuthContext);
 
-  const handleAddRecomm = (e) => {
-    e.preventDefault();
+  const { id } = useParams();
+  console.log(id);
+  const data = useLoaderData();
+
+  console.log(data);
+  const handleUpdateRecomms = (e) => {
+    e.preventDefaout();
 
     const form = e.target;
-
-    // get the time and Date
-    const now = new Date();
-    const currentDate = now.toLocaleDateString("en-US");
-    const currentTime = now.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: true,
-    });
 
     const recommData = {
       title: form.title.value,
@@ -37,40 +31,15 @@ const AddRecomForm = ({ details, setDetails }) => {
       creationDate: currentDate,
       creationTime: currentTime,
     };
-
-    console.log(recommData);
-
-    fetch(`http://localhost:3000/queries/${details._id}/recommendations`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(recommData),
-    }).then(() => {
-      // Re-fetch updated query
-      fetch(`http://localhost:3000/queries/${details._id}`)
-        .then((res) => res.json())
-        .then((updatedData) => {
-          setDetails(updatedData); // set updated query including new recommendations
-
-          Swal.fire({
-            title: "Success!",
-            text: "Query created successfully",
-            icon: "success",
-            confirmButtonText: "Add Another Recommendation",
-          });
-          form.reset(); // Optional: Clear the form
-        });
-    });
   };
 
   return (
     <>
-      <div className="w-8/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-10 my-10 ">
-        <form onSubmit={handleAddRecomm} className="flex flex-col gap-4">
+      <div className="w-5/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-10 my-10 ">
+        <form onSubmit={handleUpdateRecomms} className="flex flex-col gap-4">
           <div className="flex items-center justify-between border p-4 rounded-2xl shadow border-gray-400 mb-5">
             <h1 className="poppins-semibold text-2xl text-primary">
-              Add Your Recommendation
+              Update Your Recommendation
             </h1>
             <FaRegCommentAlt size={32} color="#14b8a6" />
           </div>
@@ -122,14 +91,12 @@ const AddRecomForm = ({ details, setDetails }) => {
             ></textarea>
           </label>
           <button className="btn btn-primary" type="submit">
-            Add Recommendation
+            Update Recommendation
           </button>
         </form>
       </div>
-
-      <AllRecomms details={details} />
     </>
   );
 };
 
-export default AddRecomForm;
+export default UpdateRecommendations;
