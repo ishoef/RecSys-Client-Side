@@ -75,7 +75,9 @@ const AddRecomForm = ({ details, setDetails }) => {
             <FaRegCommentAlt size={32} color="#14b8a6" />
           </div>
           <label htmlFor="title" className="flex flex-col gap-2">
-            <span className="poppins-regular">Recommendation Title</span>
+            <span className="poppins-regular">
+              Recommendation Title <span className="text-red-500">*</span>
+            </span>
             <input
               type="text"
               name="title"
@@ -87,7 +89,9 @@ const AddRecomForm = ({ details, setDetails }) => {
           </label>
 
           <label htmlFor="recommendProductName" className="flex flex-col gap-2">
-            <span className="poppins-regular">Recommended Product Name</span>
+            <span className="poppins-regular">
+              Recommended Product Name <span className="text-red-500">*</span>
+            </span>
             <input
               type="text"
               name="recommendProductName"
@@ -100,7 +104,8 @@ const AddRecomForm = ({ details, setDetails }) => {
 
           <label htmlFor="productImageURL" className="flex flex-col gap-2">
             <span className="poppins-regular">
-              Recommended Product Image URL
+              Recommended Product Image URL{" "}
+              <span className="text-red-500">*</span>
             </span>
             <input
               type="url"
@@ -113,7 +118,9 @@ const AddRecomForm = ({ details, setDetails }) => {
           </label>
 
           <label htmlFor="recommendationReason">
-            <span className="poppins-regular">Recommendation Reason</span>
+            <span className="poppins-regular">
+              Recommendation Reason <span className="text-red-500">*</span>
+            </span>
             <textarea
               name="recommendationReason"
               className="w-full h-32 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring mt-2"

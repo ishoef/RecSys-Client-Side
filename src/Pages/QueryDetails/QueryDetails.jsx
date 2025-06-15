@@ -12,6 +12,10 @@ const QueryDetails = () => {
   console.log(params.id);
 
   useEffect(() => {
+      document.title = "Query Details | RecSyS";
+    }, []);
+
+  useEffect(() => {
     fetch(`http://localhost:3000/queries/${params.id}`)
       .then((res) => res.json())
       .then((data) => {

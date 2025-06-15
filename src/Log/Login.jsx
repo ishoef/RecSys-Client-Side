@@ -22,6 +22,7 @@ const Login = () => {
   // form Submit
   const handleLogin = (e) => {
     e.preventDefault();
+    setError(null);
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;

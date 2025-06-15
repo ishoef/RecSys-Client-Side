@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CiUser } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
 import { IoIosLink } from "react-icons/io";
@@ -13,13 +13,19 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 const Register = () => {
   // Auth Context Data
   const { createUser, auth, setUser } = useContext(AuthContext);
+  const [showError, setShowError] = useState(null);
 
-    const navigate = useNavigate();
-    const location = useLocation();
+  useEffect(() => {
+    document.title = "Register | RecSyS";
+  }, []);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Form Submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    setShowError(null);
     console.log("i am clickng for submit form");
     const form = e.target;
     const formData = {
@@ -32,6 +38,50 @@ const Register = () => {
     console.log(formData);
     const email = formData.email;
     const password = formData.password;
+
+    // error Code
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    // const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    const hasMinLength = password.length >= 6;
+
+    // Error Messages
+    const errorMessages = {
+      hasUppercase: "Password must contain at least one uppercase letter.",
+      hasLowercase: "Password must contain at least one lowercase letter.",
+      hasSpecialChar: "Password must contain at least one special character.",
+      hasMinLength: "Password must be at least 6 characters long.",
+    };
+
+    // Error Checkes
+
+    // Uppercase Requird Check
+    if (!hasUppercase) {
+      toast.error(errorMessages.hasUppercase);
+      setShowError(errorMessages.hasUppercase);
+      return;
+    }
+
+    // Lowercase Requird check
+    if (!hasLowercase) {
+      toast.error(errorMessages.hasLowercase);
+      setShowError(errorMessages.hasLowercase);
+      return;
+    }
+
+    // Special Charecter Check
+    // if (!hasSpecialChar) {
+    //   toast.error(errorMessages.hasSpecialChar);
+    //   setShowError(errorMessages.hasSpecialChar);
+    //   return;
+    // }
+
+    // Password Length Check
+    if (!hasMinLength) {
+      toast.error(errorMessages.hasMinLength);
+      setShowError(errorMessages.hasMinLength);
+      return;
+    }
 
     createUser(email, password)
       .then((result) => {
@@ -107,7 +157,7 @@ const Register = () => {
               {/* Name */}
               <div className="flex flex-col gap-2 lg:gap-4">
                 <label className="text-xl font-semibold" htmlFor="photoUrl">
-                  Photo URL
+                  Name
                 </label>
                 <label
                   className="input w-full border focus-within:border-primary focus-within:outline-none"
@@ -120,7 +170,7 @@ const Register = () => {
                     placeholder="Enter You Name"
                     type="text"
                     name="name"
-                    // required
+                    required
                   />
                 </label>
               </div>
@@ -141,7 +191,7 @@ const Register = () => {
                     placeholder="Photo URL"
                     type="url"
                     name="photoUrl"
-                    // required
+                    required
                   />
                 </label>
               </div>
@@ -165,7 +215,7 @@ const Register = () => {
                     placeholder="Enter Your Email"
                     type="email"
                     name="email"
-                    // required
+                    required
                   />
                 </label>
               </div>
@@ -187,12 +237,12 @@ const Register = () => {
                     placeholder="••••••••"
                     type="password"
                     name="password"
-                    // required
+                    required
                   />
                 </label>
               </div>
 
-              {/* <p className="text-red-600">{showError}</p> */}
+              <p className="text-red-600">{showError}</p>
 
               <div className="flex flex-col md:flex-row lg:flex-row md:justify-between lg:justify-between gap-2 lg:gap-4">
                 <label className="label">
@@ -200,7 +250,7 @@ const Register = () => {
                     name=" check"
                     type="checkbox"
                     className="checkbox"
-                    // required
+                    required
                   />
                   <span>Remember me</span>
                 </label>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import QueriesCards from "../../Components/QueriesCards/QueriesCards";
 import { responsive } from "../../Layouts/RootLayout";
 import Title from "../../Components/Title/Title";
@@ -13,6 +13,10 @@ const Queries = () => {
   const [view, setView] = useState("grid3Col");
   const [searchText, setSearchText] = useState("");
   const [queriesCount, setQueriesCount] = useState(0);
+
+  useEffect(() => {
+      document.title = "Queries | RecSyS";
+    }, []);
 
   return (
     <section className={`${responsive} mt-10`}>

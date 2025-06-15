@@ -15,6 +15,10 @@ const MyRecos = () => {
   console.log(user.email);
 
   useEffect(() => {
+      document.title = "My Recommendations | RecSyS";
+    }, []);
+
+  useEffect(() => {
     fetch(
       `http://localhost:3000/given-recommendations?userEmail=${user.email}`
     )

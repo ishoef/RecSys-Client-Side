@@ -20,6 +20,10 @@ const RecForme = () => {
   ];
 
   useEffect(() => {
+      document.title = "Recommendation for Me | RecSyS";
+    }, []);
+
+  useEffect(() => {
     if (user?.email) {
       fetch(
         `http://localhost:3000/recommendations-for-me?userEmail=${user.email}`

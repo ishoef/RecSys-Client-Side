@@ -19,6 +19,10 @@ const MyQueries = () => {
   const [isSearcing, setIsSearching] = useState(false);
 
   useEffect(() => {
+      document.title = "My Queries | RecSyS";
+    }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         setIsSearching((searchText || "").trim() !== "");
