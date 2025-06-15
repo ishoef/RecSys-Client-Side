@@ -6,7 +6,7 @@ const ProfileInformation = ({
   setUpdateName,
   // setUserEmail,
   setPhotoURL,
-  setBio,
+  // setBio,
 }) => {
   const { user } = use(AuthContext);
 

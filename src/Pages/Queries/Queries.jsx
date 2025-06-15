@@ -12,13 +12,13 @@ import { NavLink } from "react-router";
 const Queries = () => {
   const [view, setView] = useState("grid3Col");
   const [searchText, setSearchText] = useState("");
-  
+  const [queriesCount, setQueriesCount] = useState(0);
 
   return (
     <section className={`${responsive} mt-10`}>
       <div className="flex flex-col">
         <div className="flex justify-between items-center py-8 px-5 bg-primary/10 backdrop-blur-3xl border border-primary/60 rounded-2xl">
-          <Title title={"All Product Queries"} />
+          <Title title={`All Product Queries (${queriesCount})`} />
           <div className="flex items-center gap-3 ">
             {/* Search Option */}
             <label className="input w-100 ring-0 focus-within:ring-0 focus-within:outline-none">
@@ -53,7 +53,11 @@ const Queries = () => {
           </div>
         </div>
         <hr className="mt-5 border border-gray-300" />
-        <QueriesCards searchText={searchText} setSearchText={setSearchText} view={view} />
+        <QueriesCards
+          setQueriesCount={setQueriesCount}
+          searchText={searchText}
+          view={view}
+        />
       </div>
     </section>
   );

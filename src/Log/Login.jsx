@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { IoLockClosedOutline } from "react-icons/io5";
 import { MdOutlineMail } from "react-icons/md";
@@ -10,9 +10,14 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Login = () => {
   const { login, setUser, auth } = use(AuthContext);
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-    const location = useLocation();
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "Login | RecSys";
+  }, []);
 
   // form Submit
   const handleLogin = (e) => {
@@ -36,7 +41,15 @@ const Login = () => {
         console.log("User logged in:", user);
       })
       .catch((error) => {
-        console.error("Error during login:", error);
+        const errorMessages = {
+          "auth/invalid-email": "Please enter a valid email address.",
+          "auth/user-not-found": "No account found with this email.",
+          "auth/wrong-password": "Incorrect password. Please try again.",
+          "auth/invalid-credential": "Invalid email or password.",
+          default: error.message,
+        };
+        const errorMessage = errorMessages[error.code] || errorMessages.default;
+        setError(errorMessage);
         Swal.fire({
           title: "Login Failed",
           text: error.message,
@@ -47,42 +60,39 @@ const Login = () => {
   };
 
   // Googl Login
-    const provider = new GoogleAuthProvider();
-  
-    const handleloginWithGoogle = () => {
-  
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          console.log(result);
-          console.log(result.user.displayName);
-          navigate(`${location.state ? location.state : "/"}`);
-          Swal.fire({
-            title: "Congratulations! Welcome to Our World",
-            icon: "success",
-            draggable: true,
-          });
-        })
-        .catch((error) => {
-          const errorMessages = {
-            "auth/popup-blocked":
-              "The popup was blocked by the browser. Please allow popups and try again.",
-            "auth/popup-closed-by-user":
-              "The popup was closed before completing sign in.",
-            "auth/cancelled-popup-request":
-              "Only one popup request is allowed at a time. Please try again.",
-            "auth/operation-not-allowed":
-              "Google sign-in is not enabled. Please contact support.",
-            "auth/account-exists-with-different-credential":
-              "An account already exists with the same email but different sign-in credentials.",
-            default: "Google sign-in failed. Please try again.",
-          };
-  
-          const message = errorMessages[error.code] || errorMessages.default;
-          toast.error(message);
-          
+  const provider = new GoogleAuthProvider();
+
+  const handleloginWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        console.log(result.user.displayName);
+        navigate(`${location.state ? location.state : "/"}`);
+        Swal.fire({
+          title: "Congratulations! Welcome to Our World",
+          icon: "success",
+          draggable: true,
         });
-    };
-  
+      })
+      .catch((error) => {
+        const errorMessages = {
+          "auth/popup-blocked":
+            "The popup was blocked by the browser. Please allow popups and try again.",
+          "auth/popup-closed-by-user":
+            "The popup was closed before completing sign in.",
+          "auth/cancelled-popup-request":
+            "Only one popup request is allowed at a time. Please try again.",
+          "auth/operation-not-allowed":
+            "Google sign-in is not enabled. Please contact support.",
+          "auth/account-exists-with-different-credential":
+            "An account already exists with the same email but different sign-in credentials.",
+          default: "Google sign-in failed. Please try again.",
+        };
+
+        const message = errorMessages[error.code] || errorMessages.default;
+        toast.error(message);
+      });
+  };
 
   return (
     <>
@@ -141,7 +151,7 @@ const Login = () => {
               </div>
 
               {/* Error Massege */}
-              {/* <p className="text-red-600">{error}</p> */}
+              <p className="text-red-600">{error}</p>
 
               {/* Remeber Me */}
               <div className="flex flex-col lg:flex-row gap-3 lg:gap-0 justify-between md:mt-3 lg:mt-3">

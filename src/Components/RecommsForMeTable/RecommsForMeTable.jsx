@@ -1,7 +1,15 @@
 import React from 'react';
 import RecommsTableRow from './RecommsTableRow/RecommsTableRow';
+import NoRecommText from '../NoRecommText/NoRecommText';
 
 const RecommsForMeTable = ({ headers, recomms }) => {
+
+  
+
+  if (recomms.length === 0) {
+    return <NoRecommText btnText={"See Queries and Add Recommendation"} />
+  }
+
   return (
     <div className="overflow-x-auto min-h-[calc(100vh-438px)]">
       <table className="table table-lg border border-primary ">

@@ -1,5 +1,6 @@
 import React from "react";
 import QueryTableRow from "./QueryTableRow/QueryTableRow";
+import NoRecommText from "../NoRecommText/NoRecommText";
 
 const RecommendatinTable = ({
   recomms,
@@ -8,6 +9,12 @@ const RecommendatinTable = ({
   setMyRecomms,
   myRecomms,
 }) => {
+
+
+  if (myRecomms.length === 0) {
+    return <NoRecommText/>
+  }
+
   return (
     <div className="overflow-x-auto min-h-[calc(100vh-438px)]">
       <table className="table table-lg border border-primary ">

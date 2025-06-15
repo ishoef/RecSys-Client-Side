@@ -5,7 +5,7 @@ import ItemsLoader from "../Loader/ItemsLoader";
 import { AuthContext } from "../../Context/AuthProvider";
 import NoSeachResult from "../NoSearchResult/NoSeachResult";
 
-const QueriesCards = ({ sixCard, view, searchText }) => {
+const QueriesCards = ({ sixCard, view, searchText, setQueriesCount }) => {
   const [queries, setQueries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
@@ -22,6 +22,7 @@ const QueriesCards = ({ sixCard, view, searchText }) => {
         const res = await fetch(url);
         const data = await res.json();
         setQueries(data);
+        if (setQueriesCount) setQueriesCount(data.length); 
         setLoading(false);
 
         console.log("Fetched queries:", data);
@@ -33,12 +34,13 @@ const QueriesCards = ({ sixCard, view, searchText }) => {
     };
 
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchText, user?.email]);
 
   const sixCards = [...queries]
     .sort((a, b) => {
-      const dateA = new Date(`${a.createDate} ${a.createTime}`);
-      const dateB = new Date(`${b.createDate} ${b.createTime}`);
+      const dateA = new Date(`${a?.createDate} ${a?.createTime}`);
+      const dateB = new Date(`${b?.createDate} ${b?.createTime}`);
       return dateB - dateA;
     })
     .slice(0, 6);
