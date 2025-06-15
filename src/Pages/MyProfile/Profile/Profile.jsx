@@ -1,15 +1,28 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import Button from "../../../Components/Button/Button";
-import { FaRegCommentAlt, FaRegEdit, FaRegUser } from "react-icons/fa";
+import {
+  FaRegCommentAlt,
+  FaRegEdit,
+  FaRegSave,
+  FaRegUser,
+} from "react-icons/fa";
 import { LuUser } from "react-icons/lu";
 import { AuthContext } from "../../../Context/AuthProvider";
 import ProfilePhoto from "../../../Components/ProfilePhoto/ProfilePhoto";
 import ProfileInformation from "./ProfileInformation/ProfileInformation";
 import { SiJquery } from "react-icons/si";
 import { IoCreateOutline } from "react-icons/io5";
+import { GrAction } from "react-icons/gr";
+import { RxCross2 } from "react-icons/rx";
 
 const Profile = () => {
-  const { user } = use(AuthContext);
+  const { user, updateUser, setUser } = use(AuthContext);
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [updateName, setUpdateName] = useState(user?.displayName || "");
+  // const [userEmail, setUserEmail] = useState(user?.email || "");
+  const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
+  const [bio, setBio] = useState(user?.bio || "");
 
   const date = new Date(user.metadata.creationTime);
   const formatted = date.toLocaleDateString("en-US", {
@@ -25,18 +38,6 @@ const Profile = () => {
     hour12: true,
   });
 
-  console.log(user.photoURL);
-  const btnText = (
-    <div className="flex items-center gap-2 text-[18px]">
-      <p>
-        <FaRegEdit />
-      </p>
-      <p> Edit Profile</p>{" "}
-    </div>
-  );
-
-  const btnClass =
-    " bg-transparent border border-gray-400 btn rounded-md hover:bg-primary hover:text-white";
 
   const btnsInfo = [
     {
@@ -45,7 +46,7 @@ const Profile = () => {
           <p>
             <SiJquery />
           </p>
-          <p>My Queries</p>{" "}
+          <p>My Queries</p>
         </div>
       ),
       link: "/myqueries",
@@ -59,7 +60,7 @@ const Profile = () => {
           <p>
             <FaRegCommentAlt />
           </p>
-          <p>My Recommendations</p>{" "}
+          <p>My Recommendations</p>
         </div>
       ),
 
@@ -84,6 +85,33 @@ const Profile = () => {
     },
   ];
 
+  const handleUpdate = async () => {
+    if (!updateName.trim() && !photoURL.trim()) {
+      alert("Please fill at least one field");
+      return;
+    }
+
+    try {
+      await updateUser({
+        displayName: updateName,
+        photoURL: photoURL,
+        bio: bio,
+      });
+
+      setUser({
+        ...user,
+        displayName: updateName,
+        photoURL: photoURL,
+        bio: bio,
+      });
+      alert("Profile Updated successfully");
+      setIsEditing(false);
+    } catch (error) {
+      alert("Failed to update profile" + error.message);
+      console.log(error.message);
+    }
+  };
+
   return (
     <>
       <div className="p-5 w-full h-full flex flex-col gap-6 justify-center items-center border border-gray-300 rounded-xl shadow">
@@ -93,12 +121,58 @@ const Profile = () => {
             <LuUser />
             <h1>Profile Information</h1>
           </div>
-          <Button className={btnClass} text={btnText} />
+
+          <div className=" space-x-5">
+            {/* Cancel Button */}
+            <button
+              onClick={() => setIsEditing(false)}
+              className={`text-[18px] bg-transparent border border-gray-400 btn rounded-md hover:bg-red-500 hover:text-white hover:border-none transition-opacity duration-500 ease-in-out ${
+                isEditing
+                  ? "opacity-100 visible inline-block"
+                  : "opacity-0 invisible hidden"
+              } `}
+              // style={{ display: isEditing ? "inline-block" : "none" }}
+            >
+              <p className="flex items-center gap-2">
+                <RxCross2 /> Cancel
+              </p>
+            </button>
+
+            <button
+              onClick={() => setIsEditing(true)}
+              className={`text-[18px] bg-transparent border border-gray-400 btn rounded-md hover:bg-primary hover:text-white transition-all duration-500 ease-in-out ${
+                isEditing
+                  ? "opacity-0 invisible hidden"
+                  : "opacity-100 visible inline-block"
+              }`}
+            >
+              <p className="flex items-center gap-2">
+                <FaRegEdit /> Edit Profile
+              </p>
+            </button>
+
+            {/* Save Button */}
+            <button
+              onClick={handleUpdate}
+              className={`text-[18px] bg-primary text-white border border-gray-400 btn rounded-md hover:bg-accent hover:text-white transition-opacity duration-500 ease-in-out ${
+                isEditing
+                  ? "opacity-100 visible inline-block"
+                  : "hidden opacity-0 invisible "
+              }`}
+              // style={{ display: isEditing ? "inline-block" : "none" }}
+            >
+              <p className="flex items-center gap-2">
+                <FaRegSave />
+                Save
+              </p>
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-6 gap-10 w-full">
           <div className="col-span-2 gap-2 flex flex-col items-center">
-            <ProfilePhoto proPic={user?.photoURL}
+            <ProfilePhoto
+              proPic={user?.photoURL}
               className={"w-48 h-48 rounded-full border-2 border-green-600"}
             />
             <h1 className="text-2xl font-semibold poppins text-center">
@@ -108,7 +182,12 @@ const Profile = () => {
             <p className="poppins">At {formattedTime}</p>
           </div>
           <div className="col-span-4 ">
-            <ProfileInformation />
+            <ProfileInformation
+              setUpdateName={setUpdateName}
+              setPhotoURL={setPhotoURL}
+              setBio={setBio}
+              isEditing={isEditing}
+            />
           </div>
         </div>
       </div>
@@ -121,12 +200,20 @@ const Profile = () => {
       {/* Quic Actions */}
       <div className="w-full h-full p-5 border border-gray-300 rounded-xl shadow">
         <div className="space-y-5">
-          <div>
-            <h1>Quick Actions</h1>
+          <div className="flex items-center gap-2">
+            <p className="text-2xl">
+              <GrAction />
+            </p>
+            <h1 className="text-2xl poppins font-semibold">Quick Actions</h1>
           </div>
           <div className="grid grid-cols-3 gap-5">
             {btnsInfo.map((btn, index) => (
-              <Button key={index} to={btn.link} text={btn.btnText} className={btn.className} />
+              <Button
+                key={index}
+                to={btn.link}
+                text={btn.btnText}
+                className={btn.className}
+              />
             ))}
           </div>
         </div>

@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -26,6 +27,11 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+
+  // Update the User Information
+  const updateUser = (updateData) => {
+    return updateProfile(auth.currentUser, updateData)
+  }
 
   // User Logout
   const LogOut = () => {
@@ -48,6 +54,7 @@ const AuthProvider = ({ children }) => {
     auth,
     createUser,
     login,
+    updateUser,
     LogOut,
     setUser,
     loading,
