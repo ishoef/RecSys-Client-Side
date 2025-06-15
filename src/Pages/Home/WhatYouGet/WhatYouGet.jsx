@@ -66,7 +66,7 @@ const WhatYouGet = () => {
 
   return (
     <div className={`${responsive} my-20`}>
-      <div className="bg-primary w-full  rounded-2xl p-16 flex items-center gap-10">
+      <div className="bg-gradient-to-r from-cyan-700 via-teal-500 to-emerald-500 w-full  rounded-2xl p-16 flex items-center gap-10">
         <div className="basis-1/2 flex flex-col items-start gap-5">
           <Title title={"What You Get With RecoSyS"} className={"text-white"} />
           <p className="poppins text-white">
@@ -91,7 +91,7 @@ const WhatYouGet = () => {
         <div className=" w-full basis-1/2 ">
           <div className="grid grid-cols-2 gap-5">
             {stats.map((stat) => (
-              <div className="flex flex-col items-center gap-3 p-5 text-white  bg-green-200/20 rounded-2xl">
+              <div className="flex flex-col hover:scale-102 transition-transform duration-300 ease-in-out items-center gap-3 px-5 py-6 text-white  bg-green-200/20 rounded-2xl">
                 <p className="text-3xl">{stat.icon}</p>
                 <p className="text-3xl poppins font-semibold">{stat.value}</p>
                 <p className="poppins">{stat.label}</p>

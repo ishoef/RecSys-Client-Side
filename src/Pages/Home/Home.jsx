@@ -3,6 +3,8 @@ import Hero from './Hero/Hero';
 import RecentQueries from './Recent-Queries/RecentQueries';
 import WhyChoose from './WhyChoose/WhyChoose';
 import WhatYouGet from './WhatYouGet/WhatYouGet';
+import OurCommunity from './OurCommunity/OurCommunity';
+import HowItWorks from './HowItWorks/HowItWorks';
 
 const Home = () => {
 
@@ -16,7 +18,9 @@ const Home = () => {
             <Hero></Hero>
             <RecentQueries></RecentQueries>
             <WhyChoose></WhyChoose>
-            <WhatYouGet/>
+            <WhatYouGet />
+            <OurCommunity />
+            <HowItWorks/>
         </div>
     );
 };
