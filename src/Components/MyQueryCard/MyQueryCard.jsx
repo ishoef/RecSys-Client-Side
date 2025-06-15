@@ -18,9 +18,10 @@ const MyQueryCard = ({ query, setMyQueries, myQueries }) => {
     productBrand,
     productImageURL,
     boycottingReson,
+    userPhotoURL,
   } = query;
 
-  console.log(query?.recommendations);
+  console.log(query);
 
   const handleDelete = () => {
     Swal.fire({
@@ -75,7 +76,7 @@ const MyQueryCard = ({ query, setMyQueries, myQueries }) => {
         {/* Profile Info */}
         <div className="profile-details w-full flex flex-1 gap-4">
           <div className="basis-12">
-            <ProfilePhoto tooltip={false} />
+            <ProfilePhoto proPic={userPhotoURL} tooltip={false} />
           </div>
           <div className="flex justify-between basis w-full">
             <div>

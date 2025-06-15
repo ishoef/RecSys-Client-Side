@@ -8,38 +8,43 @@ import MyQueryCard from "../../Components/MyQueryCard/MyQueryCard";
 import NoQueryText from "../../Components/NoQueryText/NoQueryText";
 import { AuthContext } from "../../Context/AuthProvider";
 import NormalLoader from "../../Components/Loader/NormalLoader";
+import NoSeachResult from "../../Components/NoSearchResult/NoSeachResult";
 
 const MyQueries = () => {
   const { user } = use(AuthContext);
 
   const [myQueries, setMyQueries] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchText, setSearchText] = useState("");
+  const [isSearcing, setIsSearching] = useState(false);
 
   useEffect(() => {
-    if (user && user.email) {
-      fetch(`http://localhost:3000/queries?userEmail=${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setMyQueries(data);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.log("Failed to fetch user Queries:", error);
-          setMyQueries([]);
-          setLoading(false);
-        });
-    } else {
-      setMyQueries([]);
-      setLoading(false);
-    }
-  }, [user]);
+    const fetchData = async () => {
+      try {
+        setIsSearching((searchText || "").trim() !== "");
+
+        const url = searchText
+          ? `http://localhost:3000/queries?userEmail=${user?.email}&searchText=${searchText}`
+          : `http://localhost:3000/queries?userEmail=${user?.email}`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        setMyQueries(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch data", error);
+
+        setMyQueries([]);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [searchText, user?.email]);
 
   if (loading) {
     return <NormalLoader />;
-  }
-
-  if (!myQueries || myQueries.length === 0) {
-    return <NoQueryText />;
   }
 
   return (
@@ -51,6 +56,8 @@ const MyQueries = () => {
             title={`All Product Queries (${myQueries.length}) `}
           />
           <div className="flex items-center gap-3 ">
+            
+            {/* Search Fuction */}
             <label className="input w-70 ring-0 focus-within:ring-0 focus-within:ring-primary focus-within:outline-none">
               <div className="opacity-50">
                 <IoIosSearch size={20} />
@@ -60,6 +67,7 @@ const MyQueries = () => {
                 type="search"
                 name="search"
                 placeholder="Search Product"
+                onChange={(e) => setSearchText(e.target.value)}
               />
             </label>
 
@@ -70,16 +78,25 @@ const MyQueries = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-10">
-          {myQueries.map((query) => (
-            <MyQueryCard
-              key={query._id}
-              setMyQueries={setMyQueries}
-              myQueries={myQueries}
-              query={query}
-            />
-          ))}
-        </div>
+        {!myQueries || myQueries.length === 0 ? (
+          isSearcing ? (
+            <NoSeachResult searchText={searchText} />
+          ) : (
+            <NoQueryText />
+          )
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-10">
+            {myQueries.map((query) => (
+              <MyQueryCard
+                searchText={searchText}
+                key={query._id}
+                setMyQueries={setMyQueries}
+                myQueries={myQueries}
+                query={query}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -144,7 +144,6 @@ const Footer = () => {
             Copyright © {new Date().getFullYear()} - Developed by{" "}
             <span className="poppins-semibold text-primary underline">
               <Link
-                _black
                 to={
                   "https://www.facebook.com/share/1AVLBcF6W8/?mibextid=wwXIfr"
                 }

@@ -15,6 +15,7 @@ const ProfileInformation = () => {
           type="text"
           className="input w-full focus-within:outline-none focus-within:border-primary"
           defaultValue={user?.displayName}
+          disabled
         />
       </div>
 
@@ -27,6 +28,7 @@ const ProfileInformation = () => {
           type="email"
           className="input w-full focus-within:outline-none focus-within:border-primary"
           defaultValue={user?.email}
+          disabled
         />
       </div>
 
@@ -38,6 +40,7 @@ const ProfileInformation = () => {
           name="bio"
           className="textarea w-full focus-within:outline-none focus-within:border-primary"
           rows="4"
+          disabled
         ></textarea>
       </div>
 
@@ -50,6 +53,7 @@ const ProfileInformation = () => {
           type="url"
           className="input w-full focus-within:outline-none focus-within:border-primary"
           defaultValue={user?.photoURL}
+          disabled
         />
       </div>
     </form>
