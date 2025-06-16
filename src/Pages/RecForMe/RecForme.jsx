@@ -51,13 +51,13 @@ const RecForme = () => {
   return (
     <section className={`${responsive} mt-10`}>
       {/* Title Box */}
-      <div className="flex justify-between items-center py-8 px-10 bg-primary backdrop-blur-3xl rounded-2xl">
+      <div className="flex justify-between items-center py-8 px-5 md:px-10 bg-primary backdrop-blur-3xl rounded-2xl">
         <Title
           className={"text-white"}
           title={`Recommendations For My Queries`}
         />
 
-        <span className="text-5xl text-white">
+        <span className="hidden md:block text-5xl text-white">
           <FaRegCommentAlt />
         </span>
       </div>

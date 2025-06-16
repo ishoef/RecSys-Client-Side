@@ -13,7 +13,7 @@ const ProfileInformation = ({
   console.log(user);
   console.log(user.displayName);
   return (
-    <form className="grid grid-cols-2 gap-5 poppins">
+    <form className="grid md:grid-cols-2 gap-5 poppins">
       {/* Full Name */}
       <div className="flex flex-col gap-2">
         <label htmlFor="fullName">Full Name</label>
@@ -46,7 +46,7 @@ const ProfileInformation = ({
       </div>
 
       {/* Bio */}
-      <div className="flex flex-col gap-2 col-span-2">
+      <div className="flex flex-col gap-2 md:col-span-2">
         <label htmlFor="bio">
           Bio{" "}
           <span className="text-xs text-gray-400">(Changes not allowed)</span>
@@ -65,7 +65,7 @@ const ProfileInformation = ({
       </div>
 
       {/* Photo URL */}
-      <div className="flex flex-col gap-2 w-full col-span-2">
+      <div className="flex flex-col gap-2 w-full md:col-span-2">
         <label htmlFor="photoURL">Photo URL</label>
         <input
           id="fullName"

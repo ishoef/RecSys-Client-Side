@@ -114,15 +114,15 @@ const Profile = () => {
 
   return (
     <>
-      <div className="p-5 w-full h-full flex flex-col gap-6 justify-center items-center border border-gray-300 rounded-xl shadow">
+      <div className="p-3 md:p-5 w-full h-full flex flex-col gap-6 justify-center items-center border border-gray-300 rounded-xl shadow">
         {/* Profile Informations */}
         <div className="flex justify-between w-full">
           <div className="flex items-center gap-2 text-2xl poppins-semibold">
             <LuUser />
-            <h1>Profile Information</h1>
+            <h1 className="hidden md:block">Profile Information</h1>
           </div>
 
-          <div className=" space-x-5">
+          <div className="space-x-2 md:space-x-5">
             {/* Cancel Button */}
             <button
               onClick={() => setIsEditing(false)}
@@ -134,7 +134,7 @@ const Profile = () => {
               // style={{ display: isEditing ? "inline-block" : "none" }}
             >
               <p className="flex items-center gap-2">
-                <RxCross2 /> Cancel
+                <RxCross2 /> <span className="hidden md:block">Cancel</span>
               </p>
             </button>
 
@@ -169,8 +169,8 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-6 gap-10 w-full">
-          <div className="col-span-2 gap-2 flex flex-col items-center">
+        <div className="grid md:grid-cols-6 my-2 md:my-0 gap-10 w-full">
+          <div className=" md:col-span-2 gap-2 flex flex-col items-center">
             <ProfilePhoto
               proPic={user?.photoURL}
               className={"w-48 h-48 rounded-full border-2 border-green-600"}
@@ -181,7 +181,7 @@ const Profile = () => {
             <p className="poppins">Joined Since {formatted}</p>
             <p className="poppins">At {formattedTime}</p>
           </div>
-          <div className="col-span-4 ">
+          <div className="md:col-span-4 ">
             <ProfileInformation
               setUpdateName={setUpdateName}
               setPhotoURL={setPhotoURL}
@@ -198,7 +198,7 @@ const Profile = () => {
       </div> */}
 
       {/* Quic Actions */}
-      <div className="w-full h-full p-5 border border-gray-300 rounded-xl shadow">
+      <div className="w-full h-full p-3 md:p-5 border border-gray-300 rounded-xl shadow">
         <div className="space-y-5">
           <div className="flex items-center gap-2">
             <p className="text-2xl">
@@ -206,7 +206,7 @@ const Profile = () => {
             </p>
             <h1 className="text-2xl poppins font-semibold">Quick Actions</h1>
           </div>
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-5">
             {btnsInfo.map((btn, index) => (
               <Button
                 key={index}

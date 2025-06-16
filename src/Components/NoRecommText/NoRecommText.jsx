@@ -18,7 +18,7 @@ const NoRecommText = ({ btnText }) => {
         <p className="text-gray-500 text-center">
           You can add a recommendations by clicking the button below.
         </p>
-        <Link to={"/queries"} className="btn btn-primary mt-4 text-[16px]">
+        <Link to={"/queries"} className="btn btn-primary mt-4 text-[16px] py-6 md:py-0">
           {btnText ? btnText : "Add Recommendation"}
         </Link>
       </div>

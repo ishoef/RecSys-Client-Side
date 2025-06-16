@@ -22,7 +22,7 @@ const DetailCard = ({ details }) => {
 
   console.log(details);
   return (
-    <div className="w-6/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-10">
+    <div className="md:w-6/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-4 md:p-10">
       <div className="flex flex-col gap-5">
         <div className="flex items-center gap-4 border p-3 rounded-2xl border-gray-400 shadow">
           <div>
@@ -40,7 +40,8 @@ const DetailCard = ({ details }) => {
           </div>
         </div>
         <h1 className="poppins-semibold text-primary text-2xl">{queryTitle}</h1>
-        <div className="flex justify-between gap-5 h-full flex-1">
+        
+        <div className="flex flex-col md:flex-row justify-between gap-5 h-full flex-1">
           <div className="basis-1/3 ">
             <img
               className="rounded-xl w-full h-50"
@@ -62,7 +63,7 @@ const DetailCard = ({ details }) => {
             <div className="flex items-center gap-2 text-primary text-[18px] poppins-regular">
               {" "}
               <AiOutlineLike size={24} color="#14b8a6" />
-              {details?.recommendations?.length} Recommendations
+              {details?.recommendations?.length || 0} Recommendations
             </div>
           </div>
         </div>

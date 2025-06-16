@@ -65,30 +65,31 @@ const WhatYouGet = () => {
   ];
 
   return (
-    <div className={`${responsive} my-20`}>
-      <div className="bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 w-full  rounded-2xl p-16 flex items-center gap-10">
-        <div className="basis-1/2 flex flex-col items-start gap-5">
-          <Title title={"What You Get With RecoSyS"} className={"text-white"} />
-          <p className="poppins text-white">
+    <div className={`${responsive} my-10 md:my-20`}>
+      <div className="bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 w-full  rounded-2xl p-5 md:p-16 flex flex-col md:flex-row items-center gap-10">
+        
+        <div className="md:basis-1/2 flex flex-col md:items-start items-center gap-5">
+          <Title title={"What You Get With RecoSyS"} className={"text-white text-center md:text-start"} />
+          <p className="poppins text-center md:text-start text-white">
             More than just product recommendations - join a community that's
             changing how people discover and schoose products.
           </p>
 
           <div className="grid grid-cols-2 gap-5 w-full">
             {benefits.map((benefit) => (
-              <div className=" bg-green-200/20 flex items-center gap-3 p-4 text-white poppins rounded-2xl">
+              <div className=" bg-green-200/20 flex flex-col md:flex-row items-center gap-3 p-4 text-white poppins rounded-2xl">
                 <p className="text-2xl">{benefit.icon}</p>
-                <p>{benefit.title}</p>
+                <p className="text-center">{benefit.title}</p>
               </div>
             ))}
           </div>
           <Button
             to={user ? "/queries" : "/auth/register"}
             text={"Join Our Community"}
-            className={"bg-white btn rounded-3xl poppins text-primary"}
+            className={"bg-white btn rounded-3xl poppins text-primary "}
           />
         </div>
-        <div className=" w-full basis-1/2 ">
+        <div className=" w-full md:basis-1/2 ">
           <div className="grid grid-cols-2 gap-5">
             {stats.map((stat) => (
               <div className="flex flex-col hover:scale-102 transition-transform duration-300 ease-in-out items-center gap-3 px-5 py-6 text-white  bg-green-200/20 rounded-2xl">

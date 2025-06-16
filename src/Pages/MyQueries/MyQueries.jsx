@@ -64,14 +64,14 @@ const MyQueries = () => {
   return (
     <section className={`${responsive} mt-10`}>
       <div>
-        <div className="flex justify-between items-center py-8 px-5 bg-primary backdrop-blur-3xl rounded-2xl">
+        <div className="flex flex-col gap-3 md:gap-0 md:flex-row justify-between items-center py-8 px-5 bg-primary backdrop-blur-3xl rounded-2xl">
           <Title
-            className={"text-white"}
+            className={"text-white text-xl md:text-2xl"}
             title={`All Product Queries (${myQueries.length}) `}
           />
-          <div className="flex items-center gap-3 ">
+          <div className="flex flex-col md:flex-row items-center gap-3 ">
             {/* Search Fuction */}
-            <label className="input w-70 ring-0 focus-within:ring-0 focus-within:ring-primary focus-within:outline-none">
+            <label className="input hidden md:block w-70 ring-0 focus-within:ring-0 focus-within:ring-primary focus-within:outline-none">
               <div className="opacity-50">
                 <IoIosSearch size={20} />
               </div>

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { responsive } from "../../Layouts/RootLayout";
 import { NavLink, Outlet } from "react-router";
-import { CiUser } from "react-icons/ci";
 import { LuUserRound } from "react-icons/lu";
 import { VscLayersActive } from "react-icons/vsc";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -36,7 +35,7 @@ const MyProfile = () => {
 
   return (
     <section className={`${responsive} my-10`}>
-      <div className="lg:w-9/12 mx-auto border border-gray-300 rounded-xl shadow p-5 flex flex-col gap-5">
+      <div className="lg:w-9/12 mx-auto border border-gray-300 rounded-xl shadow p-3 md:p-5 flex flex-col gap-5">
         <div className="rounded p-1 bg-gray-100 ">
           <nav>
             <ul className="grid grid-cols-4 gap-1">
@@ -51,9 +50,9 @@ const MyProfile = () => {
                   }
                 >
                   <li>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 my-2 md:my-0">
                       <span>{item.icon}</span>
-                      <span>{item.name}</span>
+                      <span className="hidden md:block">{item.name}</span>
                     </div>
                   </li>
                 </NavLink>

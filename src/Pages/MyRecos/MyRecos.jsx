@@ -52,13 +52,13 @@ const MyRecos = () => {
   return (
     <section className={`${responsive} mt-10`}>
       {/* Title Box */}
-      <div className="flex justify-between items-center py-8 px-10 bg-primary backdrop-blur-3xl rounded-2xl">
+      <div className="flex justify-between items-center py-8 px-5 text-center md:px-10 bg-primary backdrop-blur-3xl rounded-2xl">
         <Title
           className={"text-white"}
           title={`My Recommendations (${myRecomms.length})`}
         />
 
-        <span className="text-5xl text-white">
+        <span className="text-5xl hidden md:block text-white">
           <FaRegCommentAlt />
         </span>
       </div>
