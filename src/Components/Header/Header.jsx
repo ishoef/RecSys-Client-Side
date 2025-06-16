@@ -68,44 +68,48 @@ const Header = () => {
                 </NavLink>
               </li>
 
-              <li>
-                <NavLink
-                  to="/recforme"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                      : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
-                  }
-                >
-                  Recommendations For Me
-                </NavLink>
-              </li>
+              {user && (
+                <>
+                  <li>
+                    <NavLink
+                      to="/recforme"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
+                          : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                      }
+                    >
+                      Recommendations For Me
+                    </NavLink>
+                  </li>
 
-              <li>
-                <NavLink
-                  to="/myqueries"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                      : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
-                  }
-                >
-                  My Queries
-                </NavLink>
-              </li>
+                  <li>
+                    <NavLink
+                      to="/myqueries"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
+                          : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                      }
+                    >
+                      My Queries
+                    </NavLink>
+                  </li>
 
-              <li>
-                <NavLink
-                  to="/myrecos"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                      : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
-                  }
-                >
-                  My Recommendations
-                </NavLink>
-              </li>
+                  <li>
+                    <NavLink
+                      to="/myrecos"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
+                          : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                      }
+                    >
+                      My Recommendations
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
           <div className="flex gap-4 items-center">

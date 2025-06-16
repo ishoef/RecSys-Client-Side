@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const AddQueryForm = () => {
-
   const { user } = use(AuthContext);
   console.log(user);
   const navigate = useNavigate();
@@ -41,7 +40,7 @@ const AddQueryForm = () => {
     console.log(queryData);
 
     // create a query
-    fetch("http://localhost:3000/queries", {
+    fetch("https://reco-sys-server-side.vercel.app/queries", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -60,22 +59,24 @@ const AddQueryForm = () => {
             showCancelButton: true,
             cancelButtonColor: "#d33",
             cancelButtonText: "Go to My Queries!",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              navigate("/addquery");
-              form.reset();
-            } else {
-              navigate("/myqueries");
-            }
-          }).catch((error) => {
-            console.error("Error creating query:", error);
-            Swal.fire({
-              title: "Error!",
-              text: "There was an error creating your query. Please try again.",
-              icon: "error",
-              confirmButtonText: "OK",
+          })
+            .then((result) => {
+              if (result.isConfirmed) {
+                navigate("/addquery");
+                form.reset();
+              } else {
+                navigate("/myqueries");
+              }
+            })
+            .catch((error) => {
+              console.error("Error creating query:", error);
+              Swal.fire({
+                title: "Error!",
+                text: "There was an error creating your query. Please try again.",
+                icon: "error",
+                confirmButtonText: "OK",
+              });
             });
-          });
           // Reset the form after successful submission
           form.reset();
         }

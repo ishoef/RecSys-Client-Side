@@ -34,7 +34,7 @@ const MyQueryCard = ({ query, setMyQueries, myQueries }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         // send delete request to the server
-        fetch(`http://localhost:3000/queries/${_id}`, {
+        fetch(`https://reco-sys-server-side.vercel.app/queries/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

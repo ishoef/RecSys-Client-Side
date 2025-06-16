@@ -18,9 +18,8 @@ const QueryDetails = () => {
   }, []);
 
   useEffect(() => {
-
     fetch(
-      `http://localhost:3000/queries/${params.id}?userEmail=${user?.email}`,
+      `https://reco-sys-server-side.vercel.app/queries/${params.id}?userEmail=${user?.email}`,
       {
         method: "GET",
         headers: {

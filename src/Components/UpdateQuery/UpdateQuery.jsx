@@ -42,7 +42,7 @@ const UpdateQuery = () => {
     };
 
     // Send Update Data To the Server
-    fetch(`http://localhost:3000/queries/${queryId.id}`, {
+    fetch(`https://reco-sys-server-side.vercel.app/queries/${queryId.id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

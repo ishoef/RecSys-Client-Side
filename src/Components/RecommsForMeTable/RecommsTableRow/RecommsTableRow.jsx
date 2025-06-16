@@ -4,7 +4,7 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router";
 import ProfilePhoto from "../../ProfilePhoto/ProfilePhoto";
 
-const RecommsTableRow = ({ dlt, recomm }) => {
+const RecommsTableRow = ({ recomm }) => {
   const {
     queryTitle,
     recommenderName,
@@ -54,21 +54,12 @@ const RecommsTableRow = ({ dlt, recomm }) => {
       </td>
       <td className="space-y-3">
         <Link
-          to={`/myrecomms/update/${recomm._id}`}
+          to={`/details/${queryId}`}
           type="button"
-          className="hover:scale-102 hover:shadow cursor-pointer bg-primary w-fit flex items-center justify-center p-2 rounded"
+          className="btn border border-gray-400 hover:scale-102 hover:bg-primary hover:text-white hover:shadow cursor-pointer bg-transparent w-fit flex items-center justify-center p-2 rounded"
         >
-          <IoCreateOutline color="white" />
+          <p className="poppins">View Detials</p>
         </Link>
-        {dlt && (
-          <button
-            //   onClick={() => handleDelete(recomm._id)}
-            type="button"
-            className="hover:scale-102 hover:shadow cursor-pointer bg-primary w-fit flex items-center justify-center p-2 rounded"
-          >
-            <MdDelete color="white" />
-          </button>
-        )}
       </td>
     </tr>
   );

@@ -34,13 +34,16 @@ const QueryTableRow = ({ recomm, setMyRecomms }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/queries/${queryId}/recommendation`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ recommenderEmail, title, creationTime }),
-        })
+        fetch(
+          `https://reco-sys-server-side.vercel.app/queries/${queryId}/recommendation`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ recommenderEmail, title, creationTime }),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.modifiedCount > 0) {

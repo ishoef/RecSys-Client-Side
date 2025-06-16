@@ -41,7 +41,7 @@ const AddRecomForm = ({ details, setDetails }) => {
     console.log(recommData);
 
     fetch(
-      `http://localhost:3000/queries/${details._id}/recommendations?userEmail=${user?.email}`,
+      `https://reco-sys-server-side.vercel.app/queries/${details._id}/recommendations?userEmail=${user?.email}`,
       {
         method: "POST",
         headers: {
@@ -53,7 +53,7 @@ const AddRecomForm = ({ details, setDetails }) => {
     ).then(() => {
       // Re-fetch updated query
       fetch(
-        `http://localhost:3000/queries/${details._id}?userEmail=${user?.email}`,
+        `https://reco-sys-server-side.vercel.app/queries/${details._id}?userEmail=${user?.email}`,
         {
           method: "GET",
           headers: {

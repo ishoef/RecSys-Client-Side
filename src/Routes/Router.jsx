@@ -104,7 +104,7 @@ export const router = createBrowserRouter([
         path: "/myqueries/update/:id",
         Component: UpdateQuery,
         loader: () => {
-          return fetch(`http://localhost:3000/queries`);
+          return fetch(`https://reco-sys-server-side.vercel.app/queries`);
         },
       },
     ],

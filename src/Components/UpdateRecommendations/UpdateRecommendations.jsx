@@ -78,19 +78,22 @@ const UpdateRecommendations = ({
 
     console.log(recommData);
 
-    fetch(`http://localhost:3000/queries/${recomm.queryId}/recommendation`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(recommData),
-    })
+    fetch(
+      `https://reco-sys-server-side.vercel.app/queries/${recomm.queryId}/recommendation`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(recommData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("Update successful", data);
         if (data.modifiedCount > 0) {
           fetch(
-            `http://localhost:3000/given-recommendations?userEmail=${user?.email}`,
+            `https://reco-sys-server-side.vercel.app/given-recommendations?userEmail=${user?.email}`,
             {
               method: "GET",
               headers: {

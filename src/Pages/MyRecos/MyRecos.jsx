@@ -20,7 +20,7 @@ const MyRecos = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/given-recommendations?userEmail=${user.email}`,
+      `https://reco-sys-server-side.vercel.app/given-recommendations?userEmail=${user.email}`,
       {
         method: "GET",
         headers: {

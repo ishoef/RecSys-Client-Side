@@ -26,7 +26,7 @@ const RecForme = () => {
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `http://localhost:3000/recommendations-for-me?userEmail=${user.email}`,
+        `https://reco-sys-server-side.vercel.app/recommendations-for-me?userEmail=${user.email}`,
         {
           method: "GET",
           headers: {

@@ -19,8 +19,8 @@ const MyQueries = () => {
   const [isSearcing, setIsSearching] = useState(false);
 
   useEffect(() => {
-      document.title = "My Queries | RecSyS";
-    }, []);
+    document.title = "My Queries | RecSyS";
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,18 +28,18 @@ const MyQueries = () => {
         setIsSearching((searchText || "").trim() !== "");
 
         const url = searchText
-          ? `http://localhost:3000/queries?userEmail=${user?.email}&searchText=${searchText}`
-          : `http://localhost:3000/queries?userEmail=${user?.email}`;
+          ? `https://reco-sys-server-side.vercel.app/queries?userEmail=${user?.email}&searchText=${searchText}`
+          : `https://reco-sys-server-side.vercel.app/queries?userEmail=${user?.email}`;
 
         const token = user.accessToken;
         console.log(token);
-        
+
         const res = await fetch(url, {
           method: "GET",
           headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type' : 'application/json'
-          }
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         });
         const data = await res.json();
 
@@ -54,7 +54,7 @@ const MyQueries = () => {
     };
 
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchText, user?.email]);
 
   if (loading) {
@@ -70,7 +70,6 @@ const MyQueries = () => {
             title={`All Product Queries (${myQueries.length}) `}
           />
           <div className="flex items-center gap-3 ">
-            
             {/* Search Fuction */}
             <label className="input w-70 ring-0 focus-within:ring-0 focus-within:ring-primary focus-within:outline-none">
               <div className="opacity-50">

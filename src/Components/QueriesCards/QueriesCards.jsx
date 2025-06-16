@@ -16,13 +16,13 @@ const QueriesCards = ({ sixCard, view, searchText, setQueriesCount }) => {
       try {
         setIsSearching((searchText || "").trim() !== "");
         const url = searchText
-          ? `http://localhost:3000/queries?searchText=${searchText}`
-          : `http://localhost:3000/queries`;
+          ? `https://reco-sys-server-side.vercel.app/queries?searchText=${searchText}`
+          : `https://reco-sys-server-side.vercel.app/queries`;
 
         const res = await fetch(url);
         const data = await res.json();
         setQueries(data);
-        if (setQueriesCount) setQueriesCount(data.length); 
+        if (setQueriesCount) setQueriesCount(data.length);
         setLoading(false);
 
         console.log("Fetched queries:", data);
@@ -34,7 +34,7 @@ const QueriesCards = ({ sixCard, view, searchText, setQueriesCount }) => {
     };
 
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchText, user?.email]);
 
   const sixCards = [...queries]

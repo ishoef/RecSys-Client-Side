@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
       // if (currentUser?.email) {
       //   const userData = { email: currentUser.email };
       //   axios
-      //     .post("http://localhost:3000/jwt", userData)
+      //     .post("https://reco-sys-server-side.vercel.app/jwt", userData)
       //     .then((res) => {
       //       console.log(res.data);
       //     })
