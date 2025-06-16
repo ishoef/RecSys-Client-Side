@@ -71,7 +71,7 @@ const MyQueries = () => {
           />
           <div className="flex flex-col md:flex-row items-center gap-3 ">
             {/* Search Fuction */}
-            <label className="input hidden md:block w-70 ring-0 focus-within:ring-0 focus-within:ring-primary focus-within:outline-none">
+            <label className="input w-70 ring-0 focus-within:ring-0 focus-within:ring-primary focus-within:outline-none">
               <div className="opacity-50">
                 <IoIosSearch size={20} />
               </div>

@@ -90,13 +90,13 @@ const UpdateQuery = () => {
   };
 
   return (
-    <div className="w-6/12 mx-auto my-10 ">
+    <div className="w-11/12 md:w-6/12 mx-auto my-10  ">
       <Link to={"/myqueries"} className="flex items-center gap-2">
         <IoArrowBack />
 
         <p className="poppins text-gray-700">Back to My Queries</p>
       </Link>
-      <div className=" border border-gray-400 shadow-xl rounded-2xl p-10 mt-6">
+      <div className=" border border-gray-400 shadow-xl rounded-2xl p-4 md:p-10 mt-6">
         <form onSubmit={handleUpdateQuery} className="flex flex-col gap-4">
           <div className="flex items-center justify-between border p-4 rounded-2xl shadow border-gray-400 mb-5">
             <h1 className="poppins-semibold text-2xl text-primary">

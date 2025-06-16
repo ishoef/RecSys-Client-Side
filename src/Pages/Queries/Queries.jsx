@@ -21,11 +21,11 @@ const Queries = () => {
   return (
     <section className={`${responsive} mt-10`}>
       <div className="flex flex-col">
-        <div className="flex justify-between items-center py-8 px-5 bg-primary/10 backdrop-blur-3xl border border-primary/60 rounded-2xl">
+        <div className="flex flex-col md:flex-row gap-3 md:gap-0 justify-between items-center py-8 px-5 bg-primary/10 backdrop-blur-3xl border border-primary/60 rounded-2xl">
           <Title title={`All Product Queries (${queriesCount})`} />
-          <div className="flex items-center gap-3 ">
+          <div className="flex flex-col md:flex-row items-center gap-3 ">
             {/* Search Option */}
-            <label className="input w-100 ring-0 focus-within:ring-0 focus-within:outline-none">
+            <label className="input md:w-100 ring-0 focus-within:ring-0 focus-within:outline-none">
               <div className="opacity-50">
                 <IoIosSearch size={20} />
               </div>
@@ -39,21 +39,23 @@ const Queries = () => {
               />
             </label>
 
-            <NavLink
-              onClick={() => setView("grid3Col")}
-              className="border hover:text-primary border-gray-400 p-[10px] rounded"
-            >
-              <LuLayoutGrid />
-            </NavLink>
-            <NavLink
-              onClick={() => setView("grid2Col")}
-              className="border hover:text-primary border-gray-400 p-[10px] rounded"
-            >
-              <FaList />
-            </NavLink>
-            <NavLink className="border hover:text-primary border-gray-400 p-[10px] rounded">
-              <CiGrid2H />
-            </NavLink>
+            <div className="flex gap-2">
+              <NavLink
+                onClick={() => setView("grid3Col")}
+                className="border hover:text-primary border-gray-400 p-[10px] rounded"
+              >
+                <LuLayoutGrid />
+              </NavLink>
+              <NavLink
+                onClick={() => setView("grid2Col")}
+                className="border hover:text-primary border-gray-400 p-[10px] rounded"
+              >
+                <FaList />
+              </NavLink>
+              <NavLink className="border hover:text-primary border-gray-400 p-[10px] rounded">
+                <CiGrid2H />
+              </NavLink>
+            </div>
           </div>
         </div>
         <hr className="mt-5 border border-gray-300" />
