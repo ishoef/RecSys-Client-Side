@@ -12,7 +12,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Register = () => {
   // Auth Context Data
-  const { createUser, auth, setUser } = useContext(AuthContext);
+  const { createUser, auth, setUser, updateUser } = useContext(AuthContext);
   const [showError, setShowError] = useState(null);
 
   useEffect(() => {
@@ -26,18 +26,15 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowError(null);
-    console.log("i am clickng for submit form");
-    const form = e.target;
-    const formData = {
-      name: form.name.value,
-      photoURL: form.photoUrl.value,
-      email: form.email.value,
-      password: form.password.value,
-    };
 
-    console.log(formData);
-    const email = formData.email;
-    const password = formData.password;
+    console.log("i am clickng for submit form");
+
+    const form = e.target;
+
+    const name = form.name.value;
+    const photoURL = form.photoUrl.value;
+    const email = form.email.value;
+    const password = form.password.value;
 
     // error Code
     const hasUppercase = /[A-Z]/.test(password);
@@ -86,13 +83,16 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        setUser(user);
-        navigate("/");
-        Swal.fire({
-          title: "Registration Successful",
-          text: "You have successfully registered!",
-          icon: "success",
-          confirmButtonText: "OK",
+        updateUser({ displayName: name, photoURL: photoURL }).then(() => {
+          setUser(user);
+          console.log({ ...user, displayName: name, photoURL: photoURL });
+          navigate("/");
+          Swal.fire({
+            title: "Registration Successful",
+            text: "You have successfully registered!",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
         });
       })
       .catch((error) => {

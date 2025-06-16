@@ -4,10 +4,7 @@ const ItemsLoader = () => {
   const item = (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md animate-pulse ">
       <div className="w-full">
-        <img
-          className="w-full rounded-t-xl bg-gray-300 dark:bg-gray-700 h-50 md:h-50 lg:h-60"
-          src="#"
-        />
+        <div className="w-full rounded-t-xl bg-gray-300 dark:bg-gray-700 h-50 md:h-50 lg:h-60"></div>
       </div>
       <div className="p-4">
         <div className="w-full">

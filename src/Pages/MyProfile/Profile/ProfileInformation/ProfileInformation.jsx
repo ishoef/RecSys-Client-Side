@@ -10,6 +10,8 @@ const ProfileInformation = ({
 }) => {
   const { user } = use(AuthContext);
 
+  console.log(user);
+  console.log(user.displayName);
   return (
     <form className="grid grid-cols-2 gap-5 poppins">
       {/* Full Name */}
