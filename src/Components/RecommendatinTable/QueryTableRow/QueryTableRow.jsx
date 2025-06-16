@@ -39,7 +39,7 @@ const QueryTableRow = ({ recomm, setMyRecomms }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ recommenderEmail }),
+          body: JSON.stringify({ recommenderEmail, title, creationTime }),
         })
           .then((res) => res.json())
           .then((data) => {
@@ -57,7 +57,9 @@ const QueryTableRow = ({ recomm, setMyRecomms }) => {
                   (rec) =>
                     !(
                       rec.queryId === queryId &&
-                      rec.recommenderEmail === recommenderEmail
+                      rec.recommenderEmail === recommenderEmail &&
+                      rec.title === title &&
+                      rec.creationTime === creationTime
                     )
                 )
               );
@@ -73,7 +75,6 @@ const QueryTableRow = ({ recomm, setMyRecomms }) => {
       }
     });
   };
-  
 
   return (
     <>

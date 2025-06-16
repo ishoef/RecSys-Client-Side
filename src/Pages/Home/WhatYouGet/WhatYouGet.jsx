@@ -66,7 +66,7 @@ const WhatYouGet = () => {
 
   return (
     <div className={`${responsive} my-20`}>
-      <div className="bg-gradient-to-r from-cyan-700 via-teal-500 to-emerald-500 w-full  rounded-2xl p-16 flex items-center gap-10">
+      <div className="bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 w-full  rounded-2xl p-16 flex items-center gap-10">
         <div className="basis-1/2 flex flex-col items-start gap-5">
           <Title title={"What You Get With RecoSyS"} className={"text-white"} />
           <p className="poppins text-white">

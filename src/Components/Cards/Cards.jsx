@@ -17,8 +17,6 @@ const Cards = ({ queiry }) => {
     userPhotoURL,
   } = queiry;
 
-  console.log(queiry);
-
   return (
     <div className="transformation hover:scale-102 duration-300 border border-gray-400 rounded-xl flex flex-col h-full cursor-pointer shadow-sm">
       {/* Card Image */}

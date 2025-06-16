@@ -20,13 +20,20 @@ const RecForme = () => {
   ];
 
   useEffect(() => {
-      document.title = "Recommendation for Me | RecSyS";
-    }, []);
+    document.title = "Recommendation for Me | RecSyS";
+  }, []);
 
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `http://localhost:3000/recommendations-for-me?userEmail=${user.email}`
+        `http://localhost:3000/recommendations-for-me?userEmail=${user.email}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${user?.accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
       )
         .then((res) => res.json())
         .then((data) => {
@@ -37,7 +44,7 @@ const RecForme = () => {
           console.log("Error fetching received recommendations:", error);
         });
     }
-  }, [user?.email]);
+  }, [user?.email, user?.accessToken]);
 
   console.log(recForMe);
 

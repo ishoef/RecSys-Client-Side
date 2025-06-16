@@ -8,12 +8,15 @@ const RecommsTableRow = ({ dlt, recomm }) => {
   const {
     queryTitle,
     recommenderName,
+    recommenderPhoto,
     creationDate,
     creationTime,
     recommendProductName,
     productImageURL,
     queryId,
   } = recomm;
+
+  console.log(recomm);
 
   return (
     <tr>
@@ -39,7 +42,7 @@ const RecommsTableRow = ({ dlt, recomm }) => {
       </td>
       <td>
         <div className="flex items-center gap-3">
-          <ProfilePhoto />
+          <ProfilePhoto proPic={recommenderPhoto} />
           <p>{recommenderName}</p>
         </div>
       </td>

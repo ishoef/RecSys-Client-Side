@@ -21,8 +21,6 @@ const MyQueryCard = ({ query, setMyQueries, myQueries }) => {
     userPhotoURL,
   } = query;
 
-  console.log(query);
-
   const handleDelete = () => {
     Swal.fire({
       timer: 5000,

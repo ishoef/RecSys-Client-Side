@@ -2,11 +2,11 @@ import React from "react";
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto";
 import { MdOutlineDateRange } from "react-icons/md";
 import { AiOutlineLike } from "react-icons/ai";
-import { AuthContext } from "../../Context/AuthProvider";
 
 const DetailCard = ({ details }) => {
 
   console.log(details);
+
 
   const {
     createDate,
@@ -16,13 +16,17 @@ const DetailCard = ({ details }) => {
     productBrand,
     boycottingReson,
     userName,
+    userPhotoURL,
   } = details;
+
+
+  console.log(details);
   return (
     <div className="w-6/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-10">
       <div className="flex flex-col gap-5">
         <div className="flex items-center gap-4 border p-3 rounded-2xl border-gray-400 shadow">
           <div>
-            <ProfilePhoto />
+            <ProfilePhoto proPic={userPhotoURL} />
           </div>
           <div>
             <h1 className="poppins-semibold">{userName}</h1>
@@ -58,7 +62,7 @@ const DetailCard = ({ details }) => {
             <div className="flex items-center gap-2 text-primary text-[18px] poppins-regular">
               {" "}
               <AiOutlineLike size={24} color="#14b8a6" />
-              {details?.recommendations?.length } Recommendations
+              {details?.recommendations?.length} Recommendations
             </div>
           </div>
         </div>

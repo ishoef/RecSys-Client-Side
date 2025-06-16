@@ -31,7 +31,16 @@ const MyQueries = () => {
           ? `http://localhost:3000/queries?userEmail=${user?.email}&searchText=${searchText}`
           : `http://localhost:3000/queries?userEmail=${user?.email}`;
 
-        const res = await fetch(url);
+        const token = user.accessToken;
+        console.log(token);
+        
+        const res = await fetch(url, {
+          method: "GET",
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type' : 'application/json'
+          }
+        });
         const data = await res.json();
 
         setMyQueries(data);
@@ -45,6 +54,7 @@ const MyQueries = () => {
     };
 
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchText, user?.email]);
 
   if (loading) {

@@ -15,12 +15,19 @@ const MyRecos = () => {
   console.log(user.email);
 
   useEffect(() => {
-      document.title = "My Recommendations | RecSyS";
-    }, []);
+    document.title = "My Recommendations | RecSyS";
+  }, []);
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/given-recommendations?userEmail=${user.email}`
+      `http://localhost:3000/given-recommendations?userEmail=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${user?.accessToken}`,
+          "Content-Type": "application/json",
+        },
+      }
     )
       .then((res) => res.json())
       .then((data) => {
@@ -30,8 +37,7 @@ const MyRecos = () => {
       .catch((err) => {
         console.log("Error Fetching Recommendations:", err);
       });
-  }, [user?.email]);
-  
+  }, [user?.email, user?.accessToken]);
 
   const tableHeaderText = [
     "Product",
@@ -40,7 +46,7 @@ const MyRecos = () => {
     "Date",
     "Actions",
   ];
-    
+
   console.log(myRecomms);
 
   return (

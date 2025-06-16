@@ -40,15 +40,28 @@ const AddRecomForm = ({ details, setDetails }) => {
 
     console.log(recommData);
 
-    fetch(`http://localhost:3000/queries/${details._id}/recommendations`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(recommData),
-    }).then(() => {
+    fetch(
+      `http://localhost:3000/queries/${details._id}/recommendations?userEmail=${user?.email}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${user?.accessToken}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(recommData),
+      }
+    ).then(() => {
       // Re-fetch updated query
-      fetch(`http://localhost:3000/queries/${details._id}`)
+      fetch(
+        `http://localhost:3000/queries/${details._id}?userEmail=${user?.email}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${user?.accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then((res) => res.json())
         .then((updatedData) => {
           setDetails(updatedData); // set updated query including new recommendations

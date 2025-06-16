@@ -30,8 +30,8 @@ const AuthProvider = ({ children }) => {
 
   // Update the User Information
   const updateUser = (updateData) => {
-    return updateProfile(auth.currentUser, updateData)
-  }
+    return updateProfile(auth.currentUser, updateData);
+  };
 
   // User Logout
   const LogOut = () => {
@@ -42,6 +42,18 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+
+      // // API Secure
+      // if (currentUser?.email) {
+      //   const userData = { email: currentUser.email };
+      //   axios
+      //     .post("http://localhost:3000/jwt", userData)
+      //     .then((res) => {
+      //       console.log(res.data);
+      //     })
+      //     .catch((error) => console.log(error));
+      // }
+      // console.log("user in the auth state change", currentUser);
     });
     return () => {
       unsubscribe();
