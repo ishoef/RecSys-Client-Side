@@ -53,9 +53,7 @@ const Queries = () => {
                 >
                   <FaList />
                 </NavLink>
-                <NavLink className="border hover:text-primary border-gray-400 p-[10px] rounded">
-                  <CiGrid2H />
-                </NavLink>
+                
               </div>
             </div>
           </div>
