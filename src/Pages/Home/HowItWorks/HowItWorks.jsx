@@ -31,8 +31,8 @@ const HowItWorks = () => {
       <div className="space-y-5  ">
         <Title title={"How It Works"} className={"text-primary text-center"} />
         <div className="grid lg:grid-cols-3 gap-5">
-          {state.map((stat) => (
-            <div className="flex flex-col hover:scale-102 transition-transform duration-300 ease-in-out items-center gap-6 px-8 py-12 rounded-2xl text-center border cursor-pointer border-gray-300 shadow-xl">
+          {state.map((stat, index) => (
+            <div key={index} className="flex flex-col hover:scale-102 transition-transform duration-300 ease-in-out items-center gap-6 px-8 py-12 rounded-2xl text-center border cursor-pointer border-gray-300 shadow-xl">
               <p
                 className={`text-3xl bg-primary p-4 text-white rounded-2xl shadow-xl bg-gradient-to-r opacity-90 ${stat.gradient}`}
               >
