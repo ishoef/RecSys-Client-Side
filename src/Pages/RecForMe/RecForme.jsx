@@ -64,11 +64,11 @@ const RecForme = () => {
 
       {/* Recommendations Table */}
 
-      {/* <div className="my-10">
+      <div className="my-10 hidden lg:block">
         <RecommsForMeTable headers={headerText} recomms={recForMe} />
-      </div> */}
+      </div>
 
-      <div className=" my-10 border border-gray-300 rounded-2xl shadow p-5 space-y-8 md:p-10 ">
+      <div className="lg:hidden my-10 border border-gray-300 rounded-2xl shadow p-5 space-y-8 md:p-10 ">
         {recForMe.map((recomm) => (
           <RecForMeCards recomm={recomm} />
         ))}
