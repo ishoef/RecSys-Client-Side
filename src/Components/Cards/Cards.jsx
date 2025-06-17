@@ -22,7 +22,7 @@ const Cards = ({ queiry }) => {
       {/* Card Image */}
       <div className="image">
         <img
-          className="w-full h-70 rounded-t-xl"
+          className="w-full h-60 md:h-120 lg:h-70 rounded-t-xl"
           src={productImageURL}
           alt=""
         />

@@ -45,7 +45,7 @@ const QueryDetails = () => {
 
   return (
     <section className="mt-10">
-      <div className=" w-11/12 md:w-10/12 lg:w-9/12 mx-auto">
+      <div className="w-11/12 lg:w-9/12 mx-auto">
         <DetailCard details={details} />
         <AddRecomForm details={details} setDetails={setDetails} />
       </div>

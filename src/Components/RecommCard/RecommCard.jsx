@@ -16,7 +16,9 @@ const RecommCard = ({ details }) => {
   } = details;
   return (
     <div className=" border border-gray-400 shadow-xl rounded-2xl px-8 py-8 flex flex-col gap-3 mt-10">
-      <div className="flex items-center gap-4">
+      
+      {/* Profiel Information */}
+      <div className="flex flex-col lg:flex-row items-center gap-4">
         <div>
           <ProfilePhoto />
         </div>
@@ -36,8 +38,8 @@ const RecommCard = ({ details }) => {
           </div>
         </div>
       </div>
-      <h1 className="poppins-regular text-xl">{title || "No Title"}</h1>
-      <div className="flex gap-5 ">
+      <h1 className="poppins-regular text-xl text-center lg:text-start ">{title || "No Title"}</h1>
+      <div className="flex flex-col gap-5 ">
         <div>
           <img
             className="w-full h-30 rounded-2xl"
@@ -51,7 +53,9 @@ const RecommCard = ({ details }) => {
         <div className="flex flex-col gap-2">
           <p className="poppins-semibold">
             Recommended:{" "}
-            <span className="text-primary">{recommendProductName || "Nor Recommended Prodcut Name"}</span>
+            <span className="text-primary">
+              {recommendProductName || "Nor Recommended Prodcut Name"}
+            </span>
           </p>
           <p>{recommendationReason || "Not Given Any Reson"}</p>
         </div>

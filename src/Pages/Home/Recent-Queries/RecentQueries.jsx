@@ -16,7 +16,7 @@ const RecentQueries = () => {
 
   return (
     <section className="mt-10 md:mt-20">
-      <div className="w-11/12 md:w-10/12 lg:w-9/12 mx-auto">
+      <div className="w-11/12 lg:w-9/12 mx-auto">
         <div className="flexeble">
           <Title title={"Recent Queries"}></Title>
           <Button to={"/queries"} className={btnClass} text={btnText}></Button>

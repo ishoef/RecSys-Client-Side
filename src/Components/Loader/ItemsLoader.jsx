@@ -28,7 +28,7 @@ const ItemsLoader = () => {
 
   return (
     <>
-      <div className="grid md:grid-cols-3 gap-5 mt-10">
+      <div className="grid lg:grid-cols-3 gap-5 mt-10">
         {item} {item} {item}
         {item} {item} {item}
         {item} {item} {item}

@@ -22,7 +22,7 @@ const DetailCard = ({ details }) => {
 
   console.log(details);
   return (
-    <div className="md:w-6/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-4 md:p-10">
+    <div className="lg:w-6/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-4 md:p-10">
       <div className="flex flex-col gap-5">
         <div className="flex items-center gap-4 border p-3 rounded-2xl border-gray-400 shadow">
           <div>

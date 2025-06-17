@@ -21,7 +21,7 @@ const Header = () => {
       confirmButtonColor: "#14b8a6",
       showCancelButton: true,
       cancelButtonText: "No, cancel!",
-      cancelButtonColor: "red", 
+      cancelButtonColor: "red",
     }).then((result) => {
       if (result.isConfirmed) {
         LogOut()
@@ -35,12 +35,13 @@ const Header = () => {
       }
     });
   };
+
   return (
     <>
       <header className="py-5 bg-white/20 backdrop-blur-md shadow">
-        <div className="w-11/12 md:w-10/12 lg:w-9/12 mx-auto flex justify-between items-center ">
+        <div className="w-11/12 md:w-11/12 lg:w-9/12 mx-auto flex justify-between items-center ">
           <Logo />
-          <nav className="hidden md:block">
+          <nav className="hidden lg:block">
             <ul className="flex gap-5 poppins-semibold  ">
               <li>
                 <NavLink
@@ -138,13 +139,13 @@ const Header = () => {
             )}
 
             {/* Small Device Dropdown Menu */}
-            <div className="dropdown dropdown-end lg:hidden">
+            <div className="dropdown dropdown-end z-9999 lg:hidden">
               <div tabIndex={0} role="button" className="btn m-1">
                 <TiThMenu />
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content mt-4 menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                className="dropdown-content dropdown-fix mt-4 menu bg-base-100 rounded-box z-9999 w-52 p-2 shadow-sm"
               >
                 <li>
                   <NavLink

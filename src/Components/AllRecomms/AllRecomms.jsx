@@ -6,7 +6,7 @@ import NoRecommText from "../NoRecommText/NoRecommText";
 const AllRecomms = ({ details }) => {
 
   return (
-    <div className="md:w-8/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-4 md:p-10 my-10 ">
+    <div className="lg:w-8/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-4 md:p-10 my-10 ">
       <div className="flex items-center gap-3 text-2xl poppins-semibold">
         <FaRegComment color="#14b8a6" />
         <h1 className="text-xl md:text-2xl">All Recommendations</h1>

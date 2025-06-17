@@ -158,3 +158,13 @@
   scrollbar-width: thin; /* Makes scrollbar thinner */
   scrollbar-color: #14b8a6 #f0f0f0; /* Thumb color first, then track */
 }
+
+/* in your global CSS */
+.dropdown-fix {
+  position: absolute !important;
+  z-index: 9999;
+}
+
+.dropdown-content {
+  position: absolute !important;
+}

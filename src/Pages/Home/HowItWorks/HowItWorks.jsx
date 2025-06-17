@@ -27,7 +27,7 @@ const HowItWorks = () => {
     },
   ];
   return (
-    <div className={`${responsive} my-20`}>
+    <div className={`${responsive} md: my-20`}>
       <div className="space-y-5  ">
         <Title title={"How It Works"} className={"text-primary text-center"} />
         <div className="grid md:grid-cols-3 gap-5">

@@ -21,7 +21,7 @@ const Queries = () => {
   return (
     <section className={`${responsive} mt-10`}>
       <div className="flex flex-col">
-        <div className="flex flex-col md:flex-row gap-3 md:gap-0 justify-between items-center py-8 px-5 bg-primary/10 backdrop-blur-3xl border border-primary/60 rounded-2xl">
+        <div className="flex flex-col lg:flex-row gap-3 md:gap-8 lg:gap-0 justify-between items-center py-8 px-5 bg-primary/10 border border-primary/60 rounded-2xl">
           <Title title={`All Product Queries (${queriesCount})`} />
           <div className="flex flex-col md:flex-row items-center gap-3 ">
             {/* Search Option */}

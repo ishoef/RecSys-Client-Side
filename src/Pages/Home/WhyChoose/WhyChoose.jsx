@@ -61,7 +61,7 @@ const WhyChoose = () => {
 
   return (
     <section className="mt-10 md:mt-20 bg-gradient-to-r opacity-90 from-emerald-500 via-teal-500 to-cyan-500 py-10 md:py-20">
-      <div className=" w-11/12 md:w-10/12 lg:w-9/12 mx-auto">
+      <div className=" w-11/12 lg:w-9/12 mx-auto">
         <div className=" rounded-2xl bg-white text-primary text-center w-fit px-5 py-1 mx-auto">
           <h1>Why Choose RecoSyS</h1>
         </div>
@@ -72,7 +72,7 @@ const WhyChoose = () => {
           }
           title={"The Smart Way to"}
         />
-        <p className="mt-4 w-11/12 md:w-6/12 mx-auto text-center poppins-regular text-[20px] text-base-100">
+        <p className="mt-4 w-11/12 lg:w-6/12 mx-auto text-center poppins-regular text-[20px] text-base-100">
           Join the revolution in product discovery. Our community-driven
           platform helps you make smarter purchasing decisions, save money, and
           find products that truly match you needs and values.

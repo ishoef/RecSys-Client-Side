@@ -66,9 +66,9 @@ const WhatYouGet = () => {
 
   return (
     <div className={`${responsive} my-10 md:my-20`}>
-      <div className="bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 w-full  rounded-2xl p-5 md:p-16 flex flex-col md:flex-row items-center gap-10">
+      <div className="bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 w-full  rounded-2xl p-5 md:p-10 lg:p-16 flex flex-col lg:flex-row items-center gap-10">
         
-        <div className="md:basis-1/2 flex flex-col md:items-start items-center gap-5">
+        <div className="lg:basis-1/2 flex flex-col md:items-start items-center gap-5">
           <Title title={"What You Get With RecoSyS"} className={"text-white text-center md:text-start"} />
           <p className="poppins text-center md:text-start text-white">
             More than just product recommendations - join a community that's
@@ -77,7 +77,7 @@ const WhatYouGet = () => {
 
           <div className="grid grid-cols-2 gap-5 w-full">
             {benefits.map((benefit) => (
-              <div className=" bg-green-200/20 flex flex-col md:flex-row items-center gap-3 p-4 text-white poppins rounded-2xl">
+              <div className=" bg-green-200/20 flex flex-col lg:flex-row items-center gap-3 p-4 text-white poppins rounded-2xl">
                 <p className="text-2xl">{benefit.icon}</p>
                 <p className="text-center">{benefit.title}</p>
               </div>

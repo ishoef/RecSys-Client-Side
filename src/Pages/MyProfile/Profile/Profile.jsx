@@ -169,8 +169,8 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-6 my-2 md:my-0 gap-10 w-full">
-          <div className=" md:col-span-2 gap-2 flex flex-col items-center">
+        <div className="grid lg:grid-cols-6 my-2 md:my-0 gap-10 w-full">
+          <div className=" lg:col-span-2 gap-2 flex flex-col items-center">
             <ProfilePhoto
               proPic={user?.photoURL}
               className={"w-48 h-48 rounded-full border-2 border-green-600"}
@@ -181,7 +181,7 @@ const Profile = () => {
             <p className="poppins">Joined Since {formatted}</p>
             <p className="poppins">At {formattedTime}</p>
           </div>
-          <div className="md:col-span-4 ">
+          <div className="lg:col-span-4 ">
             <ProfileInformation
               setUpdateName={setUpdateName}
               setPhotoURL={setPhotoURL}
@@ -206,7 +206,7 @@ const Profile = () => {
             </p>
             <h1 className="text-2xl poppins font-semibold">Quick Actions</h1>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid lg:grid-cols-3 gap-5">
             {btnsInfo.map((btn, index) => (
               <Button
                 key={index}

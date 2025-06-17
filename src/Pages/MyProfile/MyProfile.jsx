@@ -34,8 +34,8 @@ const MyProfile = () => {
   ];
 
   return (
-    <section className={`${responsive} my-10`}>
-      <div className="lg:w-9/12 mx-auto border border-gray-300 rounded-xl shadow p-3 md:p-5 flex flex-col gap-5">
+    <section className={`${responsive} md:w-11/12 my-10`}>
+      <div className=" lg:w-9/12 mx-auto border border-gray-300 rounded-xl shadow p-3 md:p-5 flex flex-col gap-5">
         <div className="rounded p-1 bg-gray-100 ">
           <nav>
             <ul className="grid grid-cols-4 gap-1">

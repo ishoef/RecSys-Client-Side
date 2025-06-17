@@ -14,14 +14,16 @@ const Home = () => {
 
 
     return (
-        <div>
-            <Hero></Hero>
-            <RecentQueries></RecentQueries>
-            <WhyChoose></WhyChoose>
-            <WhatYouGet />
-            <OurCommunity />
-            <HowItWorks/>
+      <div>
+        <div className='z-0'>
+          <Hero></Hero>
         </div>
+        <RecentQueries></RecentQueries>
+        <WhyChoose></WhyChoose>
+        <WhatYouGet />
+        <OurCommunity />
+        <HowItWorks />
+      </div>
     );
 };
 

@@ -79,7 +79,7 @@ const AddRecomForm = ({ details, setDetails }) => {
 
   return (
     <>
-      <div className="md:w-8/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-4 md:p-10 my-10 ">
+      <div className="lg:w-8/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-4 md:p-10 my-10 ">
         <form onSubmit={handleAddRecomm} className="flex flex-col gap-4">
           <div className="flex items-center justify-between border p-4 rounded-2xl shadow border-gray-400 mb-5">
             <h1 className="poppins-semibold text-xl md:text-2xl text-primary ">
