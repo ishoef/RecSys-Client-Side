@@ -97,7 +97,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="w-[100%] lg:min-h-[calc(100vh-80px)] flex justify-center items-center pt-5 lg:pt-0 bg-gray-200 dark:bg-gray-900">
+      <div className="w-[100%] lg:min-h-[calc(100vh-80px)] flex justify-center items-center pt-5 lg:pt-0 bg-gray-200 text-white">
         <div className="flex flex-col justify-center items-center gap-5 lg:gap-10 p-3 lg:p-5 w-120">
           <h1 className="text-xl lg:text-3xl font-semibold">
             <span className="text-primary font-bold underline">Log in</span>{" "}
