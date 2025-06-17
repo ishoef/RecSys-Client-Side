@@ -32,7 +32,6 @@ const MyQueries = () => {
           : `https://reco-sys-server-side.vercel.app/queries?userEmail=${user?.email}`;
 
         const token = user.accessToken;
-        console.log(token);
 
         const res = await fetch(url, {
           method: "GET",

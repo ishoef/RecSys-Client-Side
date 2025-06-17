@@ -16,8 +16,6 @@ const RecommsTableRow = ({ recomm }) => {
     queryId,
   } = recomm;
 
-  console.log(recomm);
-
   return (
     <tr>
       <td>

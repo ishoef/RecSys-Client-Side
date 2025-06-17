@@ -25,7 +25,6 @@ const QueriesCards = ({ sixCard, view, searchText, setQueriesCount }) => {
         if (setQueriesCount) setQueriesCount(data.length);
         setLoading(false);
 
-        console.log("Fetched queries:", data);
       } catch (error) {
         console.error("Failed to fetch data", error);
         setQueries([]);

@@ -21,10 +21,10 @@ const RecommsForMeTable = ({ headers, recomms }) => {
           </tr>
         </thead>
         <tbody>
-          {recomms.map((recomm) => (
+          {recomms.map((recomm, index) => (
             <RecommsTableRow
+              key={index}
               recomms={recomms}
-              key={recomm._id}
               recomm={recomm}
             ></RecommsTableRow>
           ))}

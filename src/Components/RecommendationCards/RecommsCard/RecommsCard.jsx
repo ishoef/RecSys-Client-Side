@@ -23,8 +23,6 @@ const RecommsCard = ({ recomm, setMyRecomms }) => {
     recommenderName,
   } = recomm;
 
-  console.log(recomm);
-
   const handleDelete = (queryId, recommenderEmail) => {
     Swal.fire({
       timer: 5000,

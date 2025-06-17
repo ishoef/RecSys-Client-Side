@@ -91,8 +91,8 @@ const WhatYouGet = () => {
         </div>
         <div className=" w-full md:basis-1/2 ">
           <div className="grid grid-cols-2 gap-5">
-            {stats.map((stat) => (
-              <div className="flex flex-col hover:scale-102 transition-transform duration-300 ease-in-out items-center gap-3 px-5 py-6 text-white  bg-green-200/20 rounded-2xl">
+            {stats.map((stat, index) => (
+              <div key={index} className="flex flex-col hover:scale-102 transition-transform duration-300 ease-in-out items-center gap-3 px-5 py-6 text-white  bg-green-200/20 rounded-2xl">
                 <p className="text-3xl">{stat.icon}</p>
                 <p className="text-3xl poppins font-semibold">{stat.value}</p>
                 <p className="poppins">{stat.label}</p>

@@ -22,8 +22,6 @@ const QueryTableRow = ({ recomm, setMyRecomms }) => {
     recommenderEmail,
   } = recomm;
 
-  console.log(recomm);
-
   const handleDelete = (queryId, recommenderEmail) => {
     Swal.fire({
       timer: 5000,

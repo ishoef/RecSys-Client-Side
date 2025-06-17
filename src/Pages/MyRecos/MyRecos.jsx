@@ -11,8 +11,6 @@ const MyRecos = () => {
 
   const [myRecomms, setMyRecomms] = useState([]);
 
-  console.log(user.email);
-
   useEffect(() => {
     document.title = "My Recommendations | RecSyS";
   }, []);
@@ -45,8 +43,6 @@ const MyRecos = () => {
     "Date",
     "Actions",
   ];
-
-  console.log(myRecomms);
 
   return (
     <section className={`${responsive} mt-10`}>

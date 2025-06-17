@@ -46,8 +46,6 @@ const RecForme = () => {
     }
   }, [user?.email, user?.accessToken]);
 
-  console.log(recForMe);
-
   return (
     <section className={`${responsive} mt-10`}>
       {/* Title Box */}
@@ -69,8 +67,8 @@ const RecForme = () => {
       </div>
 
       <div className="lg:hidden my-10 border border-gray-300 rounded-2xl shadow p-5 space-y-8 md:p-10 ">
-        {recForMe.map((recomm) => (
-          <RecForMeCards recomm={recomm} />
+        {recForMe.map((recomm, index) => (
+          <RecForMeCards key={index} recomm={recomm} />
         ))}
       </div>
     </section>
