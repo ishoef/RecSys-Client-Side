@@ -141,7 +141,7 @@ const UpdateRecommendations = ({
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#15315199] transition-opacity  ">
         <div
           ref={modalRef}
-          className="w-5/12 border border-gray-400 shadow-xl bg-white mx-auto rounded-2xl p-10 my-10 "
+          className="lg:w-5/12 border border-gray-400 shadow-xl bg-white mx-auto rounded-2xl p-10 my-10 "
         >
           <form onSubmit={handleUpdateRecomms} className="flex flex-col gap-4">
             <div className="flex items-center justify-between border p-4 rounded-2xl shadow border-gray-400 mb-5">

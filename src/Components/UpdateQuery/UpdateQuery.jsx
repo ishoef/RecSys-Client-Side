@@ -90,7 +90,7 @@ const UpdateQuery = () => {
   };
 
   return (
-    <div className="w-11/12 md:w-6/12 mx-auto my-10  ">
+    <div className="w-11/12 lg:w-6/12 mx-auto my-10  ">
       <Link to={"/myqueries"} className="flex items-center gap-2">
         <IoArrowBack />
 

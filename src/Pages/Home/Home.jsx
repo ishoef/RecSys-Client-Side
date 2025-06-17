@@ -5,6 +5,7 @@ import WhyChoose from './WhyChoose/WhyChoose';
 import WhatYouGet from './WhatYouGet/WhatYouGet';
 import OurCommunity from './OurCommunity/OurCommunity';
 import HowItWorks from './HowItWorks/HowItWorks';
+import SmalHero from '../../Components/smalHero/smalHero';
 
 const Home = () => {
 
@@ -15,9 +16,12 @@ const Home = () => {
 
     return (
       <div>
-        <div className='z-0'>
+        <div className='hidden lg:block z-0'>
           <Hero></Hero>
         </div>
+
+        <SmalHero/>
+
         <RecentQueries></RecentQueries>
         <WhyChoose></WhyChoose>
         <WhatYouGet />

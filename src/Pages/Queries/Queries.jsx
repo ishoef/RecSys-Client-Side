@@ -39,22 +39,24 @@ const Queries = () => {
               />
             </label>
 
-            <div className="flex gap-2">
-              <NavLink
-                onClick={() => setView("grid3Col")}
-                className="border hover:text-primary border-gray-400 p-[10px] rounded"
-              >
-                <LuLayoutGrid />
-              </NavLink>
-              <NavLink
-                onClick={() => setView("grid2Col")}
-                className="border hover:text-primary border-gray-400 p-[10px] rounded"
-              >
-                <FaList />
-              </NavLink>
-              <NavLink className="border hover:text-primary border-gray-400 p-[10px] rounded">
-                <CiGrid2H />
-              </NavLink>
+            <div className="hidden lg:block">
+              <div className="flex gap-2">
+                <NavLink
+                  onClick={() => setView("grid3Col")}
+                  className="border hover:text-primary border-gray-400 p-[10px] rounded"
+                >
+                  <LuLayoutGrid />
+                </NavLink>
+                <NavLink
+                  onClick={() => setView("grid2Col")}
+                  className="border hover:text-primary border-gray-400 p-[10px] rounded"
+                >
+                  <FaList />
+                </NavLink>
+                <NavLink className="border hover:text-primary border-gray-400 p-[10px] rounded">
+                  <CiGrid2H />
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>

@@ -30,7 +30,7 @@ const HowItWorks = () => {
     <div className={`${responsive} md: my-20`}>
       <div className="space-y-5  ">
         <Title title={"How It Works"} className={"text-primary text-center"} />
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid lg:grid-cols-3 gap-5">
           {state.map((stat) => (
             <div className="flex flex-col hover:scale-102 transition-transform duration-300 ease-in-out items-center gap-6 px-8 py-12 rounded-2xl text-center border cursor-pointer border-gray-300 shadow-xl">
               <p

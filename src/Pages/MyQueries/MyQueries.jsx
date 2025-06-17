@@ -64,7 +64,7 @@ const MyQueries = () => {
   return (
     <section className={`${responsive} mt-10`}>
       <div>
-        <div className="flex flex-col gap-3 md:gap-0 md:flex-row justify-between items-center py-8 px-5 bg-primary backdrop-blur-3xl rounded-2xl">
+        <div className="flex flex-col gap-3 md:gap-0 md:flex-row justify-between items-center py-8 px-5 bg-primary rounded-2xl">
           <Title
             className={"text-white text-xl md:text-2xl"}
             title={`All Product Queries (${myQueries.length}) `}
