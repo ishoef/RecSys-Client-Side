@@ -1,11 +1,10 @@
 import React, { use, useEffect, useState } from "react";
 import { responsive } from "../../Layouts/RootLayout";
-import { FaPlus, FaRegCommentAlt } from "react-icons/fa";
-import { Link } from "react-router";
-import { IoIosSearch } from "react-icons/io";
+import { FaRegCommentAlt } from "react-icons/fa";
 import Title from "../../Components/Title/Title";
 import RecommendatinTable from "../../Components/RecommendatinTable/RecommendatinTable";
 import { AuthContext } from "../../Context/AuthProvider";
+import RecommendationCards from "../../Components/RecommendationCards/RecommendationCards";
 
 const MyRecos = () => {
   const { user } = use(AuthContext);
@@ -65,12 +64,19 @@ const MyRecos = () => {
 
       {/* Recommendations Table */}
 
-      <div className="my-10">
+      <div className="my-10 hidden lg:block">
         <RecommendatinTable
           myRecomms={myRecomms}
           dlt={true}
           headers={tableHeaderText}
           recomms={myRecomms}
+          setMyRecomms={setMyRecomms}
+        />
+      </div>
+
+      <div className="lg:hidden my-10 border border-gray-300 rounded-2xl shadow p-5 md:p-10 ">
+        <RecommendationCards
+          myRecomms={myRecomms}
           setMyRecomms={setMyRecomms}
         />
       </div>

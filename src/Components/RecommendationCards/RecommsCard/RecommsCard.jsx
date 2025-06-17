@@ -1,18 +1,17 @@
 import React, { useRef, useState } from "react";
-import { IoCreateOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
+import { IoCreateOutline } from "react-icons/io5";
+import ProfilePhoto from "../../ProfilePhoto/ProfilePhoto";
 import { Link } from "react-router";
-import UpdateRecommendations from "../../UpdateRecommendations/UpdateRecommendations";
 import Swal from "sweetalert2";
+import UpdateRecommendations from "../../UpdateRecommendations/UpdateRecommendations";
 
-const QueryTableRow = ({ recomm, setMyRecomms }) => {
+const RecommsCard = ({ recomm, setMyRecomms }) => {
   const [showModal, setShowModal] = useState(false);
   const modalRef = useRef(null);
 
-  
   const {
     queryTitle,
-    queryCreatorName,
     creationDate,
     creationTime,
     recommendProductName,
@@ -20,6 +19,8 @@ const QueryTableRow = ({ recomm, setMyRecomms }) => {
     queryId,
     title,
     recommenderEmail,
+    recommenderPhoto,
+    recommenderName,
   } = recomm;
 
   console.log(recomm);
@@ -83,57 +84,66 @@ const QueryTableRow = ({ recomm, setMyRecomms }) => {
 
   return (
     <>
-      <tr>
-        <td>
-          <Link to={"/"} className="flex items-center gap-3">
+      <div className="border overflow-hidden border-gray-300 shadow rounded-lg p-4 hover:shadow-md transition-all bg-white">
+        {/* Top Section */}
+        <div className="flex items-start justify-between mb-3">
+          <div className="flex items-center gap-3">
             <img
-              className="w-20 h-18 rounded-xl"
+              className="w-12 h-12 object-cover rounded-md"
               src={
                 productImageURL ||
-                "https://images.unsplash.com/photo-1620987278429-ab178d6eb547?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
+                "https://images.unsplash.com/photo-1620987278429-ab178d6eb547?w=300&auto=format&fit=crop&q=60"
               }
-              alt="Procut Image"
+              alt="Product"
             />
-            <h1 className="text-xl poppins hover:text-green-500 transition-normal">
-              {recommendProductName}
-            </h1>
-          </Link>
-        </td>
-        <td>
-          <Link to={`/recommDetails/${queryId}`}>
-            {title || "No Recommendation"}
-          </Link>
-        </td>
-        <td>
-          <p>{queryTitle}</p>
-          <p className="text-[14px] bg-gray-100 w-fit px-2 rounded-2xl mt-1">
-            {queryCreatorName}
-          </p>
-        </td>
-        <td>
-          <div>
-            <p>{creationDate}</p>
-            <p>{creationTime}</p>
+            <div>
+              <h2 className="font-semibold text-lg">{recommendProductName}</h2>
+              <p className="text-xs text-gray-500">{creationDate}</p>
+            </div>
           </div>
-        </td>
-        <td className="space-y-3">
-          <button
-            onClick={() => setShowModal(true)}
-            type="button"
-            className="hover:scale-102 hover:shadow cursor-pointer bg-primary w-fit flex items-center justify-center p-2 rounded"
-          >
-            <IoCreateOutline color="white" />
-          </button>
 
+          {/* Action Icons */}
+          <div className="flex gap-3 text-gray-500 text-xl">
+            <Link
+              onClick={() => setShowModal(true)}
+              className="hover:text-primary hover:bg-transparent hover:border border border-primary hover:border-primary transition-all duration-300 ease-in-out bg-primary p-1 md:p-3 text-white rounded-md"
+            >
+              <IoCreateOutline />
+            </Link>
+            <button
+              onClick={() => handleDelete(queryId, recommenderEmail)}
+              className="hover:text-red-600 hover:bg-transparent hover:border border border-red-500 hover:border-red-500 transition-all duration-300 ease-in-out bg-red-500 p-1 md:p-3 text-white rounded-md"
+            >
+              <MdDelete />
+            </button>
+          </div>
+        </div>
+
+        {/* Recommendation Text */}
+        <div className="mb-2">
+          <p className="font-semibold text-sm text-gray-800">Recommendation</p>
+          <p className="text-gray-700">
+            {recommendProductName} is a great alternative
+          </p>
+        </div>
+
+        {/* Query Info */}
+        <div className="mb-1">
+          <p className="font-semibold text-sm text-gray-800">Query</p>
+          <p className="text-gray-700 truncate">{queryTitle}</p>
+        </div>
+
+        {/* Recommender Info */}
+        <div className="mt-1">
           <button
-            onClick={() => handleDelete(queryId, recommenderEmail)}
-            type="button"
-            className="hover:scale-102 hover:shadow cursor-pointer bg-red-500 w-fit flex items-center justify-center p-2 rounded"
+            to="#"
+            className="text-sm text-blue-600 hover:underline flex items-center gap-2"
           >
-            <MdDelete color="white" />
+            <ProfilePhoto proPic={recommenderPhoto} />
+            By {recommenderName}
           </button>
-        </td>
-      </tr>
+        </div>
+      </div>
 
       {showModal && (
         <UpdateRecommendations
@@ -148,4 +158,4 @@ const QueryTableRow = ({ recomm, setMyRecomms }) => {
   );
 };
 
-export default QueryTableRow;
+export default RecommsCard;

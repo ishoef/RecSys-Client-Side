@@ -1,10 +1,10 @@
 import React, { use, useEffect, useState } from "react";
-import RecommendatinTable from "../../Components/RecommendatinTable/RecommendatinTable";
 import { FaRegCommentAlt } from "react-icons/fa";
 import Title from "../../Components/Title/Title";
 import { responsive } from "../../Layouts/RootLayout";
 import { AuthContext } from "../../Context/AuthProvider";
 import RecommsForMeTable from "../../Components/RecommsForMeTable/RecommsForMeTable";
+import RecForMeCards from "../../Components/RecFormeCards/RecForMeCards";
 
 const RecForme = () => {
   const [recForMe, setRecForMe] = useState([]);
@@ -64,8 +64,14 @@ const RecForme = () => {
 
       {/* Recommendations Table */}
 
-      <div className="my-10">
+      {/* <div className="my-10">
         <RecommsForMeTable headers={headerText} recomms={recForMe} />
+      </div> */}
+
+      <div className=" my-10 border border-gray-300 rounded-2xl shadow p-5 space-y-8 md:p-10 ">
+        {recForMe.map((recomm) => (
+          <RecForMeCards recomm={recomm} />
+        ))}
       </div>
     </section>
   );
