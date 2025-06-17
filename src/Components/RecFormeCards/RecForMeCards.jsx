@@ -65,13 +65,13 @@ const RecForMeCards = ({ recomm }) => {
 
       {/* Recommender Info */}
       <div className="mt-1">
-        <Link
+        <button
           to="#"
           className="text-sm text-blue-600 hover:underline flex items-center gap-2"
         >
           <ProfilePhoto proPic={recommenderPhoto} />
           By {recommenderName}
-        </Link>
+        </button>
       </div>
     </div>
   );

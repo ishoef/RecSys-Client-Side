@@ -76,8 +76,8 @@ const WhatYouGet = () => {
           </p>
 
           <div className="grid grid-cols-2 gap-5 w-full">
-            {benefits.map((benefit) => (
-              <div className=" bg-green-200/20 flex flex-col lg:flex-row items-center gap-3 p-4 text-white poppins rounded-2xl">
+            {benefits.map((benefit, index) => (
+              <div key={index} className=" bg-green-200/20 flex flex-col lg:flex-row items-center gap-3 p-4 text-white poppins rounded-2xl">
                 <p className="text-2xl">{benefit.icon}</p>
                 <p className="text-center">{benefit.title}</p>
               </div>
