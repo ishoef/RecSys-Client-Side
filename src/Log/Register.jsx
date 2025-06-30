@@ -143,7 +143,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="w-[100%] min-h-screen flex justify-center items-center py-10 lg:py-20 bg-gray-200 text-white ">
+      <div className="w-[100%] min-h-screen flex justify-center items-center py-10 lg:py-20 bg-gray-200  ">
         <div className="flex flex-col justify-center items-center gap-5 lg:gap-10 p-3 lg:p-5 w-120">
           <h1 className="text-xl lg:text-3xl font-semibold">
             <span className="text-primary font-bold underline">Register</span>{" "}

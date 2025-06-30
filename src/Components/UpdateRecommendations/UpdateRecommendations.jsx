@@ -78,6 +78,7 @@ const UpdateRecommendations = ({
 
     console.log(recommData);
 
+    // Update the recommendation in the database  
     fetch(
       `https://reco-sys-server-side.vercel.app/queries/${recomm.queryId}/recommendation`,
       {

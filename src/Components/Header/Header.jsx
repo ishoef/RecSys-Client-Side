@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="py-5 bg-white/20 backdrop-blur-md shadow">
+      <header className="sticky top-0 z-10 py-5 bg-white/20 backdrop-blur-md shadow">
         <div className="w-11/12 md:w-11/12 lg:w-9/12 mx-auto flex justify-between items-center ">
           <Logo />
           <nav className="hidden lg:block">
