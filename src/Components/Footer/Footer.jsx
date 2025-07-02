@@ -7,7 +7,7 @@ import {
   FaLinkedin,
   FaYoutube,
 } from "react-icons/fa";
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
 
 const Footer = () => {
   return (
@@ -107,7 +107,6 @@ const Footer = () => {
 
           {/* Right Content */}
           <div>
-            {" "}
             <nav className="">
               <ul className="flex flex-col gap-5 poppins-semibold  ">
                 <li className="text-primary border-b-2 w-fit ">Resources</li>
@@ -143,13 +142,13 @@ const Footer = () => {
           <p>
             Copyright © {new Date().getFullYear()} - Developed by{" "}
             <span className="poppins-semibold text-primary underline">
-              <Link
-                to={
-                  "https://www.facebook.com/share/1AVLBcF6W8/?mibextid=wwXIfr"
-                }
+              <a
+                href="https://portfolio-rose-two-uimck3sec9.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Ismail Nayef
-              </Link>
+              </a>
             </span>
           </p>
         </div>
