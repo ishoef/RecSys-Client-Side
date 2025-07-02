@@ -1,8 +1,8 @@
 🛍️ Product Recommendation System
 A full-stack web application where users can share queries about products, get community recommendations, and explore better alternatives — all in a dynamic and interactive environment.
 
-🚀 Live Site https://recsys11.netlify.app/
-🌐 Live URL https://recsys11.netlify.app/
+🚀 Live Site https://recoosys.netlify.app/
+🌐 Live URL https://recoosys.netlify.app/
 
 📚 Project Overview
 This platform allows users to:
