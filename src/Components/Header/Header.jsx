@@ -114,6 +114,7 @@ const Header = () => {
               )}
             </ul>
           </nav>
+          
           <div className="flex gap-4 items-center">
             <DarkModeToggle />
             {/* login & Logout Button */}
