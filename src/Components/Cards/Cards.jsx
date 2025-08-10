@@ -18,7 +18,7 @@ const Cards = ({ queiry }) => {
   } = queiry;
 
   return (
-    <div className="transformation hover:scale-102 duration-300 border border-gray-400 rounded-xl flex flex-col h-full cursor-pointer shadow-sm">
+    <div className="transformation dark:bg-gray-500 hover:scale-102 duration-300 border border-gray-400 rounded-xl flex flex-col h-full cursor-pointer shadow-sm">
       {/* Card Image */}
       <div className="image">
         <img
