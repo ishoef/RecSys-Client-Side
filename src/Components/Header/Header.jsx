@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router";
 import { TiThMenu } from "react-icons/ti";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
+import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
 
 const Header = () => {
   const { user, LogOut, setUser } = useContext(AuthContext);
@@ -114,6 +115,7 @@ const Header = () => {
             </ul>
           </nav>
           <div className="flex gap-4 items-center">
+            <DarkModeToggle />
             {/* login & Logout Button */}
             {user ? (
               <button
