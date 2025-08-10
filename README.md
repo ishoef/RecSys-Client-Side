@@ -1,151 +1,91 @@
-🛍️ Product Recommendation System
-A full-stack web application where users can share queries about products, get community recommendations, and explore better alternatives — all in a dynamic and interactive environment.
+# 🛍️ Product Recommendation System
 
-🚀 Live Site https://recoosys.netlify.app/
-🌐 Live URL https://recoosys.netlify.app/
+A **full-stack web application** where users can post product-related queries, get community-driven recommendations, and explore better alternatives — all in a dynamic, interactive, and responsive environment.
 
-📚 Project Overview
-This platform allows users to:
+🔗 **Live Site:** [recoosys.netlify.app](https://recoosys.netlify.app)  
+🔗 **Live URL:** [recoosys.netlify.app](https://recoosys.netlify.app)  
 
-Post queries about questionable products or seek alternatives.
+---
 
-View queries and recommend better product options.
+## 📚 Overview
 
-Explore personal and community recommendations.
+This platform empowers users to:
 
-Register/login via Firebase authentication.
+- **Post queries** about questionable products or request better alternatives  
+- **View & recommend** alternatives to existing queries  
+- **Explore** personal and community-driven recommendations  
+- **Securely interact** with a protected backend via JWT tokens  
+- **Register & login** with Firebase authentication  
 
-Securely interact with a protected backend using JWT tokens.
+Inspired by Q&A platforms like **Quora**, this app delivers a smooth, mobile-friendly experience optimized for all devices.  
 
-Inspired by Q&A platforms like Quora, this app is optimized for a smooth, responsive user experience on all devices.
+---
 
-🎯 Key Features
-🔐 Authentication
-Firebase-based Email/Password & Google Login
+## 🎯 Key Features
 
-JWT implementation for private route protection
+### 🔐 Authentication
+- Firebase Email/Password & Google login  
+- JWT for private route protection  
+- Auth state persistence on reload  
 
-Auth state persistence on route reload
+### 💬 Query Management
+- Add, update, and delete **your own queries**  
+- View all queries with **search & sort** options  
+- Real-time recommendation counts  
 
-💬 Query Features
-Add/Update/Delete own queries
+### 💡 Recommendation System
+- Suggest alternative products  
+- View all recommendations on a query  
+- Manage personal recommendations (delete only)  
+- View recommendations received for your queries  
 
-View all queries (searchable & sortable)
+### 📊 UI/UX & Responsiveness
+- **Mobile-first** responsive design  
+- Animated sections (sliders, counters, transitions)  
+- **Layout toggle** for 2/3 column view on All Queries page  
+- Smooth conditional rendering based on auth state  
+- Elegant **404 page** with redirect  
 
-Real-time recommendation count for each query
+### 🔍 Extra Features
+- Product name search  
+- Timestamp-based sorting  
+- Clean, minimal UI with purposeful animations  
 
-💡 Recommendation Features
-Recommend alternatives to existing queries
+---
 
-View all recommendations on a query
+## 🔧 Tech Stack
 
-Manage personal recommendations (delete only)
+### **Frontend**
+- React.js (Vite)  
+- React Router DOM  
+- Firebase Auth  
+- TailwindCSS + DaisyUI  
+- Axios  
+- React Icons  
+- JWT Decode  
 
-View all recommendations made for your queries
+### **Backend**
+- Node.js & Express.js  
+- MongoDB  
+- JSON Web Token (JWT)  
+- CORS & dotenv  
 
-📊 UI/UX & Responsiveness
-Mobile-first responsive design
+---
 
-Animated sections (slider, counters, transitions)
+## 🛡️ Security & Environment
+- Firebase & MongoDB credentials stored securely in `.env`  
+- JWT-protected API routes  
+- Authorization checks for user-specific data access  
 
-Layout toggle buttons on All Queries page (2/3 column switch)
+---
 
-Smooth conditional rendering (based on auth state)
+## 🧪 Testing & Quality Assurance
+- Verified private routes and auth persistence on reload  
+- Validated backend status codes & CORS headers  
+- Tested search, layout toggle, form validation, and error pages  
 
-Elegant error (404) page with home redirection
+---
 
-🔍 Extra Features
-Product name search functionality
+## 📦 NPM Packages Used
 
-Timestamp-based sorting
-
-Clean UI with meaningful animation & colors
-
-🔧 Tech Stack
-Client:
-React.js
-
-React Router DOM
-
-Firebase Auth
-
-TailwindCSS + DaisyUI
-
-Axios
-
-React Icons
-
-JWT Decode
-
-Server:
-Node.js
-
-Express.js
-
-MongoDB
-
-CORS
-
-dotenv
-
-JSON Web Token (JWT)
-
-🛡️ Security & Environment
-Firebase & MongoDB credentials are stored securely in .env files.
-
-Backend endpoints are protected via JWT verification.
-
-Only authorized users can access their respective data.
-
-🧪 Testing
-All private routes were tested for reloading and auth state preservation.
-
-The server returns appropriate status codes and CORS headers.
-
-Search, toggle layouts, form validations, and error pages were all tested.
-
-📃 Deployment
-Frontend deployed on [Vercel/Netlify]
-
-Backend deployed on [Render/Other]
-
-Domain authorized in Firebase for proper login redirects
-
-👨‍💻 Developed By
-MD. Ismail Hossan Nayef
-Email: ismailhossennayeb@email.com
-
-📦 **NPM Packages Used**
-✅ Frontend Dependencies
-React – Frontend UI library (react, react-dom)
-
-React Router – Client-side routing (react-router)
-
-React Icons – Scalable vector icons (react-icons)
-
-Firebase – Authentication and user state management (firebase)
-
-Axios – HTTP requests to backend (axios)
-
-React Toastify – Toast notifications (react-toastify)
-
-SweetAlert2 – Beautiful alert modals (sweetalert2)
-
-Swiper – Responsive and touch-friendly sliders (swiper)
-
-TailwindCSS – Utility-first CSS framework (tailwindcss)
-
-DaisyUI – Tailwind CSS component library (daisyui)
-
-🛠️ Development & Build Tools
-Vite – Fast development and build tool (vite, @vitejs/plugin-react)
-
-ESLint – Code linting (eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh)
-
-Type Definitions – For TypeScript support in React (@types/react, @types/react-dom)
-
-Globals – ESLint global variable definitions (globals)
-
-vite-plugin-pwa – Progressive Web App support (vite-plugin-pwa)
-
-@tailwindcss/vite – Tailwind integration with Vite
+**Frontend:**
