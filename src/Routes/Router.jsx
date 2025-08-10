@@ -18,6 +18,7 @@ import Profile from "../Pages/MyProfile/Profile/Profile";
 import Activity from "../Pages/MyProfile/Activity/Activity";
 import Settings from "../Pages/MyProfile/Settings/Settings";
 import Privacy from "../Pages/MyProfile/Privacy/Privacy";
+import ComingSoon from "../Components/CommingSoon/CommingSoon";
 
 export const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
             Component: Privacy,
           },
         ],
+      },
+      {
+        path: "/comming-soon",
+        element: <ComingSoon />,
       },
       {
         path: "/details/:id",
