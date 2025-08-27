@@ -3,6 +3,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
@@ -114,7 +116,7 @@
   }
 }
 
-.poppins{
+.poppins {
   font-family: "Poppins", sans-serif;
 }
 

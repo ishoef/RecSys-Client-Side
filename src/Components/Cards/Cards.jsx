@@ -18,26 +18,26 @@ const Cards = ({ queiry }) => {
   } = queiry;
 
   return (
-    <div className="transformation dark:bg-gray-500 hover:scale-102 duration-300 border border-gray-400 rounded-xl flex flex-col h-full cursor-pointer shadow-sm">
+    <div className="transformation bg-white dark:bg-gray-800 hover:scale-102 duration-300 border border-gray-300 dark:border-gray-700 rounded-xl flex flex-col h-full cursor-pointer shadow-sm">
       {/* Card Image */}
       <div className="image">
         <img
-          className="w-full h-60 md:h-120 lg:h-70 rounded-t-xl"
+          className="w-full h-60 md:h-120 lg:h-70 rounded-t-xl object-cover"
           src={productImageURL}
-          alt=""
+          alt={productName}
         />
       </div>
 
       {/* Card Content */}
-
-      {/* Frofile Info */}
       <div className="flex flex-col justify-between flex-1 p-6 gap-4">
+        {/* Profile Info */}
         <div className="profle-details flex items-center gap-4">
           <ProfilePhoto proPic={userPhotoURL} tooltip={false}></ProfilePhoto>
           <div>
-            <h1 className="poppins-semibold">{userName || "John Doe"}</h1>
-            <p className="poppins-regular flex items-center gap-2">
-              {" "}
+            <h1 className="poppins-semibold text-gray-900 dark:text-gray-100">
+              {userName || "John Doe"}
+            </h1>
+            <p className="poppins-regular flex items-center gap-2 text-gray-600 dark:text-gray-400">
               <MdOutlineDateRange size={18} />
               {createdAt || "01 Jan 2023"}
             </p>
@@ -46,19 +46,19 @@ const Cards = ({ queiry }) => {
 
         {/* Product Info */}
         <div className="flex flex-col gap-2">
-          <p className="text-2xl poppins-semibold text-primary">
+          <p className="text-2xl poppins-semibold text-primary dark:text-orange-400">
             {productName || "Product Name"}
           </p>
-          <p className="poppins-regular text-[18px] md:text-[22px]">
+          <p className="poppins-regular text-[18px] md:text-[22px] text-gray-800 dark:text-gray-200">
             {queryTitle || "Recommendation Title"}
           </p>
-          <p className="poppins text-gray-500 line-clamp-2">
+          <p className="poppins text-gray-600 dark:text-gray-400 line-clamp-2">
             {boycottingReson || "No specific reason provided"}
           </p>
           {boycottingReson && boycottingReson.length > 120 && (
             <Link
               to={`/details/${_id}`}
-              className="text-primary hover:underline text-sm"
+              className="text-primary dark:text-orange-400 hover:underline text-sm"
             >
               See more
             </Link>
@@ -66,8 +66,8 @@ const Cards = ({ queiry }) => {
         </div>
 
         {/* Always at Bottom */}
-        <div className="flex justify-between items-center mt-auto pt-4  border-t border-t-gray-300">
-          <p className="flex items-center gap-2 text-[18px]">
+        <div className="flex justify-between items-center mt-auto pt-4 border-t border-t-gray-200 dark:border-t-gray-700">
+          <p className="flex items-center gap-2 text-[18px] text-gray-700 dark:text-gray-300">
             <FaRegCommentAlt />
             {queiry?.recommendations?.length || 0}
             <span className="hidden">Recommendations</span>
