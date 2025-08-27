@@ -7,7 +7,6 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 import Modal from "../Modal/Modal";
-import UpdateQuery from "../UpdateQuery/UpdateQuery";
 import UpdateModalQuery from "../UpdateModalQuery/UpdateModalQuery";
 
 const MyQueryCard = ({ query, setMyQueries, myQueries }) => {

@@ -38,7 +38,6 @@ const WhyChoose = () => {
         "Make informed decisions with comprehensive analytics and user feedback on every product.",
       statistic: "$2M+ Saved by Users",
       icon: <BsGraphUpArrow />,
-
       gradient: "from-blue-600 to-teal-600",
     },
     {
@@ -60,23 +59,29 @@ const WhyChoose = () => {
   ];
 
   return (
-    <section className="mt-10 md:mt-20 bg-gradient-to-r opacity-90 from-emerald-500 via-teal-500 to-cyan-500 py-10 md:py-20">
-      <div className=" w-11/12 lg:w-9/12 mx-auto">
-        <div className=" rounded-2xl bg-white text-primary text-center w-fit px-5 py-1 mx-auto">
+    <section className="mt-10 md:mt-20 bg-gradient-to-r opacity-90 from-emerald-500 via-teal-500 to-cyan-500 py-10 md:py-20 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <div className="w-11/12 lg:w-9/12 mx-auto">
+        {/* Small Title */}
+        <div className="rounded-2xl bg-white dark:bg-gray-800 text-primary dark:text-emerald-400 text-center w-fit px-5 py-1 mx-auto shadow">
           <h1>Why Choose RecoSyS</h1>
         </div>
 
+        {/* Section Title */}
         <Title
           className={
-            "px-10 text-white w-fit mx-auto py-5 border-b-4 rounded-2xl"
+            "px-10 text-white dark:text-gray-100 w-fit mx-auto py-5 border-b-4 border-white/60 dark:border-gray-600 rounded-2xl"
           }
           title={"The Smart Way to"}
         />
-        <p className="mt-4 w-11/12 lg:w-6/12 mx-auto text-center poppins-regular text-[20px] text-base-100">
+
+        {/* Subtitle */}
+        <p className="mt-4 w-11/12 lg:w-6/12 mx-auto text-center poppins-regular text-[20px] text-base-100 dark:text-gray-300">
           Join the revolution in product discovery. Our community-driven
           platform helps you make smarter purchasing decisions, save money, and
-          find products that truly match you needs and values.
+          find products that truly match your needs and values.
         </p>
+
+        {/* Cards */}
         <div className="grid lg:grid-cols-3 gap-5 md:gap-10 my-10">
           {states.map((state, index) => (
             <State key={index} state={state} />

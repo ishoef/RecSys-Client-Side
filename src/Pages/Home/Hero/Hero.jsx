@@ -47,7 +47,6 @@ const slides = [
     ],
     gradient: "from-blue-600 via-purple-600 to-teal-600",
   },
-
   {
     title: "Make Informed Decisions",
     subtitle: "Data-Driven Product Choices",
@@ -72,13 +71,13 @@ const Hero = () => {
     <section className="relative h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px] overflow-hidden z-0">
       {/* Custom Navigation Arrows */}
       <div className="hidden md:block absolute top-1/2 left-4 z-20 -translate-y-1/2">
-        <button className="custom-prev bg-white/80 backdrop-blur-md  text-gray-900 p-3 rounded-full shadow-lg hover:bg-white transition-all duration-200">
+        <button className="custom-prev bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-gray-200 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-700 transition-all duration-200">
           <FaAngleLeft className="h-5 w-5" />
         </button>
       </div>
 
       <div className="hidden md:block absolute top-1/2 right-4 z-20 -translate-y-1/2">
-        <button className="custom-next bg-white/80 text-gray-900 p-3 rounded-full shadow-lg hover:bg-white transition-all duration-200">
+        <button className="custom-next bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-gray-200 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-700 transition-all duration-200">
           <FaAngleRight className="h-5 w-5" />
         </button>
       </div>
@@ -116,31 +115,31 @@ const Hero = () => {
               />
 
               {/* Pattern Overlay */}
-              <div className="absolute inset-0 bg-black/20" />
+              <div className="absolute inset-0 bg-black/20 dark:bg-black/40" />
 
               {/* Content */}
               <div className="relative h-full flex items-center">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     {/* Left Content */}
-                    <div className="text-white space-y-4 sm:space-y-6 lg:space-y-8 text-center lg:text-left">
+                    <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-center lg:text-left">
                       {/* Animated Badge */}
-                      <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium">
+                      <div className="inline-flex items-center gap-2 bg-white/20 dark:bg-gray-700/50 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-white">
                         <div className="w-2 h-2 bg-green-400 rounded-full animate-ping" />
                         <span>{slide.subtitle}</span>
                       </div>
 
                       {/* Main Title */}
                       <div className="space-y-2 sm:space-y-4">
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white dark:text-gray-100">
                           <span className="block animate-slide-up">
                             {slide.title.split(" ")[0]}
                           </span>
-                          <span className="block animate-slide-up animation-delay-200 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                          <span className="block animate-slide-up animation-delay-200 bg-gradient-to-r from-white to-white/80 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent">
                             {slide.title.split(" ").slice(1).join(" ")}
                           </span>
                         </h1>
-                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 max-w-2xl animate-slide-up animation-delay-400 mx-auto lg:mx-0">
+                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 dark:text-gray-300 max-w-2xl animate-slide-up animation-delay-400 mx-auto lg:mx-0">
                           {slide.description}
                         </p>
                       </div>
@@ -149,12 +148,12 @@ const Hero = () => {
                       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-slide-up animation-delay-600 justify-center lg:justify-start">
                         <Link
                           to={slide.link}
-                          className="btn btn-lg bg-white text-gray-900 hover:bg-white/90 border-none"
+                          className="btn btn-lg bg-white text-gray-900 hover:bg-white/90 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 border-none"
                         >
                           {slide.cta}
                           <FiArrowRight className="ml-2" />
                         </Link>
-                        <button className="btn btn-lg btn-outline text-white border-white/30 hover:bg-white/10">
+                        <button className="btn btn-lg btn-outline text-white dark:text-gray-200 border-white/30 dark:border-gray-600 hover:bg-white/10 dark:hover:bg-gray-700/40">
                           {slide.ctaSecondary}
                         </button>
                       </div>
@@ -164,16 +163,19 @@ const Hero = () => {
                         {slide.stats.map((stat, statIndex) => {
                           const IconComponent = stat.icon;
                           return (
-                            <div key={statIndex} className="text-center">
+                            <div
+                              key={statIndex}
+                              className="text-center text-white dark:text-gray-200"
+                            >
                               <div className="flex justify-center mb-1 sm:mb-2">
-                                <div className="p-2 sm:p-3 bg-white/20 backdrop-blur-sm rounded-full">
+                                <div className="p-2 sm:p-3 bg-white/20 dark:bg-gray-700/50 backdrop-blur-sm rounded-full">
                                   <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
                                 </div>
                               </div>
                               <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">
                                 {stat.value}
                               </div>
-                              <div className="text-xs sm:text-sm text-white/80">
+                              <div className="text-xs sm:text-sm text-white/80 dark:text-gray-400">
                                 {stat.label}
                               </div>
                             </div>
@@ -186,48 +188,48 @@ const Hero = () => {
                     <div className="hidden lg:block relative">
                       <div className="space-y-6 animate-float">
                         {/* Feature Cards */}
-                        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 lg:p-6 border border-white/20 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                        <div className="bg-white/10 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl p-4 lg:p-6 border border-white/20 dark:border-gray-700 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
                           <div className="flex items-center gap-3 lg:gap-4">
                             <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
                               <FiStar className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
                             </div>
                             <div>
-                              <h3 className="text-white font-semibold text-sm lg:text-base">
+                              <h3 className="text-white dark:text-gray-100 font-semibold text-sm lg:text-base">
                                 Trusted Reviews
                               </h3>
-                              <p className="text-white/80 text-xs lg:text-sm">
+                              <p className="text-white/80 dark:text-gray-400 text-xs lg:text-sm">
                                 Real user experiences
                               </p>
                             </div>
                           </div>
                         </div>
 
-                        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 lg:p-6 border border-white/20 shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300 ml-8">
+                        <div className="bg-white/10 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl p-4 lg:p-6 border border-white/20 dark:border-gray-700 shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300 ml-8">
                           <div className="flex items-center gap-3 lg:gap-4">
                             <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
                               <FiTrendingUp className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
                             </div>
                             <div>
-                              <h3 className="text-white font-semibold text-sm lg:text-base">
+                              <h3 className="text-white dark:text-gray-100 font-semibold text-sm lg:text-base">
                                 Smart Recommendations
                               </h3>
-                              <p className="text-white/80 text-xs lg:text-sm">
+                              <p className="text-white/80 dark:text-gray-400 text-xs lg:text-sm">
                                 AI-powered suggestions
                               </p>
                             </div>
                           </div>
                         </div>
 
-                        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 lg:p-6 border border-white/20 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                        <div className="bg-white/10 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl p-4 lg:p-6 border border-white/20 dark:border-gray-700 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
                           <div className="flex items-center gap-3 lg:gap-4">
                             <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
                               <FiUsers className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
                             </div>
                             <div>
-                              <h3 className="text-white font-semibold text-sm lg:text-base">
+                              <h3 className="text-white dark:text-gray-100 font-semibold text-sm lg:text-base">
                                 Active Community
                               </h3>
-                              <p className="text-white/80 text-xs lg:text-sm">
+                              <p className="text-white/80 dark:text-gray-400 text-xs lg:text-sm">
                                 5000+ helpful members
                               </p>
                             </div>

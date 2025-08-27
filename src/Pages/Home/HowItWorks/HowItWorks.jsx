@@ -26,20 +26,29 @@ const HowItWorks = () => {
       gradient: "from-blue-400 to-teal-400",
     },
   ];
+
   return (
-    <div className={`${responsive} md: my-20`}>
-      <div className="space-y-5  ">
-        <Title title={"How It Works"} className={"text-primary text-center"} />
+    <div className={`${responsive} my-20`}>
+      <div className="space-y-5">
+        <Title
+          title={"How It Works"}
+          className={"text-primary dark:text-cyan-400 text-center"}
+        />
         <div className="grid lg:grid-cols-3 gap-5">
           {state.map((stat, index) => (
-            <div key={index} className="flex flex-col hover:scale-102 transition-transform duration-300 ease-in-out items-center gap-6 px-8 py-12 rounded-2xl text-center border cursor-pointer border-gray-300 shadow-xl">
+            <div
+              key={index}
+              className="flex flex-col hover:scale-102 transition-transform duration-300 ease-in-out items-center gap-6 px-8 py-12 rounded-2xl text-center border cursor-pointer border-gray-300 dark:border-gray-600 shadow-xl bg-white dark:bg-gray-800 dark:text-gray-200"
+            >
               <p
-                className={`text-3xl bg-primary p-4 text-white rounded-2xl shadow-xl bg-gradient-to-r opacity-90 ${stat.gradient}`}
+                className={`text-3xl p-4 text-white rounded-2xl shadow-xl bg-gradient-to-r opacity-90 ${stat.gradient}`}
               >
                 {stat.icon}
               </p>
               <p className="text-2xl poppins font-semibold">{stat.heading}</p>
-              <p className="poppins">{stat.para}</p>
+              <p className="poppins text-gray-600 dark:text-gray-300">
+                {stat.para}
+              </p>
             </div>
           ))}
         </div>

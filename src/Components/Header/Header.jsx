@@ -39,18 +39,20 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-10 py-5 bg-white/20 backdrop-blur-md shadow">
-        <div className="w-11/12 md:w-11/12 lg:w-9/12 mx-auto flex justify-between items-center ">
+      <header className="sticky top-0 z-10 py-5 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md shadow">
+        <div className="w-11/12 md:w-11/12 lg:w-9/12 mx-auto flex justify-between items-center">
           <Logo />
+
+          {/* Navigation */}
           <nav className="hidden lg:block">
-            <ul className="flex gap-5 poppins-semibold  ">
+            <ul className="flex gap-5 poppins-semibold">
               <li>
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
                     isActive
-                      ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                      : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                      ? "border-b-2 bg-gray-100 dark:bg-gray-800 text-primary px-4 pb-2 pt-1 rounded"
+                      : "px-4 pb-2 pt-1 rounded text-gray-700 dark:text-gray-300 hover:text-primary"
                   }
                 >
                   Home
@@ -62,8 +64,8 @@ const Header = () => {
                   to="/queries"
                   className={({ isActive }) =>
                     isActive
-                      ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                      : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                      ? "border-b-2 bg-gray-100 dark:bg-gray-800 text-primary px-4 pb-2 pt-1 rounded"
+                      : "px-4 pb-2 pt-1 rounded text-gray-700 dark:text-gray-300 hover:text-primary"
                   }
                 >
                   Queries
@@ -77,8 +79,8 @@ const Header = () => {
                       to="/recforme"
                       className={({ isActive }) =>
                         isActive
-                          ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                          : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                          ? "border-b-2 bg-gray-100 dark:bg-gray-800 text-primary px-4 pb-2 pt-1 rounded"
+                          : "px-4 pb-2 pt-1 rounded text-gray-700 dark:text-gray-300 hover:text-primary"
                       }
                     >
                       Recommendations For Me
@@ -90,8 +92,8 @@ const Header = () => {
                       to="/myqueries"
                       className={({ isActive }) =>
                         isActive
-                          ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                          : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                          ? "border-b-2 bg-gray-100 dark:bg-gray-800 text-primary px-4 pb-2 pt-1 rounded"
+                          : "px-4 pb-2 pt-1 rounded text-gray-700 dark:text-gray-300 hover:text-primary"
                       }
                     >
                       My Queries
@@ -103,8 +105,8 @@ const Header = () => {
                       to="/myrecos"
                       className={({ isActive }) =>
                         isActive
-                          ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                          : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                          ? "border-b-2 bg-gray-100 dark:bg-gray-800 text-primary px-4 pb-2 pt-1 rounded"
+                          : "px-4 pb-2 pt-1 rounded text-gray-700 dark:text-gray-300 hover:text-primary"
                       }
                     >
                       My Recommendations
@@ -114,9 +116,11 @@ const Header = () => {
               )}
             </ul>
           </nav>
-          
+
+          {/* Right side buttons */}
           <div className="flex gap-4 items-center">
             <DarkModeToggle />
+
             {/* login & Logout Button */}
             {user ? (
               <button
@@ -127,11 +131,11 @@ const Header = () => {
               </button>
             ) : (
               <Link to="/auth/login">
-                <button className="btn btn-primary text-[16px] ">Login</button>
+                <button className="btn btn-primary text-[16px]">Login</button>
               </Link>
             )}
 
-            {/* User Profile Photo Showing */}
+            {/* User Profile Photo */}
             {user && (
               <ProfilePhoto
                 proPic={profilePic}
@@ -141,22 +145,22 @@ const Header = () => {
               />
             )}
 
-            {/* Small Device Dropdown Menu */}
+            {/* Mobile Menu */}
             <div className="dropdown dropdown-end z-9999 lg:hidden">
               <div tabIndex={0} role="button" className="btn m-1">
-                <TiThMenu />
+                <TiThMenu className="text-gray-800 dark:text-gray-200" />
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content dropdown-fix mt-4 menu bg-base-100 rounded-box z-9999 w-52 p-2 shadow-sm"
+                className="dropdown-content dropdown-fix mt-4 menu bg-white dark:bg-gray-800 rounded-box z-9999 w-52 p-2 shadow-sm"
               >
                 <li>
                   <NavLink
                     to="/"
                     className={({ isActive }) =>
                       isActive
-                        ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                        : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                        ? "border-b-2 bg-gray-100 dark:bg-gray-700 text-primary px-4 pb-2 pt-1 rounded"
+                        : "px-4 pb-2 pt-1 rounded text-gray-700 dark:text-gray-300 hover:text-primary"
                     }
                   >
                     Home
@@ -167,8 +171,8 @@ const Header = () => {
                     to="/queries"
                     className={({ isActive }) =>
                       isActive
-                        ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                        : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                        ? "border-b-2 bg-gray-100 dark:bg-gray-700 text-primary px-4 pb-2 pt-1 rounded"
+                        : "px-4 pb-2 pt-1 rounded text-gray-700 dark:text-gray-300 hover:text-primary"
                     }
                   >
                     Queries
@@ -179,8 +183,8 @@ const Header = () => {
                     to="/recforme"
                     className={({ isActive }) =>
                       isActive
-                        ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                        : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                        ? "border-b-2 bg-gray-100 dark:bg-gray-700 text-primary px-4 pb-2 pt-1 rounded"
+                        : "px-4 pb-2 pt-1 rounded text-gray-700 dark:text-gray-300 hover:text-primary"
                     }
                   >
                     Recommendations For Me
@@ -191,8 +195,8 @@ const Header = () => {
                     to="/myqueries"
                     className={({ isActive }) =>
                       isActive
-                        ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                        : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                        ? "border-b-2 bg-gray-100 dark:bg-gray-700 text-primary px-4 pb-2 pt-1 rounded"
+                        : "px-4 pb-2 pt-1 rounded text-gray-700 dark:text-gray-300 hover:text-primary"
                     }
                   >
                     My Queries
@@ -203,8 +207,8 @@ const Header = () => {
                     to="/myrecos"
                     className={({ isActive }) =>
                       isActive
-                        ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
-                        : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
+                        ? "border-b-2 bg-gray-100 dark:bg-gray-700 text-primary px-4 pb-2 pt-1 rounded"
+                        : "px-4 pb-2 pt-1 rounded text-gray-700 dark:text-gray-300 hover:text-primary"
                     }
                   >
                     My Recommendations

@@ -12,16 +12,21 @@ const RecentQueries = () => {
     </div>
   );
 
-  const btnClass = " bg-transparent border border-gray-400 btn rounded-md";
+  const btnClass =
+    "bg-transparent border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-200 btn rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition";
 
   return (
     <section className="mt-10 md:mt-20">
       <div className="w-11/12 lg:w-9/12 mx-auto">
         <div className="flexeble">
-          <Title title={"Recent Queries"}></Title>
+          <Title
+            className="text-gray-900 dark:text-gray-100"
+            title={"Recent Queries"}
+          />
           <Button to={"/queries"} className={btnClass} text={btnText}></Button>
         </div>
-        <div>
+
+        <div className="mt-6">
           <QueriesCards sixCard={true} />
         </div>
       </div>

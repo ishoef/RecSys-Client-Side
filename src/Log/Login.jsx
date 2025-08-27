@@ -27,7 +27,6 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    // Login manage
     login(email, password)
       .then((result) => {
         const user = result.user;
@@ -39,7 +38,6 @@ const Login = () => {
           icon: "success",
           confirmButtonText: "OK",
         });
-        console.log("User logged in:", user);
       })
       .catch((error) => {
         const errorMessages = {
@@ -60,14 +58,12 @@ const Login = () => {
       });
   };
 
-  // Googl Login
+  // Google Login
   const provider = new GoogleAuthProvider();
 
   const handleloginWithGoogle = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
-        console.log(result.user.displayName);
         navigate(`${location.state ? location.state : "/"}`);
         Swal.fire({
           title: "Congratulations! Welcome to Our World",
@@ -97,30 +93,28 @@ const Login = () => {
 
   return (
     <>
-      <div className="w-[100%] lg:min-h-[calc(100vh-80px)] flex justify-center items-center pt-5 lg:pt-0 bg-gray-200 ">
+      <div className="w-full lg:min-h-[calc(100vh-80px)] flex justify-center items-center pt-5 lg:pt-0 bg-gray-200 dark:bg-gray-900 transition-colors duration-300">
         <div className="flex flex-col justify-center items-center gap-5 lg:gap-10 p-3 lg:p-5 w-120">
-          <h1 className="text-xl lg:text-3xl font-semibold">
+          <h1 className="text-xl lg:text-3xl font-semibold text-gray-900 dark:text-gray-100">
             <span className="text-primary font-bold underline">Log in</span>{" "}
             Your Account
           </h1>
-          <div className="w-full bg-white dark:bg-gray-800 border border-gray-300 rounded-2xl p-6 lg:p-10">
+          <div className="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-2xl p-6 lg:p-10 transition-colors duration-300">
             <form onSubmit={handleLogin} className="flex flex-col gap-5">
               {/* Email */}
               <div className="flex flex-col gap-2 lg:gap-4">
-                <label className="text-xl font-semibold" htmlFor="email">
+                <label
+                  className="text-xl font-semibold text-gray-900 dark:text-gray-200"
+                  htmlFor="email"
+                >
                   Email
                 </label>
-                <label
-                  className="input border w-full focus-within:outline-none"
-                  htmlFor=""
-                >
+                <label className="input border w-full bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus-within:outline-none">
                   <span className="text-xl text-gray-400">
-                    {" "}
                     <MdOutlineMail />
                   </span>
-
                   <input
-                    className="dark:focus:outline-0 "
+                    className="w-full bg-transparent focus:outline-none placeholder-gray-400 dark:placeholder-gray-500"
                     placeholder="Enter Your Email"
                     type="email"
                     name="email"
@@ -131,18 +125,18 @@ const Login = () => {
 
               {/* Password */}
               <div className="flex flex-col gap-2 lg:gap-4">
-                <label className="text-xl font-semibold" htmlFor="password">
+                <label
+                  className="text-xl font-semibold text-gray-900 dark:text-gray-200"
+                  htmlFor="password"
+                >
                   Password
                 </label>
-                <label
-                  className="input border w-full focus-within:outline-none"
-                  htmlFor=""
-                >
+                <label className="input border w-full bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus-within:outline-none">
                   <span className="text-xl text-gray-400">
-                    {" "}
                     <IoLockClosedOutline />
                   </span>
                   <input
+                    className="w-full bg-transparent focus:outline-none placeholder-gray-400 dark:placeholder-gray-500"
                     placeholder="••••••••"
                     type="password"
                     name="password"
@@ -151,12 +145,15 @@ const Login = () => {
                 </label>
               </div>
 
-              {/* Error Massege */}
+              {/* Error Message */}
               <p className="text-red-600">{error}</p>
 
-              {/* Remeber Me */}
-              <div className="flex flex-col lg:flex-row gap-3 lg:gap-0 justify-between md:mt-3 lg:mt-3">
-                <label className="label" htmlFor="check">
+              {/* Remember Me */}
+              <div className="flex flex-col lg:flex-row gap-3 lg:gap-0 justify-between md:mt-3 lg:mt-3 text-gray-700 dark:text-gray-300">
+                <label
+                  className="label flex items-center gap-2"
+                  htmlFor="check"
+                >
                   <input
                     name="check"
                     type="checkbox"
@@ -167,36 +164,37 @@ const Login = () => {
                 </label>
 
                 {/* Forgot Password */}
-                <p className="text-blue-600">
-                  <Link
-                    //   onClick={handleForgotPassword}
-                    className="hover:underline"
-                  >
-                    {" "}
-                    Forgot Password?{" "}
-                  </Link>
+                <p className="text-blue-600 dark:text-blue-400">
+                  <Link className="hover:underline">Forgot Password?</Link>
                 </p>
               </div>
-              <button className="btn bg-primary  text-white">Login</button>
+              <button className="btn bg-primary text-white hover:bg-orange-600">
+                Login
+              </button>
             </form>
 
-            <div className="divider">Or Continue with</div>
+            <div className="divider text-gray-500 dark:text-gray-400">
+              Or Continue with
+            </div>
 
             {/* Google Login */}
             <div className="flex gap-2 justify-between">
               <button
                 onClick={handleloginWithGoogle}
-                className="btn border w-full dark:bg-gray-700"
+                className="btn border w-full bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
-                <FcGoogle size={20} /> Countinue With Google
+                <FcGoogle size={20} /> Continue With Google
               </button>
             </div>
           </div>
 
           {/* Link To Register Page */}
-          <p className="text-gray-400">
+          <p className="text-gray-500 dark:text-gray-400">
             Not a member?{" "}
-            <Link to="/auth/register" className="text-blue-600 underline">
+            <Link
+              to="/auth/register"
+              className="text-blue-600 dark:text-blue-400 underline"
+            >
               Register
             </Link>
           </p>
