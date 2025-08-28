@@ -78,7 +78,7 @@ const UpdateRecommendations = ({
 
     console.log(recommData);
 
-    // Update the recommendation in the database  
+    // Update the recommendation in the database
     fetch(
       `https://reco-sys-server-side.vercel.app/queries/${recomm.queryId}/recommendation`,
       {
@@ -139,14 +139,14 @@ const UpdateRecommendations = ({
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#15315199] transition-opacity  ">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#15315199] transition-opacity">
         <div
           ref={modalRef}
-          className="lg:w-5/12 border border-gray-400 shadow-xl bg-white mx-auto rounded-2xl p-10 my-10 "
+          className="lg:w-5/12 border border-gray-400 dark:border-gray-600 shadow-xl bg-white dark:bg-gray-800 mx-auto rounded-2xl p-10 my-10"
         >
           <form onSubmit={handleUpdateRecomms} className="flex flex-col gap-4">
-            <div className="flex items-center justify-between border p-4 rounded-2xl shadow border-gray-400 mb-5">
-              <h1 className="poppins-semibold text-2xl text-primary">
+            <div className="flex items-center justify-between border p-4 rounded-2xl shadow border-gray-400 dark:border-gray-600 mb-5">
+              <h1 className="poppins-semibold text-2xl text-primary dark:text-teal-400">
                 Update Your Recommendation
               </h1>
               <FaRegCommentAlt size={32} color="#14b8a6" />
@@ -154,13 +154,14 @@ const UpdateRecommendations = ({
 
             {/* Recommendation Title */}
             <label htmlFor="title" className="flex flex-col gap-2">
-              <span className="poppins-regular">Recommendation Title</span>
+              <span className="poppins-regular dark:text-gray-200">
+                Recommendation Title
+              </span>
               <input
                 type="text"
                 name="title"
                 defaultValue={title}
-                id=""
-                className="input w-full focus-within:outline-none "
+                className="input w-full focus-within:outline-none bg-gray-50 dark:bg-gray-700 dark:text-gray-200"
                 placeholder="E.g., Google Pixel 7 Pro is a great alternative."
                 required
               />
@@ -171,29 +172,29 @@ const UpdateRecommendations = ({
               htmlFor="recommendProductName"
               className="flex flex-col gap-2"
             >
-              <span className="poppins-regular">Recommended Product Name</span>
+              <span className="poppins-regular dark:text-gray-200">
+                Recommended Product Name
+              </span>
               <input
                 type="text"
                 name="recommendProductName"
                 defaultValue={recommendProductName}
-                id=""
-                className="input w-full focus-within:outline-none "
+                className="input w-full focus-within:outline-none bg-gray-50 dark:bg-gray-700 dark:text-gray-200"
                 placeholder="E.g., Google Pixel 7 Pro is a great alternative."
                 required
               />
             </label>
 
-            {/* Reocmmend Product Image URL */}
+            {/* Recommend Product Image URL */}
             <label htmlFor="productImageURL" className="flex flex-col gap-2">
-              <span className="poppins-regular">
+              <span className="poppins-regular dark:text-gray-200">
                 Recommended Product Image URL
               </span>
               <input
                 type="url"
                 name="productImageURL"
                 defaultValue={productImageURL}
-                id=""
-                className="input w-full focus-within:outline-none "
+                className="input w-full focus-within:outline-none bg-gray-50 dark:bg-gray-700 dark:text-gray-200"
                 placeholder="E.g., Google Pixel 7 Pro is a great alternative."
                 required
               />
@@ -201,16 +202,21 @@ const UpdateRecommendations = ({
 
             {/* Recommendation Reason */}
             <label htmlFor="recommendationReason">
-              <span className="poppins-regular">Recommendation Reason</span>
+              <span className="poppins-regular dark:text-gray-200">
+                Recommendation Reason
+              </span>
               <textarea
                 name="recommendationReason"
                 defaultValue={recommendationReason}
-                className="w-full h-32 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring mt-2"
+                className="w-full h-32 p-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring mt-2 bg-gray-50 dark:bg-gray-700 dark:text-gray-200"
                 placeholder="Explain why this is a good alternative"
                 required
               ></textarea>
             </label>
-            <button className="btn btn-primary" type="submit">
+            <button
+              className="btn btn-primary dark:bg-teal-600 dark:hover:bg-teal-700"
+              type="submit"
+            >
               Update Recommendation
             </button>
           </form>

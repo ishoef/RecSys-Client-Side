@@ -9,7 +9,6 @@ const QueryTableRow = ({ recomm, setMyRecomms }) => {
   const [showModal, setShowModal] = useState(false);
   const modalRef = useRef(null);
 
-  
   const {
     queryTitle,
     queryCreatorName,
@@ -81,7 +80,8 @@ const QueryTableRow = ({ recomm, setMyRecomms }) => {
 
   return (
     <>
-      <tr>
+      <tr className="border-b border-gray-200 dark:border-gray-700">
+        {/* Product */}
         <td>
           <Link to={"/"} className="flex items-center gap-3">
             <img
@@ -90,49 +90,65 @@ const QueryTableRow = ({ recomm, setMyRecomms }) => {
                 productImageURL ||
                 "https://images.unsplash.com/photo-1620987278429-ab178d6eb547?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
               }
-              alt="Procut Image"
+              alt="Product Image"
             />
-            <h1 className="text-xl poppins hover:text-green-500 transition-normal">
+            <h1 className="text-xl poppins hover:text-green-500 transition-normal text-gray-900 dark:text-gray-100">
               {recommendProductName}
             </h1>
           </Link>
         </td>
+
+        {/* Recommendation */}
         <td>
-          <Link to={`/recommDetails/${queryId}`}>
+          <Link
+            to={`/recommDetails/${queryId}`}
+            className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+          >
             {title || "No Recommendation"}
           </Link>
         </td>
+
+        {/* Query Info */}
         <td>
-          <p>{queryTitle}</p>
-          <p className="text-[14px] bg-gray-100 w-fit px-2 rounded-2xl mt-1">
+          <p className="text-gray-800 dark:text-gray-200">{queryTitle}</p>
+          <p className="text-[14px] bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 w-fit px-2 rounded-2xl mt-1">
             {queryCreatorName}
           </p>
         </td>
+
+        {/* Date & Time */}
         <td>
-          <div>
+          <div className="text-gray-700 dark:text-gray-300">
             <p>{creationDate}</p>
             <p>{creationTime}</p>
           </div>
         </td>
+
+        {/* Actions */}
         <td className="space-y-3">
           <button
             onClick={() => setShowModal(true)}
             type="button"
-            className="hover:scale-102 hover:shadow cursor-pointer bg-primary w-fit flex items-center justify-center p-2 rounded"
+            className="hover:scale-102 hover:shadow cursor-pointer 
+                       bg-primary w-fit flex items-center justify-center 
+                       p-2 rounded"
           >
-            <IoCreateOutline color="white" />
+            <IoCreateOutline className="text-white" />
           </button>
 
           <button
             onClick={() => handleDelete(queryId, recommenderEmail)}
             type="button"
-            className="hover:scale-102 hover:shadow cursor-pointer bg-red-500 w-fit flex items-center justify-center p-2 rounded"
+            className="hover:scale-102 hover:shadow cursor-pointer 
+                       bg-red-500 w-fit flex items-center justify-center 
+                       p-2 rounded"
           >
-            <MdDelete color="white" />
+            <MdDelete className="text-white" />
           </button>
         </td>
       </tr>
 
+      {/* Modal */}
       {showModal && (
         <UpdateRecommendations
           recomm={recomm}

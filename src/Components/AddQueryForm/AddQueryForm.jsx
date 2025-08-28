@@ -9,13 +9,13 @@ const AddQueryForm = () => {
   const { user } = use(AuthContext);
   console.log(user);
   const navigate = useNavigate();
-  // Add Query Handleling
+
+  // Add Query Handling
   const handleAddQuery = (e) => {
     e.preventDefault();
     const form = e.target;
 
     const now = new Date();
-
     const currentDate = now.toLocaleDateString("en-GB");
     const currentTime = now.toLocaleTimeString("en-US", {
       hour: "2-digit",
@@ -77,23 +77,24 @@ const AddQueryForm = () => {
                 confirmButtonText: "OK",
               });
             });
-          // Reset the form after successful submission
           form.reset();
         }
       });
   };
 
   return (
-    <div className="w-11/12 md:w-6/12 mx-auto my-10 ">
+    <div className="w-11/12 md:w-6/12 mx-auto my-10">
       <Link to={"/myqueries"} className="flex items-center gap-2">
         <IoArrowBack />
-
-        <p className="poppins text-gray-700">Back to My Queries</p>
+        <p className="poppins text-gray-700 dark:text-gray-300">
+          Back to My Queries
+        </p>
       </Link>
-      <div className=" border border-gray-400 shadow-xl rounded-2xl p-4 md:p-10 mt-6">
+
+      <div className="border border-gray-400 dark:border-gray-700 shadow-xl rounded-2xl p-4 md:p-10 mt-6 bg-white dark:bg-gray-900 transition-colors duration-300">
         <form onSubmit={handleAddQuery} className="flex flex-col gap-4">
-          <div className="flex items-center justify-between border p-4 rounded-2xl shadow border-gray-400 mb-5">
-            <h1 className="poppins-semibold text-2xl text-primary">
+          <div className="flex items-center justify-between border p-4 rounded-2xl shadow border-gray-400 dark:border-gray-700 mb-5 bg-gray-50 dark:bg-gray-800">
+            <h1 className="poppins-semibold text-2xl text-primary dark:text-teal-400">
               Add New Query
             </h1>
             <SiJquery size={32} color="#14b8a6" />
@@ -101,76 +102,69 @@ const AddQueryForm = () => {
 
           {/* Product Name */}
           <label htmlFor="title" className="flex flex-col gap-2">
-            <span className="poppins-regular">
+            <span className="poppins-regular text-gray-800 dark:text-gray-200">
               Product Name <span className="text-red-500">*</span>
             </span>
             <input
               type="text"
               name="productName"
-              id=""
-              className="input w-full focus-within:outline-none focus-within:border-primary"
-              placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              className="input w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 focus-within:outline-none focus-within:border-primary"
+              placeholder="E.g., Google Pixel 7 Pro"
               required
             />
           </label>
 
           {/* Product Brand */}
           <label htmlFor="title" className="flex flex-col gap-2">
-            <span className="poppins-regular">
+            <span className="poppins-regular text-gray-800 dark:text-gray-200">
               Product Brand <span className="text-red-500">*</span>
             </span>
             <input
               type="text"
               name="productBrand"
-              id=""
-              className="input w-full focus-within:outline-none focus-within:border-primary"
-              placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              className="input w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 focus-within:outline-none focus-within:border-primary"
+              placeholder="E.g., Google"
               required
             />
           </label>
 
           {/* Product Image */}
-          <label
-            htmlFor="title"
-            className="flex flex-col gap-2 focus-within:border-primary"
-          >
-            <span className="poppins-regular">
+          <label htmlFor="title" className="flex flex-col gap-2">
+            <span className="poppins-regular text-gray-800 dark:text-gray-200">
               Product Image URL <span className="text-red-500">*</span>
             </span>
             <input
               type="url"
               name="productImageURL"
-              id=""
-              className="input w-full focus-within:outline-none focus-within:border-primary "
-              placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              className="input w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 focus-within:outline-none focus-within:border-primary"
+              placeholder="Enter image URL"
               required
             />
           </label>
 
           {/* Query Title */}
           <label htmlFor="title" className="flex flex-col gap-2">
-            <span className="poppins-regular">
+            <span className="poppins-regular text-gray-800 dark:text-gray-200">
               Query Title <span className="text-red-500">*</span>
             </span>
             <input
               type="text"
               name="queryTitle"
-              id=""
-              className="input w-full focus-within:outline-none focus-within:border-primary"
-              placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              className="input w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 focus-within:outline-none focus-within:border-primary"
+              placeholder="E.g., Best alternative to iPhone 14?"
               required
             />
           </label>
 
           {/* Boycotting Reason */}
-          <label htmlFor="">
-            <span className="poppins-regular">
-              Boycotting Reason Detils <span className="text-red-500">*</span>
+          <label>
+            <span className="poppins-regular text-gray-800 dark:text-gray-200">
+              Boycotting Reason Details <span className="text-red-500">*</span>
             </span>
             <textarea
               name="boycottingReson"
-              className="w-full h-32 p-3 border border-gray-300 rounded-md focus-within:border-primary focus:outline-none mt-2"
-              placeholder="Explain why you're looking for alternativew to this product..."
+              className="w-full h-32 p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 focus-within:border-primary focus:outline-none mt-2"
+              placeholder="Explain why you're looking for alternatives..."
               required
             ></textarea>
           </label>

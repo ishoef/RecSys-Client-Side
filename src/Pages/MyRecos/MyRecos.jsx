@@ -47,19 +47,22 @@ const MyRecos = () => {
   return (
     <section className={`${responsive} mt-10`}>
       {/* Title Box */}
-      <div className="flex justify-between items-center py-8 px-5 text-center md:px-10 bg-primary  rounded-2xl">
+      <div
+        className="flex justify-between items-center py-8 px-5 text-center md:px-10 
+                      bg-primary rounded-2xl 
+                      dark:bg-gray-800"
+      >
         <Title
-          className={"text-white"}
+          className={"text-white dark:text-gray-100"}
           title={`My Recommendations (${myRecomms.length})`}
         />
 
-        <span className="text-5xl hidden md:block text-white">
+        <span className="text-5xl hidden md:block text-white dark:text-gray-200">
           <FaRegCommentAlt />
         </span>
       </div>
 
       {/* Recommendations Table */}
-
       <div className="my-10 hidden lg:block">
         <RecommendatinTable
           myRecomms={myRecomms}
@@ -70,7 +73,13 @@ const MyRecos = () => {
         />
       </div>
 
-      <div className="lg:hidden my-10 border border-gray-300 rounded-2xl shadow p-5 md:p-10 ">
+      {/* Mobile / Small Device View */}
+      <div
+        className="lg:hidden my-10 border border-gray-300 rounded-2xl shadow 
+                      p-5 md:p-10 
+                      bg-white dark:bg-gray-900 
+                      dark:border-gray-700 dark:shadow-gray-800"
+      >
         <RecommendationCards
           myRecomms={myRecomms}
           setMyRecomms={setMyRecomms}

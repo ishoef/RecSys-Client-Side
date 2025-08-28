@@ -111,7 +111,9 @@ const Hero = () => {
 
               {/* Gradient Overlay */}
               <div
-                className={`absolute inset-0 bg-gradient-to-r opacity-90 ${slide.gradient}`}
+                className={`absolute inset-0 bg-gradient-to-r opacity-90 
+  ${slide.gradient} 
+  dark:from-blue-600 dark:via-purple-600 dark:to-teal-600`}
               />
 
               {/* Pattern Overlay */}

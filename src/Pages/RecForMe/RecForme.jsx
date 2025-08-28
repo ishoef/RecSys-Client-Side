@@ -49,24 +49,24 @@ const RecForme = () => {
   return (
     <section className={`${responsive} mt-10`}>
       {/* Title Box */}
-      <div className="flex justify-between items-center py-8 px-5 md:px-10 bg-primary backdrop-blur-3xl rounded-2xl">
+      <div className="flex justify-between items-center py-8 px-5 md:px-10 bg-primary backdrop-blur-3xl rounded-2xl dark:bg-gray-800">
         <Title
-          className={"text-white"}
+          className={"text-white dark:text-gray-100"}
           title={`Recommendations For My Queries`}
         />
 
-        <span className="hidden md:block text-5xl text-white">
+        <span className="hidden md:block text-5xl text-white dark:text-gray-200">
           <FaRegCommentAlt />
         </span>
       </div>
 
       {/* Recommendations Table */}
-
       <div className="my-10 hidden lg:block">
         <RecommsForMeTable headers={headerText} recomms={recForMe} />
       </div>
 
-      <div className="lg:hidden my-10 border border-gray-300 rounded-2xl shadow p-5 space-y-8 md:p-10 ">
+      {/* Mobile Card View */}
+      <div className="lg:hidden my-10 border border-gray-300 dark:border-gray-700 rounded-2xl shadow p-5 space-y-8 md:p-10 bg-white dark:bg-gray-900">
         {recForMe.map((recomm, index) => (
           <RecForMeCards key={index} recomm={recomm} />
         ))}

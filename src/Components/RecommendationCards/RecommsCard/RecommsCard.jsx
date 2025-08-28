@@ -55,7 +55,6 @@ const RecommsCard = ({ recomm, setMyRecomms }) => {
                 confirmButtonText: "Ok",
               });
 
-              // ✅ Remove the deleted recommendation from UI
               setMyRecomms((prev) =>
                 prev.filter(
                   (rec) =>
@@ -82,7 +81,7 @@ const RecommsCard = ({ recomm, setMyRecomms }) => {
 
   return (
     <>
-      <div className="border overflow-hidden border-gray-300 shadow rounded-lg p-4 hover:shadow-md transition-all bg-white">
+      <div className="border overflow-hidden border-gray-300 dark:border-gray-700 shadow rounded-lg p-4 hover:shadow-md transition-all bg-white dark:bg-gray-900">
         {/* Top Section */}
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center gap-3">
@@ -95,22 +94,26 @@ const RecommsCard = ({ recomm, setMyRecomms }) => {
               alt="Product"
             />
             <div>
-              <h2 className="font-semibold text-lg">{recommendProductName}</h2>
-              <p className="text-xs text-gray-500">{creationDate}</p>
+              <h2 className="font-semibold text-lg text-gray-900 dark:text-gray-100">
+                {recommendProductName}
+              </h2>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                {creationDate}
+              </p>
             </div>
           </div>
 
           {/* Action Icons */}
-          <div className="flex gap-3 text-gray-500 text-xl">
+          <div className="flex gap-3 text-gray-500 dark:text-gray-300 text-xl">
             <Link
               onClick={() => setShowModal(true)}
-              className="hover:text-primary hover:bg-transparent hover:border border border-primary hover:border-primary transition-all duration-300 ease-in-out bg-primary p-1 md:p-3 text-white rounded-md"
+              className="hover:text-primary hover:bg-transparent hover:border border border-primary transition-all duration-300 ease-in-out bg-primary p-1 md:p-3 text-white rounded-md"
             >
               <IoCreateOutline />
             </Link>
             <button
               onClick={() => handleDelete(queryId, recommenderEmail)}
-              className="hover:text-red-600 hover:bg-transparent hover:border border border-red-500 hover:border-red-500 transition-all duration-300 ease-in-out bg-red-500 p-1 md:p-3 text-white rounded-md"
+              className="hover:text-red-600 dark:hover:text-red-400 hover:bg-transparent hover:border border border-red-500 hover:border-red-500 transition-all duration-300 ease-in-out bg-red-500 p-1 md:p-3 text-white rounded-md"
             >
               <MdDelete />
             </button>
@@ -119,24 +122,27 @@ const RecommsCard = ({ recomm, setMyRecomms }) => {
 
         {/* Recommendation Text */}
         <div className="mb-2">
-          <p className="font-semibold text-sm text-gray-800">Recommendation</p>
-          <p className="text-gray-700">
+          <p className="font-semibold text-sm text-gray-800 dark:text-gray-200">
+            Recommendation
+          </p>
+          <p className="text-gray-700 dark:text-gray-300">
             {recommendProductName} is a great alternative
           </p>
         </div>
 
         {/* Query Info */}
         <div className="mb-1">
-          <p className="font-semibold text-sm text-gray-800">Query</p>
-          <p className="text-gray-700 truncate">{queryTitle}</p>
+          <p className="font-semibold text-sm text-gray-800 dark:text-gray-200">
+            Query
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 truncate">
+            {queryTitle}
+          </p>
         </div>
 
         {/* Recommender Info */}
         <div className="mt-1">
-          <button
-            to="#"
-            className="text-sm text-blue-600 hover:underline flex items-center gap-2"
-          >
+          <button className="text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-2">
             <ProfilePhoto proPic={recommenderPhoto} />
             By {recommenderName}
           </button>
