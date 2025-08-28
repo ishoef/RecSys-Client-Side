@@ -39,7 +39,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-10 py-5 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md shadow">
+      <header className="sticky top-0 z-10 py-5 bg-white/70 dark:bg-gray-900/70 dark:border-b border-gray-700 backdrop-blur-md shadow">
         <div className="w-11/12 md:w-11/12 lg:w-9/12 mx-auto flex justify-between items-center">
           <Logo />
 

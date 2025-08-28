@@ -28,7 +28,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div className={`${responsive} my-20`}>
+    <div className={`${responsive} pb-20`}>
       <div className="space-y-5">
         <Title
           title={"How It Works"}

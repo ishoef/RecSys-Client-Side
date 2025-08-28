@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { use, useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 import DetailCard from "../../Components/DetailCard/DetailCard";
 import AddRecomForm from "../../Components/AddRecomForm/AddRecomForm";
@@ -8,7 +8,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 const QueryDetails = () => {
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { user } = use(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const params = useParams();
   console.log(params.id);
@@ -34,7 +34,7 @@ const QueryDetails = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log("faild to fetch Data", error);
+        console.log("Failed to fetch data", error);
         setDetails([]);
       });
   }, [params.id, user]);
@@ -44,10 +44,13 @@ const QueryDetails = () => {
   }
 
   return (
-    <section className="mt-10">
-      <div className="w-11/12 lg:w-9/12 mx-auto">
-        <DetailCard details={details} />
-        <AddRecomForm details={details} setDetails={setDetails} />
+    <section className="py-10 bg-gray-100 dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+      <div className="w-11/12 lg:w-9/12 mx-auto text-gray-900 dark:text-gray-100">
+        {/* Query Details Card */}
+        <DetailCard details={details} darkMode={true} />
+
+        {/* Add Recommendation Form */}
+        <AddRecomForm details={details} setDetails={setDetails} darkMode={true} />
       </div>
     </section>
   );

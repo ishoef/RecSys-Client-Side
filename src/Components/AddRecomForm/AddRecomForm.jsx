@@ -9,10 +9,8 @@ const AddRecomForm = ({ details, setDetails }) => {
 
   const handleAddRecomm = (e) => {
     e.preventDefault();
-
     const form = e.target;
 
-    // get the time and Date
     const now = new Date();
     const currentDate = now.toLocaleDateString("en-US");
     const currentTime = now.toLocaleTimeString("en-US", {
@@ -38,8 +36,6 @@ const AddRecomForm = ({ details, setDetails }) => {
       creationTime: currentTime,
     };
 
-    console.log(recommData);
-
     fetch(
       `https://reco-sys-server-side.vercel.app/queries/${details._id}/recommendations?userEmail=${user?.email}`,
       {
@@ -51,7 +47,6 @@ const AddRecomForm = ({ details, setDetails }) => {
         body: JSON.stringify(recommData),
       }
     ).then(() => {
-      // Re-fetch updated query
       fetch(
         `https://reco-sys-server-side.vercel.app/queries/${details._id}?userEmail=${user?.email}`,
         {
@@ -64,29 +59,31 @@ const AddRecomForm = ({ details, setDetails }) => {
       )
         .then((res) => res.json())
         .then((updatedData) => {
-          setDetails(updatedData); // set updated query including new recommendations
-
+          setDetails(updatedData);
           Swal.fire({
             title: "Success!",
             text: "Query created successfully",
             icon: "success",
             confirmButtonText: "Add Another Recommendation",
           });
-          form.reset(); // Optional: Clear the form
+          form.reset();
         });
     });
   };
 
   return (
     <>
-      <div className="lg:w-8/12 border border-gray-400 shadow-xl mx-auto rounded-2xl p-4 md:p-10 my-10 ">
+      <div className="lg:w-8/12 mx-auto my-10 p-4 md:p-10 rounded-2xl border border-gray-400 dark:border-gray-700 shadow-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors duration-300">
         <form onSubmit={handleAddRecomm} className="flex flex-col gap-4">
-          <div className="flex items-center justify-between border p-4 rounded-2xl shadow border-gray-400 mb-5">
-            <h1 className="poppins-semibold text-xl md:text-2xl text-primary ">
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 mb-5 rounded-2xl border border-gray-400 dark:border-gray-700 shadow bg-gray-100 dark:bg-gray-700 transition-colors duration-300">
+            <h1 className="poppins-semibold text-xl md:text-2xl text-primary">
               Add Your Recommendation
             </h1>
             <FaRegCommentAlt size={32} color="#14b8a6" />
           </div>
+
+          {/* Recommendation Title */}
           <label htmlFor="title" className="flex flex-col gap-2">
             <span className="poppins-regular">
               Recommendation Title <span className="text-red-500">*</span>
@@ -94,13 +91,13 @@ const AddRecomForm = ({ details, setDetails }) => {
             <input
               type="text"
               name="title"
-              id=""
-              className="input w-full focus-within:outline-none "
+              className="input w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md p-2 focus:outline-none focus:ring focus:ring-primary transition-colors duration-300"
               placeholder="E.g., Google Pixel 7 Pro is a great alternative."
               required
             />
           </label>
 
+          {/* Recommended Product Name */}
           <label htmlFor="recommendProductName" className="flex flex-col gap-2">
             <span className="poppins-regular">
               Recommended Product Name <span className="text-red-500">*</span>
@@ -108,13 +105,13 @@ const AddRecomForm = ({ details, setDetails }) => {
             <input
               type="text"
               name="recommendProductName"
-              id=""
-              className="input w-full focus-within:outline-none "
-              placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              className="input w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md p-2 focus:outline-none focus:ring focus:ring-primary transition-colors duration-300"
+              placeholder="E.g., Google Pixel 7 Pro"
               required
             />
           </label>
 
+          {/* Product Image URL */}
           <label htmlFor="productImageURL" className="flex flex-col gap-2">
             <span className="poppins-regular">
               Recommended Product Image URL{" "}
@@ -123,30 +120,33 @@ const AddRecomForm = ({ details, setDetails }) => {
             <input
               type="url"
               name="productImageURL"
-              id=""
-              className="input w-full focus-within:outline-none "
-              placeholder="E.g., Google Pixel 7 Pro is a great alternative."
+              className="input w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md p-2 focus:outline-none focus:ring focus:ring-primary transition-colors duration-300"
+              placeholder="Image URL"
               required
             />
           </label>
 
-          <label htmlFor="recommendationReason">
+          {/* Recommendation Reason */}
+          <label htmlFor="recommendationReason" className="flex flex-col gap-2">
             <span className="poppins-regular">
               Recommendation Reason <span className="text-red-500">*</span>
             </span>
             <textarea
               name="recommendationReason"
-              className="w-full h-32 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring mt-2"
+              className="w-full h-32 p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring focus:ring-primary transition-colors duration-300"
               placeholder="Explain why this is a good alternative"
               required
             ></textarea>
           </label>
-          <button className="btn btn-primary" type="submit">
+
+          {/* Submit Button */}
+          <button className="btn btn-primary bg-primary text-white dark:bg-teal-500 dark:text-gray-900 hover:dark:bg-teal-600 transition-colors duration-300">
             Add Recommendation
           </button>
         </form>
       </div>
 
+      {/* Display all recommendations */}
       <AllRecomms details={details} />
     </>
   );
